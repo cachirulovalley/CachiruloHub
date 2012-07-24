@@ -1,0 +1,15 @@
+Testsuite: hub.HomeControllerTests
+Tests run: 1, Failures: 1, Errors: 0, Time elapsed: 0,434 sec
+------------- Standard Output ---------------
+--Output from testSomething--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSomething--
+------------- ---------------- ---------------
+
+Testcase: testSomething took 0,43 sec
+	FAILED
+junit.framework.AssertionFailedError: Implement me
+junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at hub.HomeControllerTests.testSomething(HomeControllerTests.groovy:15)
+

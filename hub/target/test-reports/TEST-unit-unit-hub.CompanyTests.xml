@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="vodkalimon.local" name="hub.CompanyTests" tests="1" time="0.563" timestamp="2012-07-24T18:12:45">
+  <properties />
+  <testcase classname="hub.CompanyTests" name="testSomething" time="0.149">
+    <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at hub.CompanyTests.testSomething(CompanyTests.groovy:15)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>
