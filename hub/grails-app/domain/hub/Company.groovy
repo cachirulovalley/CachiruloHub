@@ -1,5 +1,7 @@
 package hub
 
+import java.security.*
+
 class Company {
     String email
     String name
@@ -21,5 +23,21 @@ class Company {
         logo(nullable:true)
         latitude(nullable:true)
         longitude(nullable:true)
+    }
+    
+    def beforeInsert() {
+        encrypt()
+    }
+    
+    def beforeUpdate() {
+        if(isDirty('password')){
+            encrypt()
+        }
+    }
+    
+    def encrypt(){
+        def messageDigest = MessageDigest.getInstance("SHA1")
+        messageDigest.update(password.getBytes())
+        password = new BigInteger(1, messageDigest.digest()).toString(16).padLeft(40, '0')
     }
 }
