@@ -22,6 +22,11 @@ class RegisterController {
             return 
         }
         
+        mailService.sendMail {     
+          to company.email
+          subject "[CachiruloHub] Confirma tu email"
+          html g.render(template:"/mails/confirmation", model:[company: company])
+        }
         redirect(controller:'company', action:'edit', id: company.id)
     }
     
