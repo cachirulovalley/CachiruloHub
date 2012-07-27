@@ -1,6 +1,8 @@
 package hub
 
 class RegisterController {
+    def mailService
+    
     def index() {
         [company: new Company(params)]
     }
@@ -19,6 +21,16 @@ class RegisterController {
             render(model: [company: company], view: 'index')
             return 
         }
+        
         redirect(controller:'company', action:'edit', id: company.id)
+    }
+    
+    def confirm() {
+        def company = Company.findByKey(params.id)
+        if(company){
+            company.enabled = true
+            company.save()
+            redirect(controller:'company', action:'edit', id: company.id)
+        }
     }
 }

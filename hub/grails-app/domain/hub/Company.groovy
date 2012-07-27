@@ -12,6 +12,14 @@ class Company {
     byte[] logo
     Double latitude
     Double longitude
+    
+    String key
+    Boolean enabled
+    
+    Company(){
+        key = UUID.randomUUID().toString()
+        enabled = false
+    }
 
     static constraints = {
         email(blank:false, nullable:false, email:true)
