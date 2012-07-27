@@ -11,8 +11,10 @@ import org.junit.*
 @TestFor(RegisterController)
 @Mock([Company])
 class RegisterControllerTests {
+    def control
+    
     void setUp(){
-        def control = mockFor(grails.plugin.mail.MailService)
+        control = mockFor(grails.plugin.mail.MailService)
         control.demand.sendMail {}
         controller.mailService = control.createMock()
     }
@@ -32,6 +34,7 @@ class RegisterControllerTests {
         controller.save()
         assert (size + 1) == Company.count()
         assert size == Company.countByEnabled(true)
+        control.verify()
         assert response.redirectedUrl == '/company/edit/1'
     }
     
