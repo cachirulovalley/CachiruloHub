@@ -99,4 +99,13 @@ class CompanyController {
             redirect(action: "show", id: id)
         }
     }
+
+    def search() {
+        //just render search.gsp
+    }
+
+    def query() {
+        //TODO: call this as AJAX and render it in search page
+        [companyInstanceList: Company.findAll("from Company where name like '%" + params.text + "%' or description like '%" + params.text + "%'")]
+    }
 }
