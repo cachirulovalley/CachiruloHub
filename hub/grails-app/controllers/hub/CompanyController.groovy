@@ -106,6 +106,7 @@ class CompanyController {
 
     def query() {
         //TODO: call this as AJAX and render it in search page
-        [companyInstanceList: Company.findAll("from Company where name like '%" + params.text + "%' or description like '%" + params.text + "%'")]
+        [companyInstanceList: Company.findAllByNameIlikeOrDescriptionIlike("%${params.text}%", "%${params.text}%")]
+        //http://grails.org/doc/latest/ref/Domain%20Classes/findAllBy.html
     }
 }

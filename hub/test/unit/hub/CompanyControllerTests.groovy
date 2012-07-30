@@ -153,4 +153,15 @@ class CompanyControllerTests {
         assert Company.get(company.id) == null
         assert response.redirectedUrl == '/company/list'
     }
+
+    void testQueryFindsMatchingCompany() {
+        populateValidParams(params)
+        def company = new Company(params).save()
+
+        controller.params.text = 'mOloN'
+        def model = controller.query()
+        assert model.companyInstanceList.size() == 1
+        assert model.companyInstanceList[0].id == company.id
+        assert model.companyInstanceList[0].name == 'empresa molona'
+    }
 }
