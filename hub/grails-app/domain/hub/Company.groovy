@@ -33,6 +33,8 @@ class Company {
         longitude(nullable:true)
     }
     
+    static mapWith = "mongo"
+    
     def beforeInsert() {
         encrypt()
     }

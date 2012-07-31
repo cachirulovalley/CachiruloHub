@@ -4,6 +4,13 @@ dataSource {
     username = "sa"
     password = ""
 }
+mongo {
+    host = "ds033257.mongolab.com"
+    port = 33257
+    username = "webapp"
+    password = "webapp465"
+    databaseName = "cachirulohub"
+}
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
@@ -12,9 +19,8 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        dataSource {
+        mongo {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
     }
     test {
@@ -24,9 +30,8 @@ environments {
         }
     }
     production {
-        dataSource {
+        mongo {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             pooled = true
             properties {
                maxActive = -1
