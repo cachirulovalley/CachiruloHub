@@ -48,4 +48,10 @@ class Company {
         messageDigest.update(password.getBytes())
         password = new BigInteger(1, messageDigest.digest()).toString(16).padLeft(40, '0')
     }
+	
+	static def encrypt(String text){
+        def messageDigest = MessageDigest.getInstance("SHA1")
+        messageDigest.update(text.getBytes())
+        return new BigInteger(1, messageDigest.digest()).toString(16).padLeft(40, '0')
+    }
 }
