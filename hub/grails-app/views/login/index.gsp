@@ -6,6 +6,11 @@
 		<title>Login</title>
 	</head>
 	<body>
+	<g:if test="${error}">
+		<ul class="errors" role="alert">
+			<li><g:message code="${error}"/></li>
+		</ul>
+	</g:if>
 	<g:form action="login" method="post">
 		Email: <input type="text" name="email">
 		<br/>
