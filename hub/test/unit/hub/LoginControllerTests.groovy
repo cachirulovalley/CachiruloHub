@@ -21,6 +21,16 @@ class LoginControllerTests {
 		controller.params.email = 'foo@bar.com'
 		controller.params.pass = 'foo'
 		controller.login()
-	   assert response.redirectedUrl == '/company/edit/1'
+        assert response.redirectedUrl == '/company/edit/1'
+        assert controller.session.company != null
+    }
+    
+    void testFailLogin() {
+        controller.params.email = 'foo@bar123.com'
+        controller.params.pass = 'foo'
+        controller.login()
+        assert response.redirectedUrl == null
+        assert controller.session.company == null
+        assert model.error != null
     }
 }
