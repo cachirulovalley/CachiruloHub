@@ -120,10 +120,8 @@ class CompanyControllerTests {
         params.web = "http://www.anotherweb.com"
 
         controller.update()
-
-        assert model.companyInstance != null
-        assert !model.companyInstance.hasErrors()
-        assert view == "/company/show"
+        
+        assert response.redirectedUrl == '/company/show/' + company.id
     }
 
     void testUpdateCompanyWithNameEmpty() {
