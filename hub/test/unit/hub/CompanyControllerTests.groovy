@@ -9,7 +9,7 @@ import grails.test.mixin.*
 @Mock(Company)
 class CompanyControllerTests {
 
-    def populateValidParams(params) {
+    def populateValidMinimunParams(params) {
         assert params != null
         params["name"] = 'empresa molona'
         params["email"] = 'foo@bar.com'
@@ -28,13 +28,13 @@ class CompanyControllerTests {
         assert model.companyInstanceList.size() == 0
         assert model.companyInstanceTotal == 0
     }
-
+/*
     void testCreate() {
         def model = controller.create()
 
         assert model.companyInstance != null
     }
-
+*/
     void testSave() {
         controller.save()
 
@@ -43,7 +43,7 @@ class CompanyControllerTests {
 
         response.reset()
 
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         controller.save()
 
         assert response.redirectedUrl == '/company/show/1'
@@ -57,7 +57,7 @@ class CompanyControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/company/list'
 
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         def company = new Company(params)
 
         assert company.save() != null
@@ -75,7 +75,7 @@ class CompanyControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/company/list'
 
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         def company = new Company(params)
 
         assert company.save() != null
@@ -86,8 +86,8 @@ class CompanyControllerTests {
 
         assert model.companyInstance == company
     }
-
-    void testUpdate() {
+/*
+    void testUpdateCompanyDefault() {
         controller.update()
 
         assert flash.message != null
@@ -95,12 +95,42 @@ class CompanyControllerTests {
 
         response.reset()
 
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         def company = new Company(params)
 
         assert company.save() != null
+    }
+*/
 
-        // test invalid parameters in update
+    void testUpdateCompanyWithRightData() {
+
+        Company.metaClass.isDirty = { //workaround for mockDomain not adding isDirty method.
+            println("dirty check called");
+        }
+
+        populateValidMinimunParams(params)
+        def company = new Company(params)
+        company.save();
+
+        params.id = company.id
+        params.name = "another Name"
+        params.address = "another Adress"
+        params.description = "another Description"
+        params.tags = "tag1 tag2"
+        params.web = "http://www.anotherweb.com"
+
+        controller.update()
+
+        assert model.companyInstance != null
+        assert !model.companyInstance.hasErrors()
+        assert view == "/company/show"
+    }
+
+    void testUpdateCompanyWithNameEmpty() {
+        populateValidMinimunParams(params)
+        def company = new Company(params)
+        company.save();
+
         params.id = company.id
         params.name = ""
 
@@ -108,28 +138,22 @@ class CompanyControllerTests {
 
         assert view == "/company/edit"
         assert model.companyInstance != null
+        assert model.companyInstance.hasErrors()
+    }
 
-        company.clearErrors()
+    void testUpdateCompanyWithWrongWeb() {
+        populateValidMinimunParams(params)
+        def company = new Company(params)
+        company.save();
 
-        populateValidParams(params)
-        controller.update()
-
-        assert response.redirectedUrl == "/company/show/$company.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        company.clearErrors()
-
-        populateValidParams(params)
         params.id = company.id
-        params.version = -1
+        params.web = "justaword"
+
         controller.update()
 
         assert view == "/company/edit"
         assert model.companyInstance != null
-        assert model.companyInstance.errors.getFieldError('version')
-        assert flash.message != null
+        assert model.companyInstance.hasErrors()
     }
 
     void testDelete() {
@@ -139,7 +163,7 @@ class CompanyControllerTests {
 
         response.reset()
 
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         def company = new Company(params)
 
         assert company.save() != null
@@ -155,7 +179,7 @@ class CompanyControllerTests {
     }
 
     void testQueryFindsMatchingCompany() {
-        populateValidParams(params)
+        populateValidMinimunParams(params)
         def company = new Company(params).save()
 
         controller.params.text = 'mOloN'

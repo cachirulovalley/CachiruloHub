@@ -41,15 +41,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${companyInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="company.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${companyInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
+		
 				<g:if test="${companyInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="company.description.label" default="Description" /></span>
@@ -67,6 +59,16 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${companyInstance?.tags}">
+				<li class="fieldcontain">
+					<span id="tags-label" class="property-label"><g:message code="company.tags.label" default="Tags" /></span>
+					
+						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${companyInstance}" field="tags"/></span>
+					
+				</li>
+				</g:if>
+
 			
 				<g:if test="${companyInstance?.web}">
 				<li class="fieldcontain">

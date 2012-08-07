@@ -9,6 +9,7 @@ class Company {
     String description
     String address
     String web
+    String tags
     byte[] logo
     Double latitude
     Double longitude
@@ -25,8 +26,9 @@ class Company {
         email(blank:false, nullable:false, email:true)
         name(blank:false, nullable:false)
         password(blank:false, nullable:false)
-        description(nullable:true)
         address(nullable:true)
+        description(nullable:true)
+        tags(nullable:true)
         web(nullable:true, url:true)
         logo(nullable:true)
         latitude(nullable:true)
