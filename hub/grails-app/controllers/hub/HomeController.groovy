@@ -3,6 +3,9 @@ package hub
 class HomeController {
 
     def index() {
-        render(view:'index', model:[foo: params.foo, bar: 234])
+    }
+
+    def query() {
+        [companyInstanceList: Company.findAllByNameIlikeOrDescriptionIlike("%${params.text}%", "%${params.text}%")]
     }
 }

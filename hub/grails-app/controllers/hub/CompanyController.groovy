@@ -99,14 +99,4 @@ class CompanyController {
             redirect(action: "show", id: id)
         }
     }
-
-    def search() {
-        //just render search.gsp
-    }
-
-    def query() {
-        //TODO: call this as AJAX and render it in search page
-        [companyInstanceList: Company.findAllByNameIlikeOrDescriptionIlike("%${params.text}%", "%${params.text}%")]
-        //http://grails.org/doc/latest/ref/Domain%20Classes/findAllBy.html
-    }
 }
