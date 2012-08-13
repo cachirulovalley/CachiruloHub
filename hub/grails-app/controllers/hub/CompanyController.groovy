@@ -3,6 +3,7 @@ package hub
 import org.springframework.dao.DataIntegrityViolationException
 
 class CompanyController {
+    def geocodingService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -71,6 +72,13 @@ class CompanyController {
         }
 
         companyInstance.properties = params
+        
+        def latLng = geocodingService.findLatLngByAddress(companyInstance.address)
+        if(latLng){
+            companyInstance.latitude = latLng.lat
+            companyInstance.longitude = latLng.lng
+        }
+        
 
         if (!companyInstance.save(flush: true)) {
             render(view: "edit", model: [companyInstance: companyInstance])

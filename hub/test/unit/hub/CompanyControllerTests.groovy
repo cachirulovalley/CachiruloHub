@@ -8,6 +8,12 @@ import grails.test.mixin.*
 @TestFor(CompanyController)
 @Mock(Company)
 class CompanyControllerTests {
+    
+    void setUp(){
+        def control = mockFor(com.grails.plugins.localizable.GeocodingService)
+        control.demand.findLatLngByAddress {}
+        controller.geocodingService = control.createMock()
+    }
 
     def populateValidMinimunParams(params) {
         assert params != null
@@ -107,9 +113,11 @@ class CompanyControllerTests {
         Company.metaClass.isDirty = { //workaround for mockDomain not adding isDirty method.
             println("dirty check called");
         }
-
+        
+        
         populateValidMinimunParams(params)
         def company = new Company(params)
+        
         company.save();
 
         params.id = company.id
@@ -118,7 +126,7 @@ class CompanyControllerTests {
         params.description = "another Description"
         params.tags = "tag1 tag2"
         params.web = "http://www.anotherweb.com"
-
+        
         controller.update()
         
         assert response.redirectedUrl == '/company/show/' + company.id
