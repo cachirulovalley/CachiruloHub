@@ -5,7 +5,7 @@ class LoginController {
     def index() { }
 	def login() {
 	    
-		def pass = params.pass?Company.encrypt(params.pass):''
+		def pass = params.password?Company.encrypt(params.password):''
 		def company = Company.findByEmailAndPassword(params.email, pass)
 		if(company){
 			session.company = company

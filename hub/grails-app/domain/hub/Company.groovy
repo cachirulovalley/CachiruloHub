@@ -42,9 +42,9 @@ class Company {
     }
     
     def beforeUpdate() {
-        if(isDirty('password')){
-            encrypt()
-        }
+        //if(isDirty('password')){
+         //   encrypt()
+        //}
     }
     
     def encrypt(){
