@@ -88,6 +88,8 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+    // Set level for all application artifacts
+    info "grails.app"
 }
 
 grails {

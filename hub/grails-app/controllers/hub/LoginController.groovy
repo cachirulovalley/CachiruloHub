@@ -4,8 +4,7 @@ class LoginController {
 
     def index() { }
 	def login() {
-	    
-		def pass = params.pass?Company.encrypt(params.pass):''
+		def pass = params.password?Company.encrypt(params.password):''
 		def company = Company.findByEmailAndPassword(params.email, pass)
 		if(company){
 			session.company = company
@@ -13,5 +12,9 @@ class LoginController {
 		}else{
 		    render(model:[error: 'login.failed'], view: 'index')
 		}
+	}
+	def logout(){
+		session.company=null
+		redirect(controller: 'company', action: 'list')
 	}
 }

@@ -37,12 +37,11 @@ class CompanyController {
             redirect(action: "list")
             return
         }
-
         [companyInstance: companyInstance]
     }
 
     def edit(Long id) {
-        def companyInstance = Company.get(id)
+        def companyInstance = session.company //Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
             redirect(action: "list")
@@ -53,7 +52,7 @@ class CompanyController {
     }
 
     def update(Long id, Long version) {
-        def companyInstance = Company.get(id)
+        def companyInstance = session.company // Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
             redirect(action: "list")
