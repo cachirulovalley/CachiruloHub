@@ -19,7 +19,7 @@ class LoginControllerTests {
 		assert Company.get(1).password==Company.encrypt('foo')
 		
 		controller.params.email = 'foo@bar.com'
-		controller.params.pass = 'foo'
+		controller.params.password = 'foo'
 		controller.login()
         assert response.redirectedUrl == '/company/edit/1'
         assert controller.session.company != null
