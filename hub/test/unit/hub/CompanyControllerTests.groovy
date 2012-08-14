@@ -83,6 +83,7 @@ class CompanyControllerTests {
 
         populateValidMinimunParams(params)
         def company = new Company(params)
+        session.company=company
 
         assert company.save() != null
 
@@ -117,7 +118,7 @@ class CompanyControllerTests {
         
         populateValidMinimunParams(params)
         def company = new Company(params)
-        
+        session.company = company
         company.save();
 
         params.id = company.id
@@ -128,6 +129,19 @@ class CompanyControllerTests {
         params.web = "http://www.anotherweb.com"
         
         controller.update()
+
+        //Check the data has been updated indeed
+
+        def companyAfterUpdate = Company.get(params.id)
+        assert companyAfterUpdate.name==params.name
+        assert companyAfterUpdate.address==params.address
+        assert companyAfterUpdate.description==params.description
+        assert companyAfterUpdate.tags==params.tags
+        assert companyAfterUpdate.web==params.web
+
+        //Also that the data not modified is still the same
+        assert companyAfterUpdate.email==company.email
+        assert companyAfterUpdate.password==company.password
         
         assert response.redirectedUrl == '/company/show/' + company.id
     }
@@ -135,6 +149,7 @@ class CompanyControllerTests {
     void testUpdateCompanyWithNameEmpty() {
         populateValidMinimunParams(params)
         def company = new Company(params)
+        session.company=company
         company.save();
 
         params.id = company.id
@@ -150,6 +165,7 @@ class CompanyControllerTests {
     void testUpdateCompanyWithWrongWeb() {
         populateValidMinimunParams(params)
         def company = new Company(params)
+        session.company=company
         company.save();
 
         params.id = company.id

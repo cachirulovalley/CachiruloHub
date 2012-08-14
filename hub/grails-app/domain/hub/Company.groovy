@@ -40,13 +40,13 @@ class Company {
     def beforeInsert() {
         encrypt()
     }
-    
+    /*
     def beforeUpdate() {
         if(isDirty('password')){
             encrypt()
         }
     }
-    
+    */
     def encrypt(){
         def messageDigest = MessageDigest.getInstance("SHA1")
         messageDigest.update(password.getBytes())
