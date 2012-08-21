@@ -10,19 +10,18 @@ class RecoverPasswordController {
 		def company = Company.findByEmail(params.email)
 		if(company) {
 			def passwd = randomPassword()
-			company.password = passwd
-			println passwd
+			company.password = passwd			
 			company.save(flush:true)
 			mailService.sendMail {
 				to company.email
 				subject "[CachiruloHub] Nueva clave"
-				html g.render(template:"/mails/newPassword", model:[password: password])
+				html g.render(template:"/mails/newPassword", model:[password: passwd])
 			  }
-			flash.message = 'Nueva clave generada y enviada por correo'
+			flash.message = "Nueva clave generada y enviada por correo"
 			redirect(controller:'home', action:'index')
 			return
 		}
-		flash.message = 'Empresa no registrada'
+		flash.message = "Empresa no registrada"
 		redirect(controller: 'recoverPassword', action:'index')
 		  
 	}

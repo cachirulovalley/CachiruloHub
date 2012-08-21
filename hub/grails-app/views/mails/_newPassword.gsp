@@ -2,7 +2,8 @@
 <head>
 </head>
 <body>
-	<h1>Te has registrado en el CachiruloHub</h1>
-	<p>Confirma tu dirección de email para aparecer en los resultados de búsqueda en <a href="${createLink(absolute:true, controller:"register", action:"confirm", id:company.key)}">${createLink(absolute:true, controller:"register", action:"confirm", id:company.key)}</a></p>
+	<h1>Nueva clave</h1>
+	<p>Se ha generado automáticamente una nueva clave: "${password}"</p>
+	<p>Entra de nuevo en Cachirulo Hub para cambiarla</p>
 </body>
 </html>
