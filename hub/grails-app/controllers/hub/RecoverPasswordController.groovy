@@ -10,7 +10,9 @@ class RecoverPasswordController {
 		def company = Company.findByEmail(params.email)
 		if(company) {
 			def passwd = randomPassword()
-			company.password = passwd			
+			// activar al descomentar beforeUpdate en Commit
+			// company.password = passwd
+			company.password = company.encrypt(passwd)			
 			company.save(flush:true)
 			mailService.sendMail {
 				to company.email
