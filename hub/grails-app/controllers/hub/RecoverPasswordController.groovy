@@ -10,7 +10,8 @@ class RecoverPasswordController {
 		def company = Company.findByEmail(params.email)
 		if(company) {
 			def passwd = randomPassword()
-			company.password = passwd			
+			company.password = passwd
+			company.encrypt()
 			company.save(flush:true)
 			mailService.sendMail {
 				to company.email
