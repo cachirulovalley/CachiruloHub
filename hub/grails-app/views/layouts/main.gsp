@@ -18,7 +18,21 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="grailsLogo" role="banner"><a href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Grails"/></a></div>
+		<div class="nav" role="navigation">
+			<ul>
+				<g:if test="${!session.company}">
+					<li><g:link controller="register">Registrar una empresa</g:link></li>
+					<li><g:link controller="login">Entrar</g:link></li>
+					<li><g:link controller="recoverPassword">¿Olvidaste tu contrseña?</g:link></li>
+				</g:if>
+				<g:else>
+					<li><g:link controller="company" action="edit">Editar perfil</g:link></li>
+					<li><g:link controller="login" action="logout">Salir</g:link></li>
+				</g:else>
+				
+			</ul>
+		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

@@ -15,6 +15,6 @@ class LoginController {
 	}
 	def logout(){
 		session.company=null
-		redirect(controller: 'company', action: 'list')
+		redirect(controller: 'home')
 	}
 }
