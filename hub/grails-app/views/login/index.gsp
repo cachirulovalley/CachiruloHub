@@ -18,5 +18,6 @@
 		<br>
 		<input type="submit" value="Entrar">
 	</g:form>
+	<g:link controller="recoverPassword">Recuperar Clave</g:link>
 	</body>
 </html>
