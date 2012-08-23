@@ -46,6 +46,7 @@ grails.project.dependency.resolution = {
             excludes "groovy"
         }
 	compile ':mongodb:1.0.0.GA'
+	compile ":cloud-bees:0.5.4"
         
     
 
