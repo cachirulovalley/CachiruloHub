@@ -2,7 +2,7 @@ package hub
 
 import java.security.*
 
-class Company {
+class Company implements java.io.Serializable{
     String email
     String name
     String password
