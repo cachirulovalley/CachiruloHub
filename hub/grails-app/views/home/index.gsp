@@ -23,6 +23,7 @@
     <script>
       var map;
       var markersArray = [];
+      var infoWindow = new google.maps.InfoWindow();
 
       function initialize() {
         var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
@@ -53,24 +54,23 @@
                   map: map
               });
               marker.setTitle(company.name);
-              attachClickEvent(marker, i, data);
+              attachClickEvent(marker, company);
               markersArray.push(marker);
             }
           }
         });
       }
 
-      function attachClickEvent(marker, number, data) {
-        var infowindow = new google.maps.InfoWindow(
-            { content: "<b>" + data[number].name+"</b> <br>"+data[number].address
-});
+      function attachClickEvent(marker, company) {
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
+          infoWindow.content = "<b>" + company.name + "</b> <br>" + company.address
+          infoWindow.open(map, marker);
         });
 
       }
 
-      initialize()
+      initialize();
+      updateMap();
     </script>
   </body>
 </html>
