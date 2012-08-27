@@ -8,15 +8,16 @@
   </head>
   <body>
   	<g:if test="${flash.message}">
-		<div class="message" role="status">${flash.message}</div>
-	</g:if>
+      <div class="message" role="status">${flash.message}</div>
+    </g:if>
   
-    <g:formRemote name="searchForm" update="companyList" url="[controller: 'home', action:'query']" onLoading="updateMap(\$('#text').val())">
-      Buscar empresas: <g:textField name="text"/>
-      <br/>
-      <input type="submit" value="Buscar!">
-    </g:formRemote>
-    <div id="companyList"></div>
+    <g:textField name="text"/>
+    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())">
+
+    <table>
+      <thead><tr><td>Nombre</td><td>Descripción</td></tr></thead>
+      <tbody id="tableBody"/>
+    </table>
 
     <div id="map_canvas" width="100%" heigth="400px"></div>
 	
@@ -35,30 +36,45 @@
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
       }
 
-      function updateMap(text) {
+      function fetchCompanies(text) {
         //With API HUB JSON get the TIC companies to refresh map
         $.getJSON('<g:createLink controller="home" action="queryJSON"/>', {format: "json", text: text}, function(data) { 
-          //clear markersArray
-          for (i in markersArray) {
-            markersArray[i].setMap(null);
-          }
-          markersArray.length = 0;
-
-          //make new markers
-          for (var i = 0; i < data.length; i++) {
-            var company = data[i]
-            if(company.latitude!=null && company.longitude!=null){
-              var location = new google.maps.LatLng(company.latitude, company.longitude);
-              var marker = new google.maps.Marker({
-                  position: location,
-                  map: map
-              });
-              marker.setTitle(company.name);
-              attachClickEvent(marker, company);
-              markersArray.push(marker);
-            }
-          }
+          updateList(data);
+          updateMap(data);
         });
+      }
+
+      function updateList(data) {
+        $("#tableBody").html("");
+
+        //make new rows
+        for (i in data) {
+          var company = data[i]
+          $("#tableBody").append("<tr><td><a href='/hub/company/show/" + company.id + "'>" + company.name + "</a></td><td>" + company.description + "</td></tr>");
+        }
+      }
+
+      function updateMap(data) {
+        //clear markersArray
+        for (i in markersArray) {
+          markersArray[i].setMap(null);
+        }
+        markersArray.length = 0;
+
+        //make new markers
+        for (var i = 0; i < data.length; i++) {
+          var company = data[i]
+          if(company.latitude!=null && company.longitude!=null){
+            var location = new google.maps.LatLng(company.latitude, company.longitude);
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            marker.setTitle(company.name);
+            attachClickEvent(marker, company);
+            markersArray.push(marker);
+          }
+        }
       }
 
       function attachClickEvent(marker, company) {
@@ -70,7 +86,7 @@
       }
 
       initialize();
-      updateMap();
+      fetchCompanies();
     </script>
   </body>
 </html>
