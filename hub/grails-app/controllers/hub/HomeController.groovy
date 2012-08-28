@@ -17,6 +17,12 @@ class HomeController {
         }else{
             companies = Company.findAllByNameIlikeOrDescriptionIlike("%${params.text}%", "%${params.text}%")
         }
-        render companies as JSON
+        render(contentType: "text/json") {
+                array {
+                    companies.each{
+                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude)
+                    }
+                }
+        }
     }
 }
