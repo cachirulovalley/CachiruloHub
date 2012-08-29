@@ -22,7 +22,7 @@
 %{--
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'password', 'error')} required">
 	<label for="password">
-		<g:message code="company.password.label" default="Password" />
+		<g:message code="company.changePassword.label" default="Cambiar Contraseña" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:passwordField name="password" required="" value="${companyInstance?.password}" />

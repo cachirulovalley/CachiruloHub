@@ -58,4 +58,5 @@ class Company implements java.io.Serializable{
         messageDigest.update(text.getBytes())
         return new BigInteger(1, messageDigest.digest()).toString(16).padLeft(40, '0')
     }
+
 }

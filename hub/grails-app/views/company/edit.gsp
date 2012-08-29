@@ -4,6 +4,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'company.label', default: 'Empresa')}" />
+		<g:set var="perfilName" value="${message(code: 'perfil.label', default: 'Perfil')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -35,6 +36,17 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
+				</fieldset>
+			</g:form>
+		</div>
+		<div id="edit-perfil" class="content scaffold-edit" role="main">
+			<h1><g:message code="default.edit.label" args="[perfilName]" /></h1>
+			<g:form method="post" >
+				<fieldset class="form">
+					<g:render template="perfil"/>
+				</fieldset>
+				<fieldset class="buttons">
+					<g:actionSubmit class="save" action="updatePerfil" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
 				</fieldset>
 			</g:form>
 		</div>
