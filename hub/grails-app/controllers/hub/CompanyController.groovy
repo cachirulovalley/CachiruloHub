@@ -7,35 +7,11 @@ class CompanyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
-
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [companyInstanceList: Company.list(params), companyInstanceTotal: Company.count()]
-    }
-
-    def create() {
-        [companyInstance: new Company(params)]
-    }
-
-    def save() {
-        def companyInstance = new Company(params)
-        if (!companyInstance.save(flush: true)) {
-            render(view: "create", model: [companyInstance: companyInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.created.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
-        redirect(action: "show", id: companyInstance.id)
-    }
-
     def show(Long id) {
         def companyInstance = Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            redirect(controller: "home")
             return
         }
         [companyInstance: companyInstance]
@@ -45,7 +21,7 @@ class CompanyController {
         def companyInstance = session.company //Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            redirect(controller: "home")
             return
         }
 
@@ -56,7 +32,7 @@ class CompanyController {
         def companyInstance = session.company // Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            redirect(controller: "home")
             return
         }
 
@@ -92,14 +68,14 @@ class CompanyController {
         def companyInstance = Company.get(id)
         if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            redirect(controller: "home")
             return
         }
 
         try {
             companyInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            redirect(controller: "home")
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'company.label', default: 'Company'), id])

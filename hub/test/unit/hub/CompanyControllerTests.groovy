@@ -22,46 +22,11 @@ class CompanyControllerTests {
         params["password"] = 'pass'
     }
 
-    void testIndex() {
-        controller.index()
-        assert "/company/list" == response.redirectedUrl
-    }
-
-    void testList() {
-
-        def model = controller.list()
-
-        assert model.companyInstanceList.size() == 0
-        assert model.companyInstanceTotal == 0
-    }
-/*
-    void testCreate() {
-        def model = controller.create()
-
-        assert model.companyInstance != null
-    }
-*/
-    void testSave() {
-        controller.save()
-
-        assert model.companyInstance != null
-        assert view == '/company/create'
-
-        response.reset()
-
-        populateValidMinimunParams(params)
-        controller.save()
-
-        assert response.redirectedUrl == '/company/show/1'
-        assert controller.flash.message != null
-        assert Company.count() == 1
-    }
-
     void testShow() {
         controller.show()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/company/list'
+        assert response.redirectedUrl == '/home'
 
         populateValidMinimunParams(params)
         def company = new Company(params)
@@ -79,7 +44,7 @@ class CompanyControllerTests {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/company/list'
+        assert response.redirectedUrl == '/home'
 
         populateValidMinimunParams(params)
         def company = new Company(params)
@@ -93,21 +58,6 @@ class CompanyControllerTests {
 
         assert model.companyInstance == company
     }
-/*
-    void testUpdateCompanyDefault() {
-        controller.update()
-
-        assert flash.message != null
-        assert response.redirectedUrl == '/company/list'
-
-        response.reset()
-
-        populateValidMinimunParams(params)
-        def company = new Company(params)
-
-        assert company.save() != null
-    }
-*/
 
     void testUpdateCompanyWithRightData() {
 
@@ -181,7 +131,7 @@ class CompanyControllerTests {
     void testDelete() {
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/company/list'
+        assert response.redirectedUrl == '/home'
 
         response.reset()
 
@@ -197,6 +147,6 @@ class CompanyControllerTests {
 
         assert Company.count() == 0
         assert Company.get(company.id) == null
-        assert response.redirectedUrl == '/company/list'
+        assert response.redirectedUrl == '/home'
     }
 }
