@@ -15,29 +15,18 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        mongo {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-        }
+        
     }
     test {
-        dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-        }
+        
     }
     production {
-        mongo {
-            dbCreate = "update"
-            pooled = true
-            properties {
-               maxActive = -1
-               minEvictableIdleTimeMillis=1800000
-               timeBetweenEvictionRunsMillis=1800000
-               numTestsPerEvictionRun=3
-               testOnBorrow=true
-               testWhileIdle=true
-               testOnReturn=true
-               validationQuery="SELECT 1"
+        grails {
+            mongo{
+                host = "ds035997.mongolab.com"
+                port = 35997
+                password = "webapp321"
+                databaseName = "cachirulohub_production"
             }
         }
     }
