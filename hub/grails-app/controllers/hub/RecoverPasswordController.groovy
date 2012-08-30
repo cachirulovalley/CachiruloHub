@@ -19,7 +19,7 @@ class RecoverPasswordController {
 				html g.render(template:"/mails/newPassword", model:[password: passwd])
 			  }
 			flash.message = "Nueva clave generada y enviada por correo"
-			redirect(controller:'home', action:'index')
+			redirect(controller:'login', action:'index')
 			return
 		}
 		flash.message = "Empresa no registrada"
