@@ -2,6 +2,7 @@ package hub
 
 class Tag {
 	String name
+	static mapWith = "mongo"
 
     static constraints = {
     	name(blank:false, nullable:false)
