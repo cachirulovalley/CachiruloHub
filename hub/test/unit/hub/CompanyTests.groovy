@@ -11,6 +11,7 @@ import org.junit.*
  */
 @TestMixin(GrailsUnitTestMixin)
 @TestFor(Company)
+@Mock(Tag)
 class CompanyTests {
     void testEncryptPassword() {
         def password = "foobar"
@@ -21,9 +22,25 @@ class CompanyTests {
     
     void testEncryptPasswordBeforeSave() {
         def password = "foobar"
-        def company = new Company(password: password, name: "foo", email: "foo@bar.com", )
+        def company = new Company(password: password, name: "foo", email: "foo@bar.com")
         company.beforeInsert()
         company.save()
         assert password != company.password
+    }
+
+    void testCreateTagsWhenACompanyIsTagged() {
+        def company = new Company(password: "foobar", name: "foo", email: "foo@bar.com")
+                        .persistTags("java, groovy")
+                        .save()
+        assert 2 == Tag.count()
+        assert 2 == company.tags.size()
+    }
+
+    void testDeleteTagsWhenACompanyIsTagged() {
+        def company = new Company(password: "foobar", name: "foo", email: "foo@bar.com")
+                        .persistTags("java, groovy")
+                        .save()
+        company.persistTags("groovy")
+        assert 1 == company.tags.size()
     }
 }

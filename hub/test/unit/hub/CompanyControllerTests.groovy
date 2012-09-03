@@ -6,7 +6,7 @@ import org.junit.*
 import grails.test.mixin.*
 
 @TestFor(CompanyController)
-@Mock(Company)
+@Mock([Company, Tag])
 class CompanyControllerTests {
     
     void setUp(){
@@ -75,7 +75,7 @@ class CompanyControllerTests {
         params.name = "another Name"
         params.address = "another Adress"
         params.description = "another Description"
-        params.tags = "tag1 tag2"
+        params.tags = "tag1, tag2"
         params.web = "http://www.anotherweb.com"
         
         controller.update()
@@ -86,7 +86,7 @@ class CompanyControllerTests {
         assert companyAfterUpdate.name==params.name
         assert companyAfterUpdate.address==params.address
         assert companyAfterUpdate.description==params.description
-        assert companyAfterUpdate.tags==params.tags
+        assert companyAfterUpdate.tags.size()==2
         assert companyAfterUpdate.web==params.web
 
         //Also that the data not modified is still the same
