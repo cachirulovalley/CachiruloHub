@@ -87,9 +87,11 @@
         });
 
       }
-
-      initialize();
-      fetchCompanies();
+      $(document).ready(function() {
+        initialize();
+        fetchCompanies();
+      });
+      
     </script>
   </body>
 </html>
