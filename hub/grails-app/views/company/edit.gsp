@@ -41,5 +41,16 @@
 				</fieldset>
 			</g:form>
 		</div>
+
+		<div id="delete-perfil" class="content scaffold-delete" role="main">
+			<h1>Quiero eliminar mi perfil</h1>
+			<g:form method="post" >
+				<fieldset class="buttons">
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+				</fieldset>
+			</g:form>
+		</div>
+
+
 	</body>
 </html>
