@@ -65,25 +65,6 @@ class CompanyController {
         redirect(action: "show", id: companyInstance.id)
     }
 
-    def delete(Long id) {
-        def companyInstance = Company.get(id)
-        if (!companyInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(controller: "home")
-            return
-        }
-
-        try {
-            companyInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(controller: "home")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "show", id: id)
-        }
-    }
-
   def updatePerfil() {
 	def companyInstance = session.company // Company.get(id)
         
@@ -135,10 +116,10 @@ class CompanyController {
 	}else{
 	    	flash.message = message(code: 'default.updated.message', args: [message(code: 'perfil.label', default: 'Perfil'), ''])
 	}
-        render(view: "edit", model: [companyInstance: companyInstance])          
+        redirect(action: "edit", id: companyInstance.id)
     }
 
-    def delCompany(){
+    def delete(){
         if (!session.company){
             flash.message ="La empresa necesita logearse"
             redirect(controller: "home")

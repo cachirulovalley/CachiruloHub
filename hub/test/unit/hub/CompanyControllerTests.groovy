@@ -128,34 +128,12 @@ class CompanyControllerTests {
         assert model.companyInstance.hasErrors()
     }
 
-    void testDelete() {
-        controller.delete()
-        assert flash.message != null
-        assert response.redirectedUrl == '/home'
-
-        response.reset()
-
-        populateValidMinimunParams(params)
-        def company = new Company(params)
-
-        assert company.save() != null
-        assert Company.count() == 1
-
-        params.id = company.id
-
-        controller.delete()
-
-        assert Company.count() == 0
-        assert Company.get(company.id) == null
-        assert response.redirectedUrl == '/home'
-    }
-
     void testdelCompanyNotLogged(){
         session.company = null
         def company = new Company(name: "Empresa molona S.A.", email:"foo@bar.com", password:"foo")
         company.save()
         assert Company.count()==1
-        controller.delCompany()
+        controller.delete()
         assert Company.count()==1
         assert flash.message =="La empresa necesita logearse"
         assert response.redirectedUrl == '/home' 
@@ -166,7 +144,7 @@ class CompanyControllerTests {
         company.save()
         session.company=company
         company.save() 
-        controller.delCompany()
+        controller.delete()
         assert Company.count()==0
         assert flash.message =="Empresa dada de baja con éxito"
         assert response.redirectedUrl == '/home' 
