@@ -82,4 +82,23 @@ class CompanyController {
             redirect(action: "show", id: id)
         }
     }
+
+    def delCompany(){
+        if (!session.company){
+            flash.message ="La empresa necesita logearse"
+            redirect(controller: "home")
+        }
+        else{
+            try {
+                def company = session.company
+                company.delete(flush: true)
+                flash.message = "Empresa dada de baja con éxito"
+                redirect(controller: "home")
+            }
+            catch (DataIntegrityViolationException e) {
+                flash.message = "Error al dar de baja la empresa"
+                redirect(action: "show", id: id)
+            }
+        }
+    }
 }

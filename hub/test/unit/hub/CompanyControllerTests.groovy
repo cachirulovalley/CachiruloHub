@@ -149,4 +149,26 @@ class CompanyControllerTests {
         assert Company.get(company.id) == null
         assert response.redirectedUrl == '/home'
     }
+
+    void testdelCompanyNotLogged(){
+        session.company = null
+        def company = new Company(name: "Empresa molona S.A.", email:"foo@bar.com", password:"foo")
+        company.save()
+        assert Company.count()==1
+        controller.delCompany()
+        assert Company.count()==1
+        assert flash.message =="La empresa necesita logearse"
+        assert response.redirectedUrl == '/home' 
+    }
+
+    void testdelCompanyLogged(){
+        def company = new Company(name: "Empresa molona S.A.", email:"foo@bar.com", password:"foo")
+        company.save()
+        session.company=company
+        company.save() 
+        controller.delCompany()
+        assert Company.count()==0
+        assert flash.message =="Empresa dada de baja con éxito"
+        assert response.redirectedUrl == '/home' 
+    }
 }
