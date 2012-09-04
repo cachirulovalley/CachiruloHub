@@ -18,7 +18,13 @@ class HomeController {
         if(!params.text){
             companies = Company.list()
         }else{
-            companies = Company.findAllByNameIlikeOrDescriptionIlike("%${params.text}%", "%${params.text}%")
+            companies = Company.withCriteria {
+                or{
+                    ilike("name", "%${params.text}%")
+                    ilike("description", "%${params.text}%")
+                    ilike("tagsToString", "%${params.text}%")
+                }
+            }
         }
         render(contentType: "text/json") {
                 array {
