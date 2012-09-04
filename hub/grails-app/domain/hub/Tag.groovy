@@ -6,19 +6,20 @@ class Tag {
 	static mapWith = "mongo"
 
     static constraints = {
-    	name(blank:false, nullable:false)
+    	name(blank:false, nullable:false, unique:true)
     }
 
     static saveFromAString(tagsString){
     	def tagNames = tagsString.split(",")
     	def tags = []
     	if(tagNames){
-        	tagNames.each{ 
-        		def tag = Tag.findByName(it)
+        	tagNames.each{ name->
+			name=name.trim()
+        		def tag = Tag.findByName(name)
         		if(tag){
         			tag.numberOfOccurrences++
         		}else{
-        		    tag = new Tag(name: it.trim())
+        		    tag = new Tag(name: name)
         		}
         		tag.save(failOnError:true)
         		tags << tag

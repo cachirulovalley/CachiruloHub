@@ -50,7 +50,7 @@ class Company implements java.io.Serializable{
 
     def persistTags(String tags){
         tagsToString = tags?.trim()
-        println this.tags
+        //println this.tags
         this.tags.each{
             it.removeOccurrence()
         }
