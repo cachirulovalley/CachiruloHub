@@ -32,6 +32,7 @@ class Company implements java.io.Serializable{
         web(nullable:true, url:true)
         logo(nullable:true)
         latitude(nullable:true)
+        tagsToString(nullable:true)
         longitude(nullable:true)
     }
     
@@ -48,7 +49,8 @@ class Company implements java.io.Serializable{
     }
 
     def persistTags(String tags){
-        tagsToString = tags.trim()
+        tagsToString = tags?.trim()
+        println this.tags
         this.tags.each{
             it.removeOccurrence()
         }

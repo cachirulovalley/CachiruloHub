@@ -28,8 +28,8 @@ class Tag {
     }
 
     def removeOccurrence(){
-    	if(this.numberOfOccurrences <= 1){
-    		this.delete()
+    	if(this.numberOfOccurrences <= 1 || !this.numberOfOccurrences){
+    		this.delete(failOnError:true)
     	}else{
     		this.numberOfOccurrences--
     		this.save()
