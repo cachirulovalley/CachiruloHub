@@ -83,7 +83,7 @@ class CompanyController {
         }
     }
 
-    def delete(){
+    def delCompany(){
         if (!session.company){
             flash.message ="La empresa necesita logearse"
             redirect(controller: "home")

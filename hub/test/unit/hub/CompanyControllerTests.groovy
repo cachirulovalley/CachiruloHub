@@ -165,7 +165,7 @@ class CompanyControllerTests {
         def company = new Company(name: "Empresa molona S.A.", email:"foo@bar.com", password:"foo")
         company.save()
         session.company=company
-        company.save()
+        company.save() 
         controller.delCompany()
         assert Company.count()==0
         assert flash.message =="Empresa dada de baja con éxito"
