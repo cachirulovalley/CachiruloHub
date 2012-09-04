@@ -1,26 +1,19 @@
  
 <%@ page import="hub.Company" %>
 
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'email', 'error')}">
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'email', 'error')} ">
 	<label for="email">
-		<g:message code="company.email.label" default="Email" />
+		<g:message code="company.newemail.label" default="Email" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="email" required="" value="${companyInstance?.email}" disabled="disabled"/>
+	<g:field type="email" name="email" value="${companyInstance?.email}" required=""/>
 </div>
-
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'oldpassword', 'error')} required">
 	<label for="oldpassword">
 		<g:message code="company.password.label" default="Contraseña" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:passwordField name="oldpassword" required="" value="" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'email', 'error')} ">
-	<label for="email">
-		<g:message code="company.newemail.label" default="Nuevo Email" />
-	</label>
-	<g:field type="email" name="email" value="" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'password', 'error')} ">
