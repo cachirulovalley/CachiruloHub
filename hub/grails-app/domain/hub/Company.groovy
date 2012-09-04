@@ -9,6 +9,7 @@ class Company implements java.io.Serializable{
     String description
     String address
     String web
+    String tagsToString
     byte[] logo
     Double latitude
     Double longitude
@@ -47,24 +48,14 @@ class Company implements java.io.Serializable{
     }
 
     def persistTags(String tags){
+        tagsToString = tags.trim()
         this.tags.each{
             it.removeOccurrence()
         }
-        if(tags)
+        if(tags){
             this.tags = Tag.saveFromAString(tags)
-        return this
-    }
-
-    def getTagsToString(){
-        String toString
-        this.tags.each{
-            if(toString){
-                toString += ", ${it.name}"
-            }else{
-                toString = it.name
-            }
         }
-        return toString
+        return this
     }
     
     def encrypt(){
