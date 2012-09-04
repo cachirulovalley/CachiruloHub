@@ -73,11 +73,18 @@
             var location = new google.maps.LatLng(company.latitude, company.longitude);
             var marker = new google.maps.Marker({
                 position: location,
-                map: map
+                //map: map,
+		animation: google.maps.Animation.DROP
             });
             marker.setTitle(company.name);
             attachClickEvent(marker, company);
             markersArray.push(marker);
+
+	   setTimeout(function(marker) {
+	    return function(){
+	      marker.setMap(map);
+	    }
+	  }(marker), i * 200);
           }
         }
       }
