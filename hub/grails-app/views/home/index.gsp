@@ -10,6 +10,8 @@
   	<g:if test="${flash.message}">
       <div class="message" role="status">${flash.message}</div>
     </g:if>
+
+hola
   
     <g:textField name="text" id="searchText"/>
     <input type="button" value="Buscar!" onClick="fetchCompanies($('#searchText').val())" >
