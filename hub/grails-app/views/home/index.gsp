@@ -11,8 +11,8 @@
       <div class="message" role="status">${flash.message}</div>
     </g:if>
   
-    <g:textField name="text"/>
-    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())">
+    <g:textField name="text" id="searchText"/>
+    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())" >
 
     <g:render template="tags"/>
 
@@ -40,10 +40,12 @@
       }
 
       function fetchCompanies(text) {
+        $('#searchText').val(text);
         //With API HUB JSON get the TIC companies to refresh map
         $.getJSON('<g:createLink controller="home" action="queryJSON"/>', {format: "json", text: text}, function(data) { 
           updateList(data);
           updateMap(data);
+          
         });
       }
 
