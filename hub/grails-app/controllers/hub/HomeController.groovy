@@ -6,7 +6,7 @@ class HomeController {
     def index() {
         def tags = Tag.list()
         Collections.shuffle(tags)
-        [tags: tags[0..4]]
+        [tags: tags]
     }
 
     def query() {

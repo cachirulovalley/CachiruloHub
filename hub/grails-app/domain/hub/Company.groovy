@@ -47,6 +47,9 @@ class Company implements java.io.Serializable{
     }
 
     def persistTags(String tags){
+        this.tags.each{
+            it.removeOccurrence()
+        }
         if(tags)
             this.tags = Tag.saveFromAString(tags)
         return this
