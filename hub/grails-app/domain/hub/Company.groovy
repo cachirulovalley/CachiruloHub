@@ -13,7 +13,6 @@ class Company implements java.io.Serializable{
     Double latitude
     Double longitude
     static hasMany = [tags: Tag]
-    SortedSet tag
     
     String key
     Boolean enabled
