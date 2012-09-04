@@ -14,13 +14,16 @@
     <g:textField name="text"/>
     <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())">
 
+    <g:render template="tags"/>
+
     <table>
       <thead><tr><td>Nombre</td><td>Descripción</td></tr></thead>
       <tbody id="tableBody"/>
     </table>
 
     <div id="map_canvas" width="100%" heigth="400px"></div>
-	
+
+
     <script>
       var map;
       var markersArray = [];
