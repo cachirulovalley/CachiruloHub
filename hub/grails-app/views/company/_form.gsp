@@ -1,15 +1,5 @@
-<%@ page import="hub.Company" %>
 
 
-%{--
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'email', 'error')} required">
-	<label for="email">
-		<g:message code="company.email.label" default="Email" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="email" name="email" required="" value="${companyInstance?.email}" disabled="disabled"/>
-</div>
---}% 
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'name', 'error')} required">
 	<label for="name">
@@ -18,16 +8,6 @@
 	</label>
 	<g:textField name="name" required="" value="${companyInstance?.name}"/>
 </div>
-
-%{--
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'password', 'error')} required">
-	<label for="password">
-		<g:message code="company.password.label" default="Password" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:passwordField name="password" required="" value="${companyInstance?.password}" />
-</div>
---}% 
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
 	<label for="address">
@@ -50,7 +30,7 @@
 		<g:message code="company.tag.label" default="Tags" />
 		
 	</label>
-	<g:textField  name="tags" value="${companyInstance?.tags}"/>
+	<g:textField  name="tags" value="${companyInstance?.tagsToString}"/>
 </div>
 
 

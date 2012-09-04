@@ -13,6 +13,7 @@ class Company implements java.io.Serializable{
     Double latitude
     Double longitude
     static hasMany = [tags: Tag]
+    SortedSet tag
     
     String key
     Boolean enabled
@@ -50,6 +51,18 @@ class Company implements java.io.Serializable{
         if(tags)
             this.tags = Tag.saveFromAString(tags)
         return this
+    }
+
+    def getTagsToString(){
+        String toString
+        this.tags.each{
+            if(toString){
+                toString += ", ${it.name}"
+            }else{
+                toString = it.name
+            }
+        }
+        return toString
     }
     
     def encrypt(){
