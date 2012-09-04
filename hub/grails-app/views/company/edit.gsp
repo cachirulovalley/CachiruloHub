@@ -1,4 +1,3 @@
-<%@ page import="hub.Company" %>
 <!doctype html>
 <html>
 	<head>

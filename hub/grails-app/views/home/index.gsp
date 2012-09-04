@@ -11,8 +11,10 @@
       <div class="message" role="status">${flash.message}</div>
     </g:if>
   
-    <g:textField name="text"/>
-    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())">
+    <g:textField name="text" id="searchText"/>
+    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())" >
+
+    <g:render template="tags"/>
 
     <table>
       <thead><tr><td>Nombre</td><td>Descripción</td></tr></thead>
@@ -20,7 +22,8 @@
     </table>
 
     <div id="map_canvas" width="100%" heigth="400px"></div>
-	
+
+
     <script>
       var map;
       var markersArray = [];
@@ -37,10 +40,12 @@
       }
 
       function fetchCompanies(text) {
+        $('#searchText').val(text);
         //With API HUB JSON get the TIC companies to refresh map
         $.getJSON('<g:createLink controller="home" action="queryJSON"/>', {format: "json", text: text}, function(data) { 
           updateList(data);
           updateMap(data);
+          
         });
       }
 
@@ -84,9 +89,11 @@
         });
 
       }
-
-      initialize();
-      fetchCompanies();
+      $(document).ready(function() {
+        initialize();
+        fetchCompanies();
+      });
+      
     </script>
   </body>
 </html>

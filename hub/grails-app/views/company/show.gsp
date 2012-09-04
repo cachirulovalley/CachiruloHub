@@ -58,7 +58,7 @@
 				<li class="fieldcontain">
 					<span id="tags-label" class="property-label"><g:message code="company.tags.label" default="Tags" /></span>
 					
-						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${companyInstance}" field="tags"/></span>
+						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${companyInstance}" field="tagsToString"/></span>
 					
 				</li>
 				</g:if>

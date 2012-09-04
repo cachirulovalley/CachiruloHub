@@ -46,14 +46,15 @@ class CompanyController {
             }
         }
 
-        companyInstance.properties = params
+        bindData(companyInstance, params, [exclude: 'tags'])
         
+
         def latLng = geocodingService.findLatLngByAddress(companyInstance.address)
         if(latLng){
             companyInstance.latitude = latLng.lat
             companyInstance.longitude = latLng.lng
         }
-        
+        companyInstance.persistTags(params.tags)
 
         if (!companyInstance.save(flush: true)) {
             render(view: "edit", model: [companyInstance: companyInstance])

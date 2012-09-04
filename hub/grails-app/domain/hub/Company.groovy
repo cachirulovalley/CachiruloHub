@@ -9,10 +9,11 @@ class Company implements java.io.Serializable{
     String description
     String address
     String web
-    String tags
+    String tagsToString
     byte[] logo
     Double latitude
     Double longitude
+    static hasMany = [tags: Tag]
     
     String key
     Boolean enabled
@@ -28,10 +29,10 @@ class Company implements java.io.Serializable{
         password(blank:false, nullable:false)
         address(nullable:true)
         description(nullable:true)
-        tags(nullable:true)
         web(nullable:true, url:true)
         logo(nullable:true)
         latitude(nullable:true)
+        tagsToString(nullable:true)
         longitude(nullable:true)
     }
     
@@ -40,13 +41,25 @@ class Company implements java.io.Serializable{
     def beforeInsert() {
         encrypt()
     }
-    /*
+    
     def beforeUpdate() {
-        if(isDirty('password')){
+        /*if(isDirty('password')){
             encrypt()
-        }
+        }*/
     }
-    */
+
+    def persistTags(String tags){
+        tagsToString = tags?.trim()
+        println this.tags
+        this.tags.each{
+            it.removeOccurrence()
+        }
+        if(tags){
+            this.tags = Tag.saveFromAString(tags)
+        }
+        return this
+    }
+    
     def encrypt(){
         def messageDigest = MessageDigest.getInstance("SHA1")
         messageDigest.update(password.getBytes())
