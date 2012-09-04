@@ -12,7 +12,7 @@
     </g:if>
   
     <g:textField name="text" id="searchText"/>
-    <input type="button" value="Buscar!" onClick="fetchCompanies($('#text').val())" >
+    <input type="button" value="Buscar!" onClick="fetchCompanies($('#searchText').val())" >
 
     <g:render template="tags"/>
 
