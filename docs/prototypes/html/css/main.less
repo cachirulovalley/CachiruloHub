@@ -65,9 +65,47 @@ body {
    Author's custom styles
    ========================================================================== */
 
+.table{
+	display: table;
+	width: 100%;
+}
+.table-row{
+	display: table-row;
+}
+.table-cell{
+	display: table-cell;
+	vertical-align: top;
+	height: 700px;
+}
 
+.main-container{
 
-
+}//.main-container
+.main{
+	.main-left{
+		width: 400px;
+		border: 1px solid blue;
+	}//.main-left
+	.main-right{
+		border: 1px solid red;
+		.map{
+			position: relative;
+		    padding-bottom: 675px; /* 16/9 ratio */
+		    padding-top: 30px; /* IE6 workaround*/
+		    height: 0;
+		    width: 100%;
+		    overflow: hidden;
+			    
+			iframe{
+				position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			}
+		}//.map
+	}//.main-right
+}//.main
 
 
 
