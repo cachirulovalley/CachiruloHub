@@ -1,20 +1,12 @@
-<%@ page import="hub.Company" %>
 <!doctype html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'company.label', default: 'Empresa')}" />
+		<g:set var="perfilName" value="${message(code: 'perfil.label', default: 'Perfil')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="edit-company" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -38,5 +30,27 @@
 				</fieldset>
 			</g:form>
 		</div>
+		<div id="edit-perfil" class="content scaffold-edit" role="main">
+			<h1><g:message code="default.edit.label" args="[perfilName]" /></h1>
+			<g:form method="post" >
+				<fieldset class="form">
+					<g:render template="perfil"/>
+				</fieldset>
+				<fieldset class="buttons">
+					<g:actionSubmit class="save" action="updatePerfil" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
+				</fieldset>
+			</g:form>
+		</div>
+
+		<div id="delete-perfil" class="content scaffold-delete" role="main">
+			<h1>Quiero eliminar mi perfil</h1>
+			<g:form method="post" >
+				<fieldset class="buttons">
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+				</fieldset>
+			</g:form>
+		</div>
+
+
 	</body>
 </html>

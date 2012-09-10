@@ -48,7 +48,7 @@ body {
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #fff;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -108,7 +108,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #fff;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -593,4 +593,12 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+
+#map_canvas {
+  float:left;
+  height: 500px;
+  width: 800px;
+  border: 3px solid black;
 }

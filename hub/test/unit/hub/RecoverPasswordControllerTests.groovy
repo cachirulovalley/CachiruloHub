@@ -39,7 +39,7 @@ class RecoverPasswordControllerTests {
 		controller.params.email = "foo@bar.com"
 		controller.recoverPassword()
 		assert Company.get(1).password!=Company.encrypt('foo')
-		assert response.redirectedUrl == '/home/index'
+		assert response.redirectedUrl == '/login/index'
     }
 	
 	void testRecoverPasswordUnknownCompany() {
