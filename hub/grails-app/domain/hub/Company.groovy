@@ -9,6 +9,9 @@ class Company implements java.io.Serializable{
     String description
     String address
     String web
+    String twitter
+    String facebook
+    String linkedin
     String tagsToString
     byte[] logo
     Double latitude
@@ -30,6 +33,9 @@ class Company implements java.io.Serializable{
         address(nullable:true)
         description(nullable:true)
         web(nullable:true, url:true)
+	twitter(nullable:true, url:true)
+	facebook(nullable:true, url:true)
+	linkedin(nullable:true, url:true)
         logo(nullable:true)
         latitude(nullable:true)
         tagsToString(nullable:true)
