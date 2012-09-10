@@ -57,35 +57,51 @@
           var company = data[i]
           $("#tableBody").append("<tr><td><a href='/hub/company/show/" + company.id + "'>" + company.name + "</a></td><td>" + company.description + "</td></tr>");
         }
-      }
+      }	
 
       function updateMap(data) {
         //clear markersArray
         for (i in markersArray) {
-          markersArray[i].setMap(null);
+	  var item=markersArray[i];
+	  if(item.idTimeout){
+	    window.clearTimeout(item.idTimeout);
+	  }else{
+	    item.setMap(null);
+	  }
         }
         markersArray.length = 0;
+
+	var tooManyMarkers=!(data.length < 20);
+
 
         //make new markers
         for (var i = 0; i < data.length; i++) {
           var company = data[i]
           if(company.latitude!=null && company.longitude!=null){
             var location = new google.maps.LatLng(company.latitude, company.longitude);
-            var marker = new google.maps.Marker({
-                position: location,
-                //map: map,
-		animation: google.maps.Animation.DROP
-            });
+
+	    var optionsMarker={position: location, map: map};
+
+	    if(!tooManyMarkers){
+	      optionsMarker['animation']=google.maps.Animation.DROP;
+	      delete optionsMarker['map'];
+	    }
+
+            var marker = new google.maps.Marker(optionsMarker);
             marker.setTitle(company.name);
             attachClickEvent(marker, company);
             markersArray.push(marker);
 
-	   setTimeout(function(marker) {
-	    return function(){
-	      marker.setMap(map);
-	    }
-	  }(marker), i * 200);
-          }
+	  //Si no hay demasiados pins lo animamos
+	  if(!tooManyMarkers){
+	    marker.idTimeout = window.setTimeout(function(marker) {
+	      return function(){
+		delete marker.idTimeout;
+		marker.setMap(map);
+	      }
+	      }(marker), i * 200);
+	      }
+	  }
         }
       }
 
