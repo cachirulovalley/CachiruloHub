@@ -10,10 +10,10 @@
   	<g:if test="${flash.message}">
       <div class="message" role="status">${flash.message}</div>
     </g:if>
-  
+    <form onSubmit="fetchCompanies($('#searchText').val()); return false;" >
     <g:textField name="text" id="searchText"/>
-    <input type="button" value="Buscar!" onClick="fetchCompanies($('#searchText').val())" >
-
+    <input type="submit" value="Buscar!" >
+    </form>
     <g:render template="tags"/>
 
     <table>
@@ -72,14 +72,19 @@
         markersArray.length = 0;
 
 	var tooManyMarkers=!(data.length < 20);
-
+	var latlngbounds = new google.maps.LatLngBounds( );
 
         //make new markers
         for (var i = 0; i < data.length; i++) {
           var company = data[i]
-          if(company.latitude!=null && company.longitude!=null){
+          if(company.latitude!=null && company.longitude!=null
+	    //Temporal: hasta que los datos sean correctos
+	   && company.latitude!=1 && company.longitude!=1
+	  ){
             var location = new google.maps.LatLng(company.latitude, company.longitude);
 
+	    latlngbounds.extend( location );
+	 
 	    var optionsMarker={position: location, map: map};
 
 	    if(!tooManyMarkers){
@@ -102,7 +107,9 @@
 	      }(marker), i * 200);
 	      }
 	  }
+
         }
+	map.fitBounds( latlngbounds );
       }
 
       function attachClickEvent(marker, company) {
