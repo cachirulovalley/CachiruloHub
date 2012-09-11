@@ -153,7 +153,6 @@ class CompanyController {
         byte[] content = companyInstance.logo
         response.setContentLength(content.size())
         response.outputStream.write(content)
-        response.outputStream.out.close()
     }
 
 }
