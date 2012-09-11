@@ -10,10 +10,10 @@
   	<g:if test="${flash.message}">
       <div class="message" role="status">${flash.message}</div>
     </g:if>
-  
+    <form onSubmit="fetchCompanies($('#searchText').val()); return false;" >
     <g:textField name="text" id="searchText"/>
-    <input type="button" value="Buscar!" onClick="fetchCompanies($('#searchText').val())" >
-
+    <input type="submit" value="Buscar!" >
+    </form>
     <g:render template="tags"/>
 
     <table>
@@ -57,36 +57,59 @@
           var company = data[i]
           $("#tableBody").append("<tr><td><a href='/hub/company/show/" + company.id + "'>" + company.name + "</a></td><td>" + company.description + "</td></tr>");
         }
-      }
+      }	
 
       function updateMap(data) {
         //clear markersArray
         for (i in markersArray) {
-          markersArray[i].setMap(null);
+	  var item=markersArray[i];
+	  if(item.idTimeout){
+	    window.clearTimeout(item.idTimeout);
+	  }else{
+	    item.setMap(null);
+	  }
         }
         markersArray.length = 0;
+
+	var tooManyMarkers=!(data.length < 20);
+	var latlngbounds = new google.maps.LatLngBounds( );
 
         //make new markers
         for (var i = 0; i < data.length; i++) {
           var company = data[i]
-          if(company.latitude!=null && company.longitude!=null){
+          if(company.latitude!=null && company.longitude!=null
+	    //Temporal: hasta que los datos sean correctos
+	   && company.latitude!=1 && company.longitude!=1
+	  ){
             var location = new google.maps.LatLng(company.latitude, company.longitude);
-            var marker = new google.maps.Marker({
-                position: location,
-                //map: map,
-		animation: google.maps.Animation.DROP
-            });
+
+	    latlngbounds.extend( location );
+	 
+	    var optionsMarker={position: location, map: map};
+
+	    if(!tooManyMarkers){
+	      optionsMarker['animation']=google.maps.Animation.DROP;
+	      delete optionsMarker['map'];
+	    }
+
+            var marker = new google.maps.Marker(optionsMarker);
             marker.setTitle(company.name);
             attachClickEvent(marker, company);
             markersArray.push(marker);
 
-	   setTimeout(function(marker) {
-	    return function(){
-	      marker.setMap(map);
-	    }
-	  }(marker), i * 200);
-          }
+	  //Si no hay demasiados pins lo animamos
+	  if(!tooManyMarkers){
+	    marker.idTimeout = window.setTimeout(function(marker) {
+	      return function(){
+		delete marker.idTimeout;
+		marker.setMap(map);
+	      }
+	      }(marker), i * 200);
+	      }
+	  }
+
         }
+	map.fitBounds( latlngbounds );
       }
 
       function attachClickEvent(marker, company) {
