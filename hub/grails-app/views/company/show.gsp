@@ -74,7 +74,7 @@
 				<g:if test="${companyInstance?.logo}">
 				<li class="fieldcontain">
 					<span id="logo-label" class="property-label"><g:message code="company.logo.label" default="Logo" /></span>
-					
+					<span class="property-value" aria-labelledby="logo-label"><img src="${createLink(action:'logo', id:companyInstance.id)}"></span>
 				</li>
 				</g:if>
 			
