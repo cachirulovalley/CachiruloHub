@@ -3,7 +3,7 @@ var map;
 var markersArray = [];
 var infoWindow = new google.maps.InfoWindow();
 
-function initialize() {
+function initMap() {
   var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
   var mapOptions = {
     zoom: 7,
@@ -28,7 +28,7 @@ function updateList(data) {
   //make new rows
   for (i in data) {
     var company = data[i]
-    $("#tableBody").append("<tr><td><a href='company/show/" + company.id + "'>" + company.name + "</a></td><td>" + company.description + "</td></tr>");
+    $("#tableBody").append("<li><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
   }
 }	
 
@@ -94,12 +94,12 @@ function attachClickEvent(marker, company) {
 }
 
 $(document).ready(function() {
+
   $('#searchForm').submit(function() {
     fetchCompanies($('#searchText').val());
     return false;
   });
-
-  initialize();
+  initMap();
   fetchCompanies();
 });
 

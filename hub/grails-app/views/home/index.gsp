@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta name="layout" content="main">
+    <meta name="layout" content="public">
     <title>Cachirulo Hub</title>
     <g:javascript library="jquery"/>
 	  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -8,23 +8,50 @@
     <g:javascript src="home.js"/>
   </head>
   <body>
-  	<g:if test="${flash.message}">
-      <div class="message" role="status">${flash.message}</div>
-    </g:if>
+<div class="main-container table">
+            <div class="main table-row clearfix">
+        
+                <aside class="main-left table-cell">
+                    <header>
+            <h1 class="title">CachiruloHub</h1>
+            <g:if test="${flash.message}">
+              <div class="message" role="status">${flash.message}</div>
+            </g:if>
+            <h2 class="description">Tecnología hecha en Aragón</h2>
+                    </header>
+                    <section>
+                      <form id="searchForm" >
+                        <g:textField name="text" id="searchText"/>
+                        <input type="submit" value="Buscar!" >
+                      </form>
+                      <div class="widget">
+                        <g:render template="tags"/>
+                        
+                      </div>
+            <div class="widget">
+              <h3>Empresas</h3>
+              <ul id="tableBody">
+              </ul>
+            </div>
+                    </section>
+                    <div class="ocultar">
+                        <a href="">Ocultar mapa y ver listado completo</a>
+                    </div>
+                    <footer>
+                        CachiruloHub 2012 - Cachirulistas power - #jodopetaca
+                    </footer>
+                </aside><!-- .main-left -->
 
-    <form id="searchForm" >
-      <g:textField name="text" id="searchText"/>
-      <input type="submit" value="Buscar!" >
-    </form>
 
-    <g:render template="tags"/>
 
-    <table>
-      <thead><tr><td>Nombre</td><td>Descripción</td></tr></thead>
-      <tbody id="tableBody"/>
-    </table>
+                <div class="main-right table-cell">
 
-    <div id="map_canvas" width="100%" heigth="400px"></div>
+                  <div class="map" id="map_canvas"></div>
+        </div><!-- .main-right -->
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+  	
 
   </body>
 </html>
