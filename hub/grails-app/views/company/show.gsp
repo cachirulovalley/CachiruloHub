@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="public">
 		<g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<title>${companyInstance.name}</title>
 	</head>
 	<body>		
 		<div id="show-company"  role="main">
