@@ -74,7 +74,7 @@
 				<g:if test="${companyInstance?.logo}">
 				<li class="fieldcontain">
 					<span id="logo-label" class="property-label"><g:message code="company.logo.label" default="Logo" /></span>
-					
+					<span class="property-value" aria-labelledby="logo-label"><img src="${createLink(action:'logo', id:companyInstance.id)}"></span>
 				</li>
 				</g:if>
 			
@@ -96,6 +96,33 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.twitter}">
+				<li class="fieldcontain">
+					<span id="twitter-label" class="property-label"><g:message code="company.twitter.label" default="Twitter" /></span>
+					
+						<span class="property-value" aria-labelledby="twitter-label"><g:fieldValue bean="${companyInstance}" field="twitter"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${companyInstance?.facebook}">
+				<li class="fieldcontain">
+					<span id="facebook-label" class="property-label"><g:message code="company.facebook.label" default="Facebook" /></span>
+					
+						<span class="property-value" aria-labelledby="facebook-label"><g:fieldValue bean="${companyInstance}" field="facebook"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${companyInstance?.linkedin}">
+				<li class="fieldcontain">
+					<span id="linkedin-label" class="property-label"><g:message code="company.linkedin.label" default="Linkedin" /></span>
+					
+						<span class="property-value" aria-labelledby="linkedin-label"><g:fieldValue bean="${companyInstance}" field="linkedin"/></span>
+					
+				</li>
+				</g:if>
+
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

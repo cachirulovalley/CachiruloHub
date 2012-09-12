@@ -1,6 +1,6 @@
- <div>
-<h2>Some Tags</h2>
+<h3>Etiquetas</h3>
+<ul>
 <g:each in="${tags}" var="tag">
-  <a href="#" onclick="fetchCompanies('${tag.name}')">${tag.name} (${tag.numberOfOccurrences})</a>
+  <li><a href="#" onclick="fetchCompanies('${tag.name}')">${tag.name} (${tag.numberOfOccurrences})</a></li>
 </g:each>
- </div>
+</ul>

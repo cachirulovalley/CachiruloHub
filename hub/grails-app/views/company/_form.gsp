@@ -49,3 +49,27 @@
 	</label>
 	<input type="file" id="logo" name="logo" />
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'twitter', 'error')} ">
+	<label for="twitter">
+		<g:message code="company.twitter.label" default="Twitter" />
+		
+	</label>
+	<g:field type="url" name="twitter" value="${companyInstance?.twitter}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'facebook', 'error')} ">
+	<label for="facebook">
+		<g:message code="company.facebook.label" default="Facebook" />
+		
+	</label>
+	<g:field type="url" name="facebook" value="${companyInstance?.facebook}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'linkedin', 'error')} ">
+	<label for="linkedin">
+		<g:message code="company.linkedin.label" default="Linkedin" />
+		
+	</label>
+	<g:field type="url" name="linkedin" value="${companyInstance?.linkedin}"/>
+</div>

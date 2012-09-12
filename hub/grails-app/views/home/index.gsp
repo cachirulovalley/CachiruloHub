@@ -1,129 +1,57 @@
 <html>
   <head>
-    <meta name="layout" content="main">
+    <meta name="layout" content="public">
     <title>Cachirulo Hub</title>
     <g:javascript library="jquery"/>
 	  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <g:javascript src="home.js"/>
   </head>
   <body>
-  	<g:if test="${flash.message}">
-      <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <form onSubmit="fetchCompanies($('#searchText').val()); return false;" >
-    <g:textField name="text" id="searchText"/>
-    <input type="submit" value="Buscar!" >
-    </form>
-    <g:render template="tags"/>
+<div class="main-container table">
+            <div class="main table-row clearfix">
+        
+                <aside class="main-left table-cell">
+                    <header>
+            <h1 class="title">CachiruloHub</h1>
+            <g:if test="${flash.message}">
+              <div class="message" role="status">${flash.message}</div>
+            </g:if>
+            <h2 class="description">Tecnología hecha en Aragón</h2>
+                    </header>
+                    <section>
+                      <form id="searchForm" >
+                        <g:textField name="text" id="searchText"/>
+                        <input type="submit" value="Buscar!" >
+                      </form>
+                      <div class="widget">
+                        <g:render template="tags"/>
+                        
+                      </div>
+            <div class="widget">
+              <h3>Empresas</h3>
+              <ul id="tableBody">
+              </ul>
+            </div>
+                    </section>
+                    <div class="ocultar">
+                        <a href="">Ocultar mapa y ver listado completo</a>
+                    </div>
+                    <footer>
+                        CachiruloHub 2012 - Cachirulistas power - #jodopetaca
+                    </footer>
+                </aside><!-- .main-left -->
 
-    <table>
-      <thead><tr><td>Nombre</td><td>Descripción</td></tr></thead>
-      <tbody id="tableBody"/>
-    </table>
-
-    <div id="map_canvas" width="100%" heigth="400px"></div>
 
 
-    <script>
-      var map;
-      var markersArray = [];
-      var infoWindow = new google.maps.InfoWindow();
+                <div class="main-right table-cell">
 
-      function initialize() {
-        var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
-        var mapOptions = {
-          zoom: 7,
-          center: myLatlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-      }
+                  <div class="map" id="map_canvas"></div>
+        </div><!-- .main-right -->
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
 
-      function fetchCompanies(text) {
-        $('#searchText').val(text);
-        //With API HUB JSON get the TIC companies to refresh map
-        $.getJSON('<g:createLink controller="home" action="queryJSON"/>', {format: "json", text: text}, function(data) { 
-          updateList(data);
-          updateMap(data);
-          
-        });
-      }
+  	
 
-      function updateList(data) {
-        $("#tableBody").html("");
-
-        //make new rows
-        for (i in data) {
-          var company = data[i]
-          $("#tableBody").append("<tr><td><a href='/hub/company/show/" + company.id + "'>" + company.name + "</a></td><td>" + company.description + "</td></tr>");
-        }
-      }	
-
-      function updateMap(data) {
-        //clear markersArray
-        for (i in markersArray) {
-	  var item=markersArray[i];
-	  if(item.idTimeout){
-	    window.clearTimeout(item.idTimeout);
-	  }else{
-	    item.setMap(null);
-	  }
-        }
-        markersArray.length = 0;
-
-	var tooManyMarkers=!(data.length < 20);
-	var latlngbounds = new google.maps.LatLngBounds( );
-
-        //make new markers
-        for (var i = 0; i < data.length; i++) {
-          var company = data[i]
-          if(company.latitude!=null && company.longitude!=null
-	    //Temporal: hasta que los datos sean correctos
-	   && company.latitude!=1 && company.longitude!=1
-	  ){
-            var location = new google.maps.LatLng(company.latitude, company.longitude);
-
-	    latlngbounds.extend( location );
-	 
-	    var optionsMarker={position: location, map: map};
-
-	    if(!tooManyMarkers){
-	      optionsMarker['animation']=google.maps.Animation.DROP;
-	      delete optionsMarker['map'];
-	    }
-
-            var marker = new google.maps.Marker(optionsMarker);
-            marker.setTitle(company.name);
-            attachClickEvent(marker, company);
-            markersArray.push(marker);
-
-	  //Si no hay demasiados pins lo animamos
-	  if(!tooManyMarkers){
-	    marker.idTimeout = window.setTimeout(function(marker) {
-	      return function(){
-		delete marker.idTimeout;
-		marker.setMap(map);
-	      }
-	      }(marker), i * 200);
-	      }
-	  }
-
-        }
-	map.fitBounds( latlngbounds );
-      }
-
-      function attachClickEvent(marker, company) {
-        google.maps.event.addListener(marker, 'click', function() {
-          infoWindow.content = "<b>" + company.name + "</b> <br>" + company.address
-          infoWindow.open(map, marker);
-        });
-
-      }
-      $(document).ready(function() {
-        initialize();
-        fetchCompanies();
-      });
-      
-    </script>
   </body>
 </html>

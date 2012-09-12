@@ -46,7 +46,12 @@ class CompanyController {
             }
         }
 
-        bindData(companyInstance, params, [exclude: 'tags'])
+        bindData(companyInstance, params, [exclude: ['tags', 'logo']])
+
+        def uploadedFile = request.getFile('logo')
+        if(uploadedFile && !uploadedFile.empty){
+            companyInstance.logo = uploadedFile.inputStream.bytes
+        }
         
 
         def latLng = geocodingService.findLatLngByAddress(companyInstance.address)
@@ -137,4 +142,17 @@ class CompanyController {
             }
         }
     }
+
+    def logo(Long id) {
+        def companyInstance = Company.get(id)
+        if (!companyInstance || !companyInstance.logo) {
+            response.status = 404;
+            return
+        }
+
+        byte[] content = companyInstance.logo
+        response.setContentLength(content.size())
+        response.outputStream.write(content)
+    }
+
 }
