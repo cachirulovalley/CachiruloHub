@@ -22,13 +22,13 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<g:if test="${!session.company}">
-					<li><g:link controller="register">Registrar una empresa</g:link></li>
-					<li><g:link controller="login">Entrar</g:link></li>
-					<li><g:link controller="recoverPassword">¿Olvidaste tu contrseña?</g:link></li>
+					<li><g:link controller="register"><g:message code="hub.layout.main.register"/></g:link></li>
+					<li><g:link controller="login"><g:message code="hub.layout.main.login"/></g:link></li>
+					<li><g:link controller="recoverPassword"><g:message code="hub.layout.main.recoverPassword"/></g:link></li>
 				</g:if>
 				<g:else>
-					<li><g:link controller="company" action="edit">Editar perfil</g:link></li>
-					<li><g:link controller="login" action="logout">Salir</g:link></li>
+					<li><g:link controller="company" action="edit"><g:message code="hub.layout.main.profile"/></g:link></li>
+					<li><g:link controller="login" action="logout"><g:message code="hub.layout.main.logout"/></g:link></li>
 				</g:else>
 				
 			</ul>
