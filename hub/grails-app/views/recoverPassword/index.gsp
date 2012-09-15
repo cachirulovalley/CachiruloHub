@@ -11,9 +11,9 @@
 	</g:if>
 	
 	<g:form action="recoverPassword" method="post">
-		Email: <input type="text" name="email">		
+		<g:message code="hub.recoverPassword.email"/>: <input type="text" name="email">		
 		<br>
-		<input type="submit" value="Recuperar">
+		<input type="submit" value="<g:message code="hub.recoverPassword.recuperar"/>">
 	</g:form>
 	</body>
 </html>
