@@ -13,7 +13,7 @@
 	<g:form action="recoverPassword" method="post">
 		<g:message code="hub.recoverPassword.email"/>: <input type="text" name="email">		
 		<br>
-		<input type="submit" value="<g:message code="hub.recoverPassword.recuperar"/>">
+		<input type="submit" value="<g:message code="hub.recoverPassword.recover"/>">
 	</g:form>
 	</body>
 </html>
