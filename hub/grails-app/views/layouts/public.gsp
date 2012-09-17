@@ -29,6 +29,6 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
         <g:javascript library="application"/>
-    
+        <r:layoutResources />
     </body>
 </html>
