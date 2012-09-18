@@ -182,3 +182,8 @@ body {
     page-break-after: avoid;
   }
 }
+
+img.thumbnail {
+  height: 50px;
+  width: 50px;
+}
