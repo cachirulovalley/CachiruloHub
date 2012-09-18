@@ -25,6 +25,7 @@
 					<li><g:link controller="register">Registrar una empresa</g:link></li>
 					<li><g:link controller="login">Entrar</g:link></li>
 					<li><g:link controller="recoverPassword">¿Olvidaste tu contrseña?</g:link></li>
+					<li><g:link controller="home" action="about">Quienes somos</g:link></li>
 				</g:if>
 				<g:else>
 					<li><g:link controller="company" action="edit">Editar perfil</g:link></li>
