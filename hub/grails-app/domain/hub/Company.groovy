@@ -20,6 +20,8 @@ class Company implements java.io.Serializable{
     
     String key
     Boolean enabled
+
+    transient int positionId
     
     Company(){
         key = UUID.randomUUID().toString()

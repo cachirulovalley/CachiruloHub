@@ -26,10 +26,11 @@ class HomeController {
                 }
             }
         }
+        groupComaniesInPositions(companies)
         render(contentType: "text/json") {
                 array {
                     companies.each{
-                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude)
+                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude, positionId: it.positionId)
                     }
                 }
         }
@@ -37,6 +38,20 @@ class HomeController {
 
     def about(){
         
+    }
+
+    private def groupComaniesInPositions(companies){
+        int positionId = 1
+        companies.each{ company ->
+            
+            def foundCompanies = companies.findAll{!it.positionId && company.latitude == it.latitude && company.longitude == it.longitude}
+
+            foundCompanies.each{
+                it.positionId = positionId
+            }
+            positionId ++
+        }
+        return companies
     }
 
 }
