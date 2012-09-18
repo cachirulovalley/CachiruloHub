@@ -77,17 +77,9 @@ body {
   overflow: hidden;
 }
 
-#menu{
-  position: absolute;
-  top: 10px;  /* adjust value accordingly */
-  right: 20px;  /* adjust value accordingly */
-}
-#menu ul{
-  list-style-type: none;
-}
-#menu li{
-  display: inline;
-}
+#menu{position: absolute;top: 20px;right: 20px;background-color: #fff;opacity: 0.7;filter: alpha(opacity=70);}
+#menu ul{list-style-type: none; padding: 0px 0px 0px 0px;}
+#menu li{display: inline;}
 
 
 /*.main .main-right .map iframe {
