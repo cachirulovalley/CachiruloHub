@@ -60,10 +60,9 @@ body {
 }
 .main .main-left {
   width: 400px;
-  border: 1px solid blue;
 }
 .main .main-right {
-  border: 1px solid red;
+  width: 100%;
 }
 .main .main-right .map {
   position: relative;

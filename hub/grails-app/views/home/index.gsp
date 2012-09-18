@@ -17,7 +17,7 @@
             <g:if test="${flash.message}">
               <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <h2 class="description">Tecnología hecha en Aragón</h2>
+            <h2 class="description">Tecnología de Aragón</h2>
                     </header>
                     <section>
                       <form id="searchForm" >
@@ -34,9 +34,9 @@
               </ul>
             </div>
                     </section>
-                    <div class="ocultar">
+                    <!--div class="ocultar">
                         <a href="">Ocultar mapa y ver listado completo</a>
-                    </div>
+                    </div-->
                     <footer>
                         CachiruloHub 2012 - Cachirulistas power - #jodopetaca
                     </footer>
