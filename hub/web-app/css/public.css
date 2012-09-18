@@ -62,7 +62,7 @@ body {
   width: 400px;
 }
 .main .main-right {
-  width: 100%;
+  width: 80%;
 }
 .main .main-right .map {
   position: relative;
@@ -76,6 +76,20 @@ body {
   width: 100%;
   overflow: hidden;
 }
+
+#menu{
+  position: absolute;
+  top: 10px;  /* adjust value accordingly */
+  right: 20px;  /* adjust value accordingly */
+}
+#menu ul{
+  list-style-type: none;
+}
+#menu li{
+  display: inline;
+}
+
+
 /*.main .main-right .map iframe {
   position: absolute;
   top: 0;
