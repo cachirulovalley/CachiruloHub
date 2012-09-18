@@ -34,4 +34,9 @@ class HomeController {
                 }
         }
     }
+
+    def about(){
+        
+    }
+
 }

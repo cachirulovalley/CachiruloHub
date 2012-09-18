@@ -41,9 +41,6 @@
                         CachiruloHub 2012 - Cachirulistas power - #jodopetaca
                     </footer>
                 </aside><!-- .main-left -->
-
-
-
                 <div class="main-right table-cell">
 
                   <div class="map" id="map_canvas"></div>
