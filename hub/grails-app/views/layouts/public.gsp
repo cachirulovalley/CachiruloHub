@@ -24,6 +24,16 @@
                 <aside class="main-left table-cell">
                         <header>
                 <h1 class="title">CachiruloHub</h1>
+                <ul id="menu">
+                <g:if test="${!session.company}">
+                  <li><g:link controller="register">Registrar una empresa</g:link></li>
+                  <li><g:link controller="login">Entrar</g:link></li>
+                </g:if>
+                <g:else>
+                  <li><g:link controller="company" action="edit">Editar perfil</g:link></li>
+                  <li><g:link controller="login" action="logout">Salir</g:link></li>
+                </g:else>
+                </ul>
                 <g:if test="${flash.message}">
                   <div class="message" role="status">${flash.message}</div>
                 </g:if>
