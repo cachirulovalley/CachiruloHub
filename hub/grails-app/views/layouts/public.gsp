@@ -58,7 +58,7 @@
                             <a href="">Ocultar mapa y ver listado completo</a>
                         </div-->
                         <footer>
-                            CachiruloHub 2012 - Cachirulistas power - #jodopetaca
+                            CachiruloHub 2012 - <g:link controller="home" action="about">Cachirulistas power</g:link> - #jodopetaca
                         </footer>
                 </aside><!-- .main-left -->
 
