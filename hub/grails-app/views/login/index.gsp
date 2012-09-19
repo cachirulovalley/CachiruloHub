@@ -14,14 +14,14 @@
 		<ul class="errors" role="alert">
 			<li><g:message code="${error}"/></li>
 		</ul>
-	</g:if>
+	</g:if>	
 	<g:form action="login" method="post">
-		Email: <input type="text" name="email">
+		<g:message code="hub.login.email"/>: <input type="text" name="email">
 		<br/>
-		Password: <input type="password" name="password">
+		<g:message code="hub.login.password"/>: <input type="password" name="password">
 		<br>
-		<input type="submit" value="Entrar">
+		<input type="submit" value="<g:message code="hub.login.enter"/>">
 	</g:form>
-	<g:link controller="recoverPassword">Recuperar Clave</g:link>
+	<g:link controller="recoverPassword"><g:message code="hub.login.recover"/></g:link>
 	</body>
 </html>

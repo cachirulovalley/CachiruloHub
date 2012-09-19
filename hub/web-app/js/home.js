@@ -1,12 +1,12 @@
 
 var map;
-var markersArray = [];
+var markers = {};
 var infoWindow = new google.maps.InfoWindow();
 
 function initMap() {
   var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
   var mapOptions = {
-    zoom: 7,
+    zoom: 8,
     center: myLatlng,
     disableDefaultUI: true,
     zoomControl:true,
@@ -35,9 +35,9 @@ function updateList(data) {
 }	
 
 function updateMap(data) {
-  //clear markersArray
-  for (i in markersArray) {
-    var item=markersArray[i];
+  //clear markers
+  for (i in markers) {
+    var item=markers[i];
     if(item.idTimeout){
       window.clearTimeout(item.idTimeout);
     }
@@ -45,10 +45,7 @@ function updateMap(data) {
       item.setMap(null);
     }
   }
-  markersArray.length = 0;
-
-  var tooManyMarkers=!(data.length < 20);
-  var latlngbounds = new google.maps.LatLngBounds( );
+  markers.length = 0;
 
   //make new markers
   for (var i = 0; i < data.length; i++) {
@@ -57,39 +54,28 @@ function updateMap(data) {
     //Temporal: hasta que los datos sean correctos
     && company.latitude!=1 && company.longitude!=1
     ){
-      var location = new google.maps.LatLng(company.latitude, company.longitude);
-
-      latlngbounds.extend( location );
-
-      var optionsMarker={position: location, map: map};
-
-      if(!tooManyMarkers){
-        optionsMarker['animation']=google.maps.Animation.DROP;
-        delete optionsMarker['map'];
-      }
-
-      var marker = new google.maps.Marker(optionsMarker);
-      marker.setTitle(company.name);
-      attachClickEvent(marker, company);
-      markersArray.push(marker);
-
-      //Si no hay demasiados pins lo animamos
-      if(!tooManyMarkers){
-        marker.idTimeout = window.setTimeout(function(marker) {
-          return function(){
-            delete marker.idTimeout;
-            marker.setMap(map);
-          }
-        }(marker), i * 200);
+      var marker = markers[company.positionId]
+      if(marker){
+          marker.companies.push(company)
+      }else{
+            var location = new google.maps.LatLng(company.latitude, company.longitude);
+            marker = new google.maps.Marker({position: location, map: map});
+            marker.setTitle(company.name);
+            marker.companies = [company]
+            markers[company.positionId] = marker;              
+            attachClickEvent(marker);
       }
     }
   }
-  map.fitBounds( latlngbounds );
 }
 
-function attachClickEvent(marker, company) {
+function attachClickEvent(marker) {
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.content = "<b>" + company.name + "</b> <br>" + company.address
+    infoWindow.content = ""
+    for(index =0; marker.companies.length > index ; index++){
+        var company = marker.companies[index]
+        infoWindow.content += "<b><a href='company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
+    }
     infoWindow.open(map, marker);
   });
 
