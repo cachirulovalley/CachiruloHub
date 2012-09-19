@@ -30,7 +30,7 @@ function updateList(data) {
   //make new rows
   for (i in data) {
     var company = data[i]
-    $("#tableBody").append("<li><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
+    $("#tableBody").append("<li><img class='thumbnail' src='company/logo/" + company.id + "'/><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
   }
 }	
 
