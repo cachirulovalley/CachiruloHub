@@ -1,11 +1,14 @@
 <!doctype html>
 <html>
 	<head>
+		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
+		</g:if>
 		<g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
 		<title>${companyInstance.name}</title>
 	</head>
 	<body>		
+
 		<div id="show-company"  role="main">
 			<g:if test="${flash.message}">
 			<div  role="status">${flash.message}</div>

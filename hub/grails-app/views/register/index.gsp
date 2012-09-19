@@ -1,6 +1,8 @@
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<g:if test="${!request.xhr}">
+		<meta name="layout" content="public">
+		</g:if>
 		<title>Login</title>
 	</head>
 	<body>

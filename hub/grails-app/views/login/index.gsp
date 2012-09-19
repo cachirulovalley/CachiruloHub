@@ -1,13 +1,14 @@
-<%@ page import="hub.Company" %>
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<g:if test="${!request.xhr}">
+		<meta name="layout" content="public">
+		</g:if>
 		<title>Login</title>
 	</head>
 	<body>
 	<g:if test="${flash.message}">
-		<div class="message" role="status">${flash.message}</div>
+		<div class="message">${flash.message}</div>
 	</g:if>
 	<g:if test="${error}">
 		<ul class="errors" role="alert">
