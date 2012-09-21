@@ -28,54 +28,49 @@ function updateList(data) {
   $('#tableBody').html("");
 
   //make new rows
-  for (i in data) {
-    var company = data[i]
-    $("#tableBody").append("<li><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
-  }
+  $.each(data,function(index,company){
+        $("#tableBody").append("<li><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
+  });
 }	
 
 function updateMap(data) {
   //clear markers
-  for (i in markers) {
-    var item=markers[i];
-    if(item.idTimeout){
-      window.clearTimeout(item.idTimeout);
-    }
-    else{
-      item.setMap(null);
-    }
-  }
-  markers.length = 0;
-
+  $.each(markers,function(index,item){
+    item.setMap(null);
+  });
+  markers={};
   //make new markers
-  for (var i = 0; i < data.length; i++) {
-    var company = data[i]
-    if(company.latitude!=null && company.longitude!=null
-    //Temporal: hasta que los datos sean correctos
-    && company.latitude!=1 && company.longitude!=1
-    ){
+ $.each(data,function(index,company){
+      if(company.latitude==null || company.longitude==null
+      //Temporal: hasta que los datos sean correctos
+      || company.latitude==1 || company.longitude==1
+      ){
+	return true; /*continue;*/
+      }
+    
       var marker = markers[company.positionId]
       if(marker){
           marker.companies.push(company)
-      }else{
-            var location = new google.maps.LatLng(company.latitude, company.longitude);
-            marker = new google.maps.Marker({position: location, map: map});
-            marker.setTitle(company.name);
-            marker.companies = [company]
-            markers[company.positionId] = marker;              
-            attachClickEvent(marker);
+	  return true; /*continue;*/
       }
-    }
-  }
+      
+      var location = new google.maps.LatLng(company.latitude, company.longitude);
+      marker = new google.maps.Marker({position: location, map: map});
+      marker.setTitle(company.name);
+      marker.companies = [company]
+      markers[company.positionId] = marker;              
+      attachClickEvent(marker);
+    
+  });
 }
 
 function attachClickEvent(marker) {
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.content = ""
-    for(index =0; marker.companies.length > index ; index++){
+    $.each(marker.companies,function(index,company){
         var company = marker.companies[index]
         infoWindow.content += "<b><a href='company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
-    }
+    });
     infoWindow.open(map, marker);
   });
 
