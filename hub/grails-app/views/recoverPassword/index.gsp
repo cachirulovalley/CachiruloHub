@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title>Recuperar Clave</title>
+		<title><g:message code="hub.recoverPassword.recover"/></title>
 	</head>
 	<body>
 	<g:if test="${flash.message}">
