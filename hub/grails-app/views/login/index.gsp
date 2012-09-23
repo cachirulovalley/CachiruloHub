@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title>Login</title>
+		<title><g:message code="hub.login.title"/></title>
 	</head>
 	<body>
 	<g:if test="${flash.message}">
