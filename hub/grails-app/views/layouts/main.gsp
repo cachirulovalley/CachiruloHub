@@ -14,7 +14,8 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		<g:layoutHead/>
+		<g:javascript library="jquery"/>
+	  	<g:layoutHead/>
 		<r:layoutResources />
 	</head>
 	<body>
@@ -22,23 +23,30 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<g:if test="${!session.company}">
-					<li><g:link controller="register">Registrar una empresa</g:link></li>
-					<li><g:link controller="login">Entrar</g:link></li>
-					<li><g:link controller="recoverPassword">¿Olvidaste tu contrseña?</g:link></li>
-					<li><g:link controller="home" action="about">Quienes somos</g:link></li>
-
+					<li><g:link controller="register"><g:message code="hub.layout.main.register"/></g:link></li>
+					<li><g:link controller="login"><g:message code="hub.layout.main.login"/></g:link></li>
+					<li><g:link controller="recoverPassword"><g:message code="hub.layout.main.recoverPassword"/></g:link></li>
+					<li><g:link controller="home" action="about"><g:message code="hub.layout.main.about"/></g:link></li>
 				</g:if>
 				<g:else>
 					<li><g:link controller="company" action="edit"><g:message code="hub.layout.main.profile"/></g:link></li>
 					<li><g:link controller="login" action="logout"><g:message code="hub.layout.main.logout"/></g:link></li>
 				</g:else>
-				
+				<li><span class="lang">
+					<label for="title"><g:message code="hub.layout.main.language"/></label>
+					<select id="lang" name="lang">						
+					 	<option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.main.English"/></option>
+					 	<option value="es" <g:langCode code='es'>selected</g:langCode>><g:message code="hub.layout.main.Spanish"/></option>						 	
+					</select>			
+					</span>		
+				</li>				
 			</ul>
 		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
+		<g:javascript src="mainLayout.js"/>
 		<r:layoutResources />
 	</body>
 </html>
