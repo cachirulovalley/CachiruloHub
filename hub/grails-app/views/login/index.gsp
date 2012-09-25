@@ -4,7 +4,7 @@
 		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
 		</g:if>
-		<title>Login</title>
+		<title><g:message code="hub.login.title"/></title>
 	</head>
 	<body>
 	<g:if test="${flash.message}">

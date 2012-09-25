@@ -4,7 +4,7 @@
 		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
 		</g:if>
-		<title>Recuperar Clave</title>
+		<title><g:message code="hub.recoverPassword.title"/></title>
 	</head>
 	<body>
 	<g:if test="${flash.message}">
