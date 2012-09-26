@@ -32,11 +32,7 @@ textarea {
 body {
   font: 16px/26px 'Source Sans Pro', sans-serif;
 }
-.wrapper {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -46,6 +42,17 @@ body {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+   
+a{
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}   
+a:hover{
+	
+}
+   
 .table {
   display: table;
   width: 100%;
@@ -59,14 +66,24 @@ body {
   height: 700px;
 }
 .main .main-left {
-  width: 400px;
+	min-width: 300px;
+	padding-right: 25px;
 }
 .main .main-right {
   width: 80%;
-}
+ }
 .main .main-right .map {
   position: relative;
   padding-bottom: 675px;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow:    0px 0p  50px rgba(0, 0, 0, 0.2);
+  box-shadow:         0px 0px 50px rgba(0, 0, 0, 0.2);
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
   /* 16/9 ratio */
 
   padding-top: 30px;
@@ -79,14 +96,101 @@ body {
 
 #menu li{display: inline;}
 
+/***** SIDEBAR - MAIN LEFT *****/
 
-/*.main .main-right .map iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.widget_tags{
+	
+}
+.widget_tags ul{
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+	text-align: center;
+}
+.widget_tags ul li{
+	list-style: none;
+	display: inline-block;
+	margin: 0px 2px;
+}
+.widget_tags ul li a{
+	display: inline-block;
+	padding: 1px 4px;
+	background-color: transparent;
+	text-decoration: none;
+	color: #0043EB;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	opacity: 0.8;
+	
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.widget_tags ul li a:hover{
+	background-color: #0043EB;
+	color: #fff;
+	text-decoration: none;
+	opacity: 1;
+}
+	
+.widget_empresas{
+	
+}
+.widget_empresas ul{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 150px;
+	border: 1px solid #ddd;
+	overflow-y: scroll;
+	position: relative;
+	vertical-align: middle;
+}
+.widget_empresas ul li{
+	list-style: none;
+	display: table;
+	width: 100%;
+	padding: 5px 0px;
+	background-color: transparent;
+}
+	.widget_empresas ul li:nth-child(even){
+		background-color: #f0f0f0;
+		padding-top: 5px;
+	}
+	
+.widget_empresas ul li:hover{
+	background-color: #F9EC98;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.widget_empresas ul li .empresa_item{
+	display: table-row;
+}
+.widget_empresas ul li .empresa_item span{
+	display: table-cell;
+	vertical-align: middle;
+}
+.widget_empresas ul li .empresa_item span.img{
+	width: 50px;
+	padding-right: 20px;
+}
+
+/******* CONTAINER *******/
+.main-container {
   width: 100%;
-  height: 100%;
-}*/
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */

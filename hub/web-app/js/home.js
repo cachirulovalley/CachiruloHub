@@ -29,7 +29,7 @@ function updateList(data) {
 
   //make new rows
   $.each(data,function(index,company){
-    $("#tableBody").append("<li><img class='thumbnail' src='company/logo/" + company.id + "'/><a href='company/show/" + company.id + "'>" + company.name + "</a></li>");
+    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><a href='company/show/" + company.id + "'>" + company.name + "</a></span></div></li>");
   });
 }	
 
