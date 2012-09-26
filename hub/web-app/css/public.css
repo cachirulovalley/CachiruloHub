@@ -185,3 +185,10 @@ img.thumbnail {
   height: 50px;
   width: 50px;
 }
+
+div.overlay {
+  position:absolute;
+  left:20%;
+  top:0px;
+  background-color:#00ff00;
+}

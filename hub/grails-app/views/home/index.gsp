@@ -9,5 +9,9 @@
   </head>
   <body>
       <div class="map" id="map_canvas"></div>
+      <div class="overlay" id="overlay">
+        <a href="#" onClick="$('#overlay').hide();">Cerrar</a>
+        <div class="content" id="content"> </div>
+      </div>
   </body>
 </html>

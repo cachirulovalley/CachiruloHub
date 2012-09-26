@@ -26,11 +26,11 @@
                 <h1 class="title">CachiruloHub</h1>
                 <ul id="menu">
                 <g:if test="${!session.company}">
-                  <li><g:link controller="register">Registrar una empresa</g:link></li>
-                  <li><g:link controller="login">Entrar</g:link></li>
+                  <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Registrar una empresa</g:remoteLink></li>
+                  <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Entrar</g:remoteLink></li>
                 </g:if>
                 <g:else>
-                  <li><g:link controller="company" action="edit">Editar perfil</g:link></li>
+                  <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
                   <li><g:link controller="login" action="logout">Salir</g:link></li>
                 </g:else>
                 </ul>
