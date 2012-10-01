@@ -1,6 +1,7 @@
 
 var map;
-var markers = {};
+var mc;
+var markersArray=[];
 var infoWindow = new google.maps.InfoWindow();
 
 function initMap() {
@@ -12,7 +13,18 @@ function initMap() {
     zoomControl:true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
-  map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  
+  if(!map){
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  }
+  if(!mc){
+    var mcOptions = {
+    gridSize: 25, 
+    maxZoom: 12
+    };
+  mc = new MarkerClusterer(map, [], mcOptions);
+  }
+
 }
 
 function fetchCompanies(text) {
@@ -35,11 +47,13 @@ function updateList(data) {
 
 function updateMap(data) {
   //clear markers
-  $.each(markers,function(index,item){
-    item.setMap(null);
-  });
-  markers={};
+  //$.each(markers,function(index,item){
+  //  item.setMap(null);
+  //});
+  mc.clearMarkers();
+  markersArray=[];
   //make new markers
+  var markers={};
  $.each(data,function(index,company){
       if(company.latitude==null || company.longitude==null
       //Temporal: hasta que los datos sean correctos
@@ -55,13 +69,16 @@ function updateMap(data) {
       }
       
       var location = new google.maps.LatLng(company.latitude, company.longitude);
-      marker = new google.maps.Marker({position: location, map: map});
+      marker = new google.maps.Marker({position: location});
       marker.setTitle(company.name);
-      marker.companies = [company]
-      markers[company.positionId] = marker;              
+      marker.companies = [company];
+      
+      markers[company.positionId] = marker;
+      markersArray.push(marker);
+      
       attachClickEvent(marker);
-    
   });
+  mc.addMarkers(markersArray);
 }
 
 function attachClickEvent(marker) {
