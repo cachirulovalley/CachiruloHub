@@ -107,7 +107,7 @@ function attachClickEvent(marker) {
 }
 
 $(document).ready(function() {
-
+  $('#panel').hide();
   $('#searchForm').submit(function() {
     fetchCompanies($('#searchText').val());
     return false;

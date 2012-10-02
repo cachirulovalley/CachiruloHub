@@ -290,7 +290,7 @@ img.thumbnail {
   width: 50px;
 }
 
-div.overlay {
+div.panel{
   position:absolute;
   left:20%;
   top:0px;

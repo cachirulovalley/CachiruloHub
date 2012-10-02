@@ -26,11 +26,11 @@
                 <h1 class="title"><g:link controller="home">CachiruloHub</g:link></h1>
                 <ul id="menu">
                 <g:if test="${!session.company}">
-                  <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Registrar una empresa</g:remoteLink></li>
-                  <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Entrar</g:remoteLink></li>
+                  <li><g:remoteLink controller="register" update="panelContent" onComplete="\$('#panel').show();">Registrar una empresa</g:remoteLink></li>
+                  <li><g:remoteLink controller="login" update="panelContent" onComplete="\$('#panel').show();">Entrar</g:remoteLink></li>
                 </g:if>
                 <g:else>
-                  <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
+                  <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="\$('#panel').show();">Editar perfil</g:remoteLink></li>
                   <li><g:link controller="login" action="logout">Salir</g:link></li>
                 </g:else>
                 </ul>
@@ -57,7 +57,7 @@
                             <a href="">Ocultar mapa y ver listado completo</a>
                         </div-->
                         <footer>
-                            CachiruloHub 2012 - <g:link controller="home" action="about">Cachirulistas power</g:link> - #jodopetaca
+                            CachiruloHub 2012 - <g:remoteLink controller="home" action="about" update="panelContent" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> - #jodopetaca
                         </footer>
                 </aside><!-- .main-left -->
 
