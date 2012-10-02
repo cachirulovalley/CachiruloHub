@@ -75,9 +75,9 @@
 				<br/>
 						<p>${companyInstance.address}</p>
 				</g:if>
-				<g:if test="${companyInstance?.latitude && companyInstance?.longitude}">
+				<!--<g:if test="${companyInstance?.latitude && companyInstance?.longitude}">
 				      <img src="http://maps.google.com/maps/api/staticmap?size=400x400&markers=%7C${companyInstance?.latitude},${companyInstance?.longitude}&sensor=false"/>
-				</g:if>
+				</g:if>-->
 
 			<g:form>
 				<fieldset >

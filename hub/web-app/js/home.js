@@ -54,7 +54,7 @@ function updateList(data) {
 
   //make new rows
   $.each(data,function(index,company){
-    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><a href='company/show/" + company.id + "'>" + company.name + "</a></span></div></li>");
+    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><a href='#' onClick='showCompany(" + company.id + ")'>" + company.name + "</a></span></div></li>");
   });
 }	
 
@@ -104,6 +104,15 @@ function attachClickEvent(marker) {
     infoWindow.open(map, marker);
   });
 
+}
+
+function showCompany(id) {
+  $.ajax({
+    url:'/hub/company/show/' + id,
+    success:function(data,textStatus) {jQuery('#panelContent').html(data);},
+    error:function(XMLHttpRequest,textStatus,errorThrown){},
+    complete:function(XMLHttpRequest,textStatus){$('#panel').show();}
+  });
 }
 
 $(document).ready(function() {
