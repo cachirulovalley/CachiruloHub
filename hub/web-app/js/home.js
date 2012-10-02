@@ -17,6 +17,19 @@ function initMap() {
   if(!map){
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
   }
+  var layer = new google.maps.FusionTablesLayer({
+  query: {
+    select: 'kml_4326',
+    from: '1vRgso0NNIocWUXffTPM1ukqAS0H3L4a60aWq6g',
+    where: "name_1 CONTAINS IGNORING CASE 'aragón'"
+  },styles: [{
+    polygonOptions: {
+      fillColor: "#FF0000",
+      fillOpacity:0.1
+    }
+  }]
+  });
+  layer.setMap(map);
   if(!mc){
     var mcOptions = {
     gridSize: 25, 
