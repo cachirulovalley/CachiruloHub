@@ -23,7 +23,7 @@
             <div class="main table-row clearfix">
                 <aside class="main-left table-cell">
                         <header>
-                <h1 class="title">CachiruloHub</h1>
+                <h1 class="title"><g:link controller="home">CachiruloHub</g:link></h1>
                 <ul id="menu">
                 <g:if test="${!session.company}">
                   <li><g:link controller="register">Registrar una empresa</g:link></li>
@@ -44,11 +44,10 @@
                             <g:textField name="text" id="searchText"/>
                             <input type="submit" value="Buscar!" >
                           </form>
-                          <div class="widget">
+                          <div class="widget widget_tags">
                             <g:render template="/home/tags"/>
-                            
                           </div>
-                <div class="widget">
+                <div class="widget widget_empresas">
                   <h3>Empresas</h3>
                   <ul id="tableBody">
                   </ul>
