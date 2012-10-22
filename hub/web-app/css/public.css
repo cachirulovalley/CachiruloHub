@@ -465,8 +465,11 @@ img.thumbnail {
   width: 50px;
 }
 
+
 .overlay {
   display: none;
+}
+div.panel{
   position:absolute;
   left:20%;
   top:0px;

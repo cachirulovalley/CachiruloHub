@@ -24,6 +24,7 @@
         <div class="main-container table">
             <div class="main table-row clearfix">
                 <aside class="main-left table-cell">
+<<<<<<< HEAD
                     <header>
                         <h1 class="title">
                             <g:link controller="home"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="CachiruloHub"></g:link>
@@ -31,11 +32,11 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Añadir empresa</g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Iniciar sesión</g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#panel').show();">Añadir empresa</g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#panel').show();">Iniciar sesión</g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
+                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#panel').show();">Editar perfil</g:remoteLink></li>
                               <li><g:link controller="login" action="logout">Salir</g:link></li>
                             </g:else>
                         </ul>
@@ -69,7 +70,7 @@
                         <a href="">Ocultar mapa y ver listado completo</a>
                     </div-->
                     <footer id="footer">
-                        CachiruloHub 2012 | <g:link controller="home" action="about">Cachirulistas power</g:link> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                        CachiruloHub 2012 | <g:remoteLink controller="home" action="about" update="panelContent" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                     </footer>
                 </aside><!-- .main-left -->
 
