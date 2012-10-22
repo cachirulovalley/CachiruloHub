@@ -12,6 +12,7 @@
         
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
+        <g:javascript library="jquery"/>        
         <g:layoutHead/>
         <r:layoutResources />
     </head>
@@ -25,30 +26,37 @@
                         <header>
                 <h1 class="title"><g:link controller="home">CachiruloHub</g:link></h1>
                 <ul id="menu">
+                	<li>
+					<label for="title"><g:message code="hub.layout.public.language"/></label>
+					<select id="lang" name="lang">						
+					 	<option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.public.English"/></option>
+					 	<option value="es" <g:langCode code='es'>selected</g:langCode>><g:message code="hub.layout.public.Spanish"/></option>						 	
+					</select>			
+				</li>
                 <g:if test="${!session.company}">
-                  <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Registrar una empresa</g:remoteLink></li>
-                  <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Entrar</g:remoteLink></li>
+                  <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                  <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                 </g:if>
                 <g:else>
-                  <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
-                  <li><g:link controller="login" action="logout">Salir</g:link></li>
+                  <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                  <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                 </g:else>
                 </ul>
                 <g:if test="${flash.message}">
                   <div class="message" role="status">${flash.message}</div>
                 </g:if>
-                <h2 class="description">Tecnología de Aragón</h2>
+                <h2 class="description"><g:message code="hub.layout.public.description"/></h2>
                         </header>
                         <section>
                           <form id="searchForm" >
                             <g:textField name="text" id="searchText"/>
-                            <input type="submit" value="Buscar!" >
+                            <input type="submit" value="<g:message code="hub.layout.public.search"/>" >
                           </form>
                           <div class="widget widget_tags">
                             <g:render template="/home/tags"/>
                           </div>
                 <div class="widget widget_empresas">
-                  <h3>Empresas</h3>
+                  <h3><g:message code="hub.layout.public.companies"/></h3>
                   <ul id="tableBody">
                   </ul>
                 </div>
@@ -75,7 +83,8 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        <g:javascript library="application"/>
+        <g:javascript src="publicLayout.js"/>
+        <g:javascript library="application"/>        
         <r:layoutResources />
     </body>
 </html>
