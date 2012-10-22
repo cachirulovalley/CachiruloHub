@@ -32,8 +32,14 @@ function initMap() {
   layer.setMap(map);
   if(!mc){
     var mcOptions = {
-    gridSize: 25, 
-    maxZoom: 12
+      gridSize: 25, 
+      maxZoom: 12, 
+      styles: [{
+        opt_textColor: 'white',
+        height: 78,
+        url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
+        width: 78
+        }]
     };
   mc = new MarkerClusterer(map, [], mcOptions);
   }
