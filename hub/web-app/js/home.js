@@ -19,13 +19,15 @@ function initMap() {
   }
   var layer = new google.maps.FusionTablesLayer({
   query: {
-    select: 'kml_4326',
+    select: 'json_4326',
     from: '1vRgso0NNIocWUXffTPM1ukqAS0H3L4a60aWq6g',
-    where: "name_1 CONTAINS IGNORING CASE 'aragón'"
+    where: "name_1 not equal to 'Aragón'"
   },styles: [{
+
+
     polygonOptions: {
-      fillColor: "#FF0000",
-      fillOpacity:0.1
+      fillColor: '#eaeaea',
+      visible: false
     }
   }]
   });
