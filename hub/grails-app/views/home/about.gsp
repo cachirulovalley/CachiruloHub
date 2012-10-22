@@ -54,7 +54,7 @@
 			<div ><a href="http://twitter.com/fperezpt">@fperezpt</a></div>
 		</div>
 		<div>
-			<div >Fernando Orus</div>
+			<div >Fernando Orús</div>
 			<div ><a href="http://twitter.com/ferorus">@ferorus</a></div>
 		</div>
 		<div>
