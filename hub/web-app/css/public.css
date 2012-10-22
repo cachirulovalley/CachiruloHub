@@ -29,8 +29,15 @@ textarea {
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
+html{
+  margin: 0;
+  padding: 0;
+}
 body {
-  font: 16px/26px 'Source Sans Pro', sans-serif;
+  font: 16px/26px 'Scada', sans-serif;
+  background: #1d1f26 url(../images/bg-map.jpg);
+  margin: 0;
+  padding: 0;
 }
 
 /* ===============
@@ -44,18 +51,27 @@ body {
    ========================================================================== */
    
 a{
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
 }   
 a:hover{
 	
 }
-   
+
+/******* CONTAINER *******/
+
+.main-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  margin-bottom: 25px;
+}
+
+/**** MAIN LAYOUT ****/
+
 .table {
   display: table;
   width: 100%;
+  border-collapse: collapse;
 }
 .table-row {
   display: table-row;
@@ -66,27 +82,38 @@ a:hover{
   height: 700px;
 }
 .main .main-left {
-	min-width: 300px;
+	min-width: 400px;
 	padding-right: 25px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 .main .main-right {
-  width: 80%;
- }
-.main .main-right .map {
+  width: 75%;
+  text-align: right;  
+  padding: 20px 20px 0px 0px;
+}
+
+
+/***** RIGHT: MAP *****/
+.main .main-right .map_container{
+  position: relative;
+  background-color: #141519;
+  padding: 20px;
+  border: 1px solid #373944;
+  z-index: 1;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+.main .main-right .map_container .map {
+  display: inline-block;
   position: relative;
   padding-bottom: 675px;
-  border: 1px solid #ccc;
-  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow:    0px 0p  50px rgba(0, 0, 0, 0.2);
-  box-shadow:         0px 0px 50px rgba(0, 0, 0, 0.2);
-  
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  
-  /* 16/9 ratio */
 
   padding-top: 30px;
+
   /* IE6 workaround*/
 
   height: 0;
@@ -94,17 +121,122 @@ a:hover{
   overflow: hidden;
 }
 
-#menu li{display: inline;}
-
 /***** SIDEBAR - MAIN LEFT *****/
 
-.widget_tags{
-	
+h1.title{
+  display: block;
+  width: 180px;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+ul#menu{
+  display: block;
+  position: relative;
+  margin: 20px -26px 0px 30px;
+  float: right;
+  background-color: #141419;
+  padding: 8px 20px;
+  border: 1px solid #373944;
+  border-right: none;
+  z-index: 2;
+
+  -webkit-border-radius: 7px 0px 0px 7px;
+  -moz-border-radius: 7px 0px 0px 7px;
+  border-radius: 7px 0px 0px 7px;
+}
+ul#menu li{
+  margin: 5px 0px;
+  list-style: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: right;
+}
+ul#menu li a{
+  color: #a4a9d6;
+  text-decoration: none;
+}
+ul#menu li a:hover{
+  color: #fff;
+}
+
+/*** SEARCH FORM ***/
+#searchForm{
+  display: block;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+#searchForm input.text{
+  display: inline-block;
+  width: 342px;
+  padding: 10px;
+  height: 18px;
+  font-size: 1.1em;
+  color: #444;
+  outline: none;
+  border: none;
+  background-color: #eee;
+  margin-right: -5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0px 0px 5px;
+}
+#searchForm input.submit{
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border: none;
+  line-height: 38px;
+  background: #eee url(../images/search.png) 4px 4px no-repeat;
+  cursor: pointer;
+
+  -webkit-border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.widget{
+  margin-bottom: 25px;
+}
+.widget h3{
+  display: inline-block;
+  color: #f0f0f0;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 30px 8px 30px;
+  background-color: #141519;
+  font-size: 24px;
+  text-align: center;
+  border: 1px solid #373944;
+  border-bottom: none;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 2;
+
+  -webkit-border-radius: 7px 7px 0px 0px;
+  -moz-border-radius: 7px 7px 0px 0px;
+  border-radius: 7px 7px 0px 0px;
+}
+.widget .widget_content{
+  position: relative;
+  z-index: 1;
+  background-color: #141519;
+  overflow: hidden;
+  border: 1px solid #373944;
+
+  -webkit-border-radius: 0px 7px 7px 7px;
+  -moz-border-radius: 0px 7px 7px 7px;
+  border-radius: 0px 7px 7px 7px;
+}
+
+/**** WIDGET: TAG CLOUD ****/
+.widget_tags .widget_content{
+  padding: 10px;
 }
 .widget_tags ul{
 	margin: 0;
 	padding: 0;
-	line-height: 30px;
+	line-height: 25px;
 	text-align: center;
 }
 .widget_tags ul li{
@@ -114,25 +246,22 @@ a:hover{
 }
 .widget_tags ul li a{
 	display: inline-block;
-	padding: 1px 4px;
+	padding: 1px 3px;
 	background-color: transparent;
 	text-decoration: none;
-	color: #0043EB;
+	color: #9dff8d;
+  line-height: 22px;
 	
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	
 	opacity: 0.8;
 	
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
 }
 .widget_tags ul li a:hover{
-	background-color: #0043EB;
-	color: #fff;
+	background-color: #fff;
+	color: #333;
 	text-decoration: none;
 	opacity: 1;
 }
@@ -140,12 +269,15 @@ a:hover{
 .widget_empresas{
 	
 }
+.widget_empresas .widget_content{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 .widget_empresas ul{
 	display: block;
 	margin: 0;
-	padding: 0;
-	height: 150px;
-	border: 1px solid #ddd;
+	padding: 15px;
+	height: 200px;
 	overflow-y: scroll;
 	position: relative;
 	vertical-align: middle;
@@ -153,43 +285,84 @@ a:hover{
 .widget_empresas ul li{
 	list-style: none;
 	display: table;
-	width: 100%;
-	padding: 5px 0px;
+  width: 100%;
 	background-color: transparent;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 	.widget_empresas ul li:nth-child(even){
-		background-color: #f0f0f0;
-		padding-top: 5px;
+		background-color: #1b1a20;
 	}
-	
-.widget_empresas ul li:hover{
-	background-color: #F9EC98;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-}
 
 .widget_empresas ul li .empresa_item{
 	display: table-row;
+  margin: 0;
+  padding: 0;
+}
+.widget_empresas ul li .empresa_item a{
+  display: block;
+  text-decoration: none;
+  color: #9dff8d;
+}
+.widget_empresas ul li .empresa_item a:hover{
+  background-color: #222029;
+  color: #fff;
 }
 .widget_empresas ul li .empresa_item span{
 	display: table-cell;
 	vertical-align: middle;
+  padding: 12px 12px 3px 12px;
+}
+.widget_empresas ul li .empresa_item span h4{
+  font-size: 1.3em;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+}
+.widget_empresas ul li .empresa_item span h6{
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+  font-weight: normal;
+  color: #3d3949;
+}
+.widget_empresas ul li .empresa_item a:hover span h6{
+  color: #858495;
 }
 .widget_empresas ul li .empresa_item span.img{
 	width: 50px;
 	padding-right: 20px;
 }
 
-/******* CONTAINER *******/
-.main-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-  display: block;
+/***** FOOTER *****/
+#footer{
+  margin-top: 5px;
+  background-color: #141519;
+  overflow: hidden;
+  color: #676675;
+  padding: 15px 20px 12px 20px;
+  text-align: center;
+  line-height: 1.1em;
+  font-size: 0.9em;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
+  #footer a{
+    text-decoration: none;
+    color: #9391a8;
+  }
+  #footer a:hover{
+    text-decoration: underline;
+  }
 
 /* ==========================================================================
    Media Queries
@@ -290,7 +463,8 @@ img.thumbnail {
   width: 50px;
 }
 
-div.overlay {
+.overlay {
+  display: none;
   position:absolute;
   left:20%;
   top:0px;

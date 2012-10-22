@@ -54,7 +54,7 @@ function updateList(data) {
 
   //make new rows
   $.each(data,function(index,company){
-    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><a href='company/show/" + company.id + "'>" + company.name + "</a></span></div></li>");
+    $("#tableBody").append("<li><div class='empresa_item'><a href='company/show/" + company.id + "'>" + "<span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><h4>" + company.name + "</h4><h6>http://www.cachirulovalley.com</h6></span></a></div></li>");
   });
 }	
 

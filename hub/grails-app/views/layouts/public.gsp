@@ -10,7 +10,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Scada:400,700' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
         <g:layoutHead/>
         <r:layoutResources />
@@ -22,47 +24,59 @@
         <div class="main-container table">
             <div class="main table-row clearfix">
                 <aside class="main-left table-cell">
-                        <header>
-                <h1 class="title"><g:link controller="home">CachiruloHub</g:link></h1>
-                <ul id="menu">
-                <g:if test="${!session.company}">
-                  <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Registrar una empresa</g:remoteLink></li>
-                  <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Entrar</g:remoteLink></li>
-                </g:if>
-                <g:else>
-                  <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
-                  <li><g:link controller="login" action="logout">Salir</g:link></li>
-                </g:else>
-                </ul>
-                <g:if test="${flash.message}">
-                  <div class="message" role="status">${flash.message}</div>
-                </g:if>
-                <h2 class="description">Tecnología de Aragón</h2>
-                        </header>
-                        <section>
-                          <form id="searchForm" >
-                            <g:textField name="text" id="searchText"/>
-                            <input type="submit" value="Buscar!" >
-                          </form>
-                          <div class="widget widget_tags">
-                            <g:render template="/home/tags"/>
+                    <header>
+                        <h1 class="title">
+                            <g:link controller="home"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="CachiruloHub"></g:link>
+                        </h1>
+
+                        <ul id="menu">
+                            <g:if test="${!session.company}">
+                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#overlay').show();">Añadir empresa</g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#overlay').show();">Iniciar sesión</g:remoteLink></li>
+                            </g:if>
+                            <g:else>
+                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#overlay').show();">Editar perfil</g:remoteLink></li>
+                              <li><g:link controller="login" action="logout">Salir</g:link></li>
+                            </g:else>
+                        </ul>
+
+                        <div class="clearfix"></div>
+
+                        <g:if test="${flash.message}">
+                          <div class="message" role="status">${flash.message}</div>
+                        </g:if>
+                    </header>
+                    <section>
+                        <form id="searchForm">
+                            <g:textField name="text" class="text" id="searchText" placeholder="Busca por palabra clave..." />
+                            <input type="submit" class="submit" value="" >
+                        </form>
+                        <div class="widget widget_tags">
+                            <h3>Etiquetas</h3>
+                            <div class="widget_content">
+                                <g:render template="/home/tags"/>
+                            </div>
+                        </div>
+                        <div class="widget widget_empresas">
+                          <h3>Empresas</h3>
+                          <div class="widget_content">
+                            <ul id="tableBody">
+                            </ul>
                           </div>
-                <div class="widget widget_empresas">
-                  <h3>Empresas</h3>
-                  <ul id="tableBody">
-                  </ul>
-                </div>
-                        </section>
-                        <!--div class="ocultar">
-                            <a href="">Ocultar mapa y ver listado completo</a>
-                        </div-->
-                        <footer>
-                            CachiruloHub 2012 - <g:link controller="home" action="about">Cachirulistas power</g:link> - #jodopetaca
-                        </footer>
+                        </div>
+                    </section>
+                    <!--div class="ocultar">
+                        <a href="">Ocultar mapa y ver listado completo</a>
+                    </div-->
+                    <footer id="footer">
+                        CachiruloHub 2012 | <g:link controller="home" action="about">Cachirulistas power</g:link> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                    </footer>
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <g:layoutBody/>
+                    <div class="map_container">
+                        <g:layoutBody/>
+                    </div>
                 </div><!-- .main-right -->
 
             </div> <!-- #main -->
