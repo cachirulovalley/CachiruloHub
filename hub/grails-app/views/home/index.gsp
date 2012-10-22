@@ -12,7 +12,7 @@
       <div class="map" id="map_canvas"></div>
       <div class="panel" id="panel"> 
         <div class="panelContent" id="panelContent"> </div>
-        <a href="#" onClick="$('#panel').hide();">Cerrar</a>
+        <a href="#" onClick="$('#panel').hide();"><g:message code="hub.home.close"/></a>
       </div>
   </body>
 </html>

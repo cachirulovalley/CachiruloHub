@@ -14,6 +14,7 @@
         <link href='http://fonts.googleapis.com/css?family=Scada:400,700' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
+        <g:javascript library="jquery"/>        
         <g:layoutHead/>
         <r:layoutResources />
     </head>
@@ -24,20 +25,26 @@
         <div class="main-container table">
             <div class="main table-row clearfix">
                 <aside class="main-left table-cell">
-<<<<<<< HEAD
                     <header>
                         <h1 class="title">
                             <g:link controller="home"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="CachiruloHub"></g:link>
                         </h1>
 
                         <ul id="menu">
+                            <li>
+                                <label for="title"><g:message code="hub.layout.public.language"/></label>
+                                <select id="lang" name="lang">                      
+                                    <option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.public.English"/></option>
+                                    <option value="es" <g:langCode code='es'>selected</g:langCode>><g:message code="hub.layout.public.Spanish"/></option>                           
+                                </select>           
+                            </li>
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#panel').show();">Añadir empresa</g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#panel').show();">Iniciar sesión</g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#panel').show();">Editar perfil</g:remoteLink></li>
-                              <li><g:link controller="login" action="logout">Salir</g:link></li>
+                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>
 
@@ -49,17 +56,17 @@
                     </header>
                     <section>
                         <form id="searchForm">
-                            <g:textField name="text" class="text" id="searchText" placeholder="Busca por palabra clave..." />
+                            <g:textField name="text" class="text" id="searchText" placeholder="${message(code:'hub.layout.public.search')}" />
                             <input type="submit" class="submit" value="" >
                         </form>
                         <div class="widget widget_tags">
-                            <h3>Etiquetas</h3>
+                            <h3><g:message code="hub.template.tags.tags"/></h3>
                             <div class="widget_content">
                                 <g:render template="/home/tags"/>
                             </div>
                         </div>
                         <div class="widget widget_empresas">
-                          <h3>Empresas</h3>
+                          <h3><g:message code="hub.layout.public.companies"/></h3>
                           <div class="widget_content">
                             <ul id="tableBody">
                             </ul>
@@ -90,7 +97,8 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        <g:javascript library="application"/>
+        <g:javascript src="publicLayout.js"/>
+        <g:javascript library="application"/>        
         <r:layoutResources />
     </body>
 </html>
