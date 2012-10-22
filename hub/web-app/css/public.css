@@ -276,7 +276,7 @@ ul#menu li a:hover{
 .widget_empresas ul{
 	display: block;
 	margin: 0;
-	padding: 15px;
+	padding: 0px 15px;
 	height: 200px;
 	overflow-y: scroll;
 	position: relative;
