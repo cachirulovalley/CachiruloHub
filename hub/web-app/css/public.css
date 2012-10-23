@@ -81,14 +81,16 @@ a:hover{
   vertical-align: top;
   height: 700px;
 }
+
 .main .main-left {
+  width: 25%;
 	min-width: 400px;
 	padding-right: 25px;
   padding-left: 20px;
   padding-top: 20px;
 }
 .main .main-right {
-  width: 75%;
+  width: 70%;
   text-align: right;  
   padding: 20px 20px 0px 0px;
 }
@@ -126,17 +128,18 @@ a:hover{
 h1.title{
   display: block;
   width: 180px;
-  margin: 0;
+  margin: 25px 0px 0px 0px;
   padding: 0;
   float: left;
 }
 ul#menu{
   display: block;
+  width: 180px;
   position: relative;
   margin: 20px -26px 0px 30px;
   float: right;
   background-color: #141419;
-  padding: 8px 20px;
+  padding: 8px 20px 8px 0px;
   border: 1px solid #373944;
   border-right: none;
   z-index: 2;
@@ -149,7 +152,6 @@ ul#menu li{
   margin: 5px 0px;
   list-style: none;
   font-weight: bold;
-  font-size: 1.1em;
   text-align: right;
 }
 ul#menu li a{
@@ -353,14 +355,38 @@ ul#menu li a:hover{
   text-align: center;
   line-height: 1.1em;
   font-size: 0.9em;
-
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
+  border-top: 1px solid #373944;
 }
+  #footer .footer_content{
+    width: 960px;
+    margin: 0 auto;
+  }
+  #footer .footer_content .footer_lang{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  #footer .footer_content .footer_text{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  #footer a.cachirulo_logo{
+    opacity: 0.3;
+
+    transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s; /* Firefox 4 */
+    -webkit-transition: opacity 0.5s; /* Safari and Chrome */
+    -o-transition: opacity 0.5s; /* Opera */
+  }
+  #footer a.cachirulo_logo:hover{
+    opacity: 1;
+  }
+  
   #footer a{
     text-decoration: none;
     color: #9391a8;
+  }
+  #footer a.power{
+    color: #5fb66c;
   }
   #footer a:hover{
     text-decoration: underline;

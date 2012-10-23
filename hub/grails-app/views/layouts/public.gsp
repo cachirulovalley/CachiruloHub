@@ -32,13 +32,6 @@
                         </h1>
 
                         <ul id="menu">
-                            <li>
-                                <label for="title"><g:message code="hub.layout.public.language"/></label>
-                                <select id="lang" name="lang">                      
-                                    <option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.public.English"/></option>
-                                    <option value="es" <g:langCode code='es'>selected</g:langCode>><g:message code="hub.layout.public.Spanish"/></option>                           
-                                </select>           
-                            </li>
                             <g:if test="${!session.company}">
                               <li><g:remoteLink controller="register" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
                               <li><g:remoteLink controller="login" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
@@ -77,9 +70,6 @@
                     <!--div class="ocultar">
                         <a href="">Ocultar mapa y ver listado completo</a>
                     </div-->
-                    <footer id="footer">
-                        CachiruloHub 2012 | <g:remoteLink controller="home" action="about" update="content_containter" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
-                    </footer>
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
@@ -88,8 +78,28 @@
                     </div>
                 </div><!-- .main-right -->
 
+                <div class="clearfix"></div>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
+        <footer id="footer">
+            <div class="footer_content">
+                <div class="footer_lang">
+                    <label for="title"><g:message code="hub.layout.public.language"/></label>
+                    <select id="lang" name="lang">                      
+                        <option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.public.English"/></option>
+                        <option value="es" <g:langCode code='es'>selected</g:langCode>><g:message code="hub.layout.public.Spanish"/></option>
+                    </select> 
+                </div>
+                <div class="footer_text">
+                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink controller="home" action="about" class="power" update="content_containter" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                </div>
+                <a class="cachirulo_logo" href="http://www.cachirulovalley.com">
+                    <img src="${resource(dir: 'images', file: 'cachirulo_valley.png')}" alt="Logotipo de Cachirulo Valley" />
+                </a>
+                <div class="clearfix"></div>
+            </div>
+           
+        </footer>
         <input type="hidden" id="baseUrl" value="<g:resource dir="/"/>"/>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
