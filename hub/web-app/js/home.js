@@ -64,7 +64,7 @@ function updateList(data) {
 
   //make new rows
   $.each(data,function(index,company){
-    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='"+ baseUrl +"company/logo/" + company.id + "'/></span><span><a href='"+baseUrl+"company/show/" + company.id + "' onclick='return showCompany(" + company.id + ")'>" + company.name + "</a><h6>"+company.web+"</h6></span></div></li>");
+    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='"+ company.logoSrc + "'/></span><span><a href='"+baseUrl+"company/show/" + company.id + "' onclick='return showCompany(" + company.id + ")'>" + company.name + "</a><h6>"+company.web+"</h6></span></div></li>");
   });
 }	
 
