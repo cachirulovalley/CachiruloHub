@@ -30,7 +30,7 @@ class HomeController {
         render(contentType: "text/json") {
                 array {
                     companies.each{
-                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude, positionId: it.positionId, web: it.web?:"")
+                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude, positionId: it.positionId, web: it.web?:"", logoSrc:it.logo?g.createLink(controller:'company', action:'logo', id: it.id):resource(dir:'images', file:'avatar_default.jpg'))
                     }
                 }
         }

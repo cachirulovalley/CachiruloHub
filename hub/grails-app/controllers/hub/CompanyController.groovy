@@ -145,16 +145,14 @@ class CompanyController {
 
     def logo(Long id) {
         def companyInstance = Company.get(id)
-        if (!companyInstance) {
+        if (!companyInstance || !companyInstance.logo) {
             response.status = 404;
             return
-        }else{
-            byte[] content = companyInstance.logo
-            if(!content){
-                content = new File("web-app/images/avatar_default.jpg").bytes
-            }
-            response.setContentLength(content.size())
-            response.outputStream.write(content)    
         }
+
+        byte[] content = companyInstance.logo
+        response.setContentLength(content.size())
+        response.outputStream.write(content)
     }
+
 }
