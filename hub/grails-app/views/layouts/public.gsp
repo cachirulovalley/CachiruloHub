@@ -33,11 +33,11 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="panelContent" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="panelContent" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink controller="company" action="edit" update="content" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
                               <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>

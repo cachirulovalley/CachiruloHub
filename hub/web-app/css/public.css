@@ -497,7 +497,7 @@ img.thumbnail {
 }
 div.panel{
   position:absolute;
-  left:20%;
-  top:0px;
-  background-color:#00ff00;
+  left: 0px;
+  top: 0px;
+  background-color: #00ff00;
 }
