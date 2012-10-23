@@ -4,6 +4,8 @@ var mc;
 var markersArray=[];
 var infoWindow = new google.maps.InfoWindow();
 
+var baseUrl
+
 function initMap() {
   var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
   var mapOptions = {
@@ -51,7 +53,7 @@ function initMap() {
 function fetchCompanies(text) {
   $('#searchText').val(text);
   //With API HUB JSON get the TIC companies to refresh map
-  $.getJSON('home/queryJSON', {format: "json", text: text}, function(data) { 
+  $.getJSON(baseUrl + 'home/queryJSON', {format: "json", text: text}, function(data) { 
     updateList(data);
     updateMap(data);
   });
@@ -62,7 +64,7 @@ function updateList(data) {
 
   //make new rows
   $.each(data,function(index,company){
-    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='company/logo/" + company.id + "'/></span><span><a href='#' onclick='showCompany(" + company.id + ")'>" + company.name + "</a><h6>"+company.web+"</h6></span></div></li>");
+    $("#tableBody").append("<li><div class='empresa_item'><span class='img'><img class='thumbnail' src='"+ baseUrl +"company/logo/" + company.id + "'/></span><span><a href='"+baseUrl+"company/show/" + company.id + "' onclick='return showCompany(" + company.id + ")'>" + company.name + "</a><h6>"+company.web+"</h6></span></div></li>");
   });
 }	
 
@@ -107,7 +109,7 @@ function attachClickEvent(marker) {
     infoWindow.content = ""
     $.each(marker.companies,function(index,company){
         var company = marker.companies[index]
-        infoWindow.content += "<b><a href='company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
+        infoWindow.content += "<b><a onclick='return showCompany(" + company.id + ")' href='"+ baseUrl +"company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
     });
     infoWindow.open(map, marker);
   });
@@ -116,14 +118,15 @@ function attachClickEvent(marker) {
 
 function showCompany(id) {
   $.ajax({
-    url:'/hub/company/show/' + id,
-    success:function(data,textStatus) {jQuery('#panelContent').html(data);},
-    error:function(XMLHttpRequest,textStatus,errorThrown){},
-    complete:function(XMLHttpRequest,textStatus){$('#panel').show();}
+    url: baseUrl + 'company/show/' + id,
+    success:function(data,textStatus) {jQuery('#content_containter').html(data);},
+    error:function(XMLHttpRequest,textStatus,errorThrown){}
   });
+  return false;
 }
 
 $(document).ready(function() {
+  baseUrl = $('#baseUrl').val();
   $('#panel').hide();
   $('#searchForm').submit(function() {
     fetchCompanies($('#searchText').val());

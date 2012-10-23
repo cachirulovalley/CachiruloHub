@@ -14,9 +14,10 @@
         <link href='http://fonts.googleapis.com/css?family=Scada:400,700' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
-        <g:javascript library="jquery"/>        
-        <g:layoutHead/>
+        <g:javascript library="jquery"/>
         <r:layoutResources />
+        <g:layoutHead/>
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -77,26 +78,26 @@
                         <a href="">Ocultar mapa y ver listado completo</a>
                     </div-->
                     <footer id="footer">
-                        CachiruloHub 2012 | <g:remoteLink controller="home" action="about" update="panelContent" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                        CachiruloHub 2012 | <g:remoteLink controller="home" action="about" update="content_containter" onComplete="\$('#panel').show();">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                     </footer>
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <div class="map_container">
+                    <div class="map_container" id="content_containter">
                         <g:layoutBody/>
                     </div>
                 </div><!-- .main-right -->
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
-
-
+        <input type="hidden" id="baseUrl" value="<g:resource dir="/"/>"/>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+        
         <g:javascript src="publicLayout.js"/>
         <g:javascript library="application"/>        
         <r:layoutResources />
