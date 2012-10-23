@@ -8,10 +8,11 @@ class LoginController {
 		def company = Company.findByEmailAndPassword(params.email, pass)
 		if(company){
 			session.company = company
-			redirect(controller:'company', action:'edit', id:company.id)
+			//redirect(controller:'company', action:'edit', id:company.id)
 		}else{
-		    render(model:[error: 'login.failed'], view: 'index')
+		    //render(model:[error: 'login.failed'], view: 'index')
 		}
+		redirect(controller: 'home')
 	}
 	def logout(){
 		session.company=null
