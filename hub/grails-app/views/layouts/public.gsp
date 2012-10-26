@@ -33,11 +33,11 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="panelContent" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="panelContent" onComplete="\$('#panel').show();"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink controller="company" action="edit" update="content_container"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
                               <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>
@@ -73,13 +73,11 @@
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <div class="map_container"><!--contains content_container and the floating panel always over it-->
-                        <div id="content_container"><!--contains layoutBody or html from ajax-->
-                            <g:layoutBody/>
-                        </div>
+                    <div class="map_container">
+                        <g:layoutBody/>
                         <div class="panel" id="panel">
+                            <button id="closeButton" onClick="hidePanel();"><g:message code="hub.home.close"/></button>
                             <div class="panelContent" id="panelContent"> </div>
-                            <a href="#" onClick="$('#panel').hide();" class="close"><g:message code="hub.home.close"/></a>
                         </div>
                     </div>
                 </div><!-- .main-right -->
