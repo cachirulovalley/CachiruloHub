@@ -119,7 +119,7 @@ function attachClickEvent(marker) {
 function showCompany(id) {
   $.ajax({
     url: baseUrl + 'company/show/' + id,
-    success:function(data,textStatus) {jQuery('#content_containter').html(data);},
+    success:function(data,textStatus) {jQuery('#content_container').html(data);},
     error:function(XMLHttpRequest,textStatus,errorThrown){}
   });
   return false;

@@ -73,8 +73,14 @@
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <div class="map_container" id="content_containter">
-                        <g:layoutBody/>
+                    <div class="map_container"><!--contains content_container and the floating panel always over it-->
+                        <div id="content_container"><!--contains layoutBody or html from ajax-->
+                            <g:layoutBody/>
+                        </div>
+                        <div class="panel" id="panel">
+                            <div class="panelContent" id="panelContent"> </div>
+                            <a href="#" onClick="$('#panel').hide();" class="close"><g:message code="hub.home.close"/></a>
+                        </div>
                     </div>
                 </div><!-- .main-right -->
 

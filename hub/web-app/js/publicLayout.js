@@ -22,3 +22,8 @@ function parseLanguage(location,language) {
 		}
 	} 
 }
+
+$(document).ready(function() {
+  $('#panel').hide();
+});
+
