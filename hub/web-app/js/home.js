@@ -152,5 +152,23 @@ $(document).ready(function() {
   });
   initMap();
   fetchCompanies();
+
+  switch (window.location.hash) {
+  case '#login':
+    $('#loginLink').click();
+    break;
+  case '#logout':
+    $('#logoutLink').click();
+    break;
+  case '#register':
+    $('#registerLink').click();
+    break;
+  case '#edit':
+    $('#editLink').click();
+    break;
+  case '#about':
+    $('#aboutLink').click();
+    break;
+  }
 });
 

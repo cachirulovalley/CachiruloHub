@@ -33,12 +33,12 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink id="registerLink" controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink id="loginLink" controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
-                              <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
+                              <li><g:remoteLink id="editLink" controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:link id="logoutLink" controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>
 
@@ -95,7 +95,7 @@
                     </select> 
                 </div>
                 <div class="footer_text">
-                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink id="aboutLink" controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                 </div>
                 <a class="cachirulo_logo" href="http://www.cachirulovalley.com">
                     <img src="${resource(dir: 'images', file: 'cachirulo_valley.png')}" alt="Logotipo de Cachirulo Valley" />

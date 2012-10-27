@@ -41,7 +41,8 @@ class CompanyController {
                 companyInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'company.label', default: 'Company')] as Object[],
                           "Another user has updated this Company while you were editing")
-                render(view: "edit", model: [companyInstance: companyInstance])
+                //render(view: "edit", model: [companyInstance: companyInstance])
+                redirect(controller: "home", fragment: "edit")
                 return
             }
         }
@@ -62,12 +63,14 @@ class CompanyController {
         companyInstance.persistTags(params.tags)
 
         if (!companyInstance.save(flush: true)) {
-            render(view: "edit", model: [companyInstance: companyInstance])
+            //render(view: "edit", model: [companyInstance: companyInstance])
+            redirect(controller: "home", fragment: "edit")
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
-        redirect(action: "show", id: companyInstance.id)
+        //redirect(action: "show", id: companyInstance.id)
+        redirect(controller: "home") //TODO: show the updated company, pass id in fragment
     }
 
   def updatePerfil() {
@@ -75,7 +78,8 @@ class CompanyController {
         
 	if (!companyInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
-            redirect(action: "list")
+            //redirect(action: "list")
+            redirect(controller: "home")
             return
         } 
 	/*
@@ -94,8 +98,9 @@ class CompanyController {
         if(!oldPasswordCorrect) {
 	    //TODO: falla rejectValue investigar
             //companyInstance.errors.rejectValue('oldpassword', 'oldpassword.incorrect', 'Contraseña actual incorrecta')
-	    companyInstance.errors.reject('oldpassword.incorrect', 'Contraseña actual incorrecta')
-	    render(view: "edit", model: [companyInstance: companyInstance])
+	        companyInstance.errors.reject('oldpassword.incorrect', 'Contraseña actual incorrecta')
+            //render(view: "edit", model: [companyInstance: companyInstance])
+            redirect(controller: "home", fragment: "edit")
             return
         }
 	//companyInstance.password = params['newpassword'] ?: companyInstance.password
@@ -107,7 +112,8 @@ class CompanyController {
 	//if( companyInstance.isDirty() ){
 	if(!(params['email'] || params['password'] )){
 	    flash.message = message(code: 'default.noupdated.message', default: "Nada que actualizar")
-	    render(view: "edit", model: [companyInstance: companyInstance])          
+	    //render(view: "edit", model: [companyInstance: companyInstance])
+        redirect(controller: "home", fragment: "edit")
 	    return
 	}
 
@@ -121,7 +127,8 @@ class CompanyController {
 	}else{
 	    	flash.message = message(code: 'default.updated.message', args: [message(code: 'perfil.label', default: 'Perfil'), ''])
 	}
-        redirect(action: "edit", id: companyInstance.id)
+        //redirect(action: "edit", id: companyInstance.id)
+        redirect(controller: "home", fragment: "edit")
     }
 
     def delete(){
