@@ -492,12 +492,21 @@ img.thumbnail {
 }
 
 
-.overlay {
-  display: none;
-}
-div.panel{
+#panel{
   position:absolute;
   left: 0px;
   top: 0px;
-  background-color: #00ff00;
+  border: 1px solid #373944;
+  background-color: #141519;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
+#panelContent {
+  padding:20px;
+}
+#closeButton {
+  float:left;
+  margin:20px 0px 0px 20px;
+}
+

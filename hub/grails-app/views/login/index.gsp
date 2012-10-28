@@ -22,6 +22,6 @@
 		<br>
 		<input type="submit" value="<g:message code="hub.login.enter"/>">
 	</g:form>
-	<g:link controller="recoverPassword"><g:message code="hub.login.recover"/></g:link>
+  <g:remoteLink id="recoverLink" controller="recoverPassword" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.login.recover"/></g:remoteLink>
 	</body>
 </html>

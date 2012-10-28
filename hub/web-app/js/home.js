@@ -119,10 +119,28 @@ function attachClickEvent(marker) {
 function showCompany(id) {
   $.ajax({
     url: baseUrl + 'company/show/' + id,
-    success:function(data,textStatus) {jQuery('#content_containter').html(data);},
+    success:function(data,textStatus) {
+      $('#panelContent').html(data);
+      showPanel(true);
+    },
     error:function(XMLHttpRequest,textStatus,errorThrown){}
   });
   return false;
+}
+
+function showPanel(big) {
+  if (big) {
+    $('#panel').css({ height: "100%", width: "100%" });
+  }
+  else {
+    $('#panel').css({ height: "", width: ""});
+  }
+    $('#panel').show();
+}
+
+function hidePanel() {
+      $('#panel').css({ height: "", width: ""});
+      $('#panel').hide();
 }
 
 $(document).ready(function() {
@@ -134,5 +152,23 @@ $(document).ready(function() {
   });
   initMap();
   fetchCompanies();
+
+  switch (window.location.hash) {
+  case '#login':
+    $('#loginLink').click();
+    break;
+  case '#logout':
+    $('#logoutLink').click();
+    break;
+  case '#register':
+    $('#registerLink').click();
+    break;
+  case '#edit':
+    $('#editLink').click();
+    break;
+  case '#about':
+    $('#aboutLink').click();
+    break;
+  }
 });
 

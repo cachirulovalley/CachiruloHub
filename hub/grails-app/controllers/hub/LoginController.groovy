@@ -12,7 +12,7 @@ class LoginController {
 		}else{
 		    //render(model:[error: 'login.failed'], view: 'index')
 		}
-		redirect(controller: 'home')
+		redirect(controller: 'home', fragment: 'login')
 	}
 	def logout(){
 		session.company=null
