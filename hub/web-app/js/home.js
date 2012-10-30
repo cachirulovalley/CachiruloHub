@@ -33,7 +33,7 @@ function initMap() {
     }
   }]
   });
-  layer.setMap(map);
+  //layer.setMap(map);
   if(!mc){
     var mcOptions = {
       gridSize: 25, 
@@ -47,6 +47,10 @@ function initMap() {
     };
   mc = new MarkerClusterer(map, [], mcOptions);
   }
+  google.maps.event.addListener(map, 'click',
+    function(){
+      infoWindow.close();
+    });
 
 }
 
@@ -115,6 +119,7 @@ function attachClickEvent(marker) {
   });
 
 }
+
 
 function showCompany(id) {
   $.ajax({
