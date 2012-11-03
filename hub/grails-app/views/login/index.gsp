@@ -7,6 +7,7 @@
 		<title><g:message code="hub.login.title"/></title>
 	</head>
 	<body>
+		<div class="page_content">
 	<g:if test="${flash.message}">
 		<div class="message">${flash.message}</div>
 	</g:if>
@@ -23,5 +24,6 @@
 		<input type="submit" value="<g:message code="hub.login.enter"/>">
 	</g:form>
   <g:remoteLink id="recoverLink" controller="recoverPassword" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.login.recover"/></g:remoteLink>
+	</div>
 	</body>
 </html>

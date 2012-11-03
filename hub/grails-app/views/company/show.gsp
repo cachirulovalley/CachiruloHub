@@ -9,7 +9,7 @@
 	</head>
 	<body>		
 
-		<div id="show-company"  role="main">
+		<div class="page_content">
 			<g:if test="${flash.message}">
 			<div  role="status">${flash.message}</div>
 			</g:if>

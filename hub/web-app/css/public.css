@@ -51,6 +51,7 @@ body {
    ========================================================================== */
    
 a{
+  color: #a4a9d6;
 }   
 a:hover{
 	
@@ -510,3 +511,14 @@ img.thumbnail {
   margin:20px 0px 0px 20px;
 }
 
+.page_content{
+  background-color: #fff;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  padding-left: 15px;
+  padding-top: 15px;
+  text-align: left;
+  color: #444;
+  margin-top: 5px;
+}

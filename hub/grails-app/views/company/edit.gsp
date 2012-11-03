@@ -9,7 +9,7 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div>
+		<div class="page_content">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
@@ -32,7 +32,7 @@
 				</fieldset>
 			</g:form>
 		</div>
-		<div>
+		<div class="page_content">
 			<h1><g:message code="default.edit.label" args="[perfilName]" /></h1>
 			<g:form method="post" >
 				<fieldset>
@@ -44,7 +44,7 @@
 			</g:form>
 		</div>
 
-		<div>
+		<div class="page_content">
 			<h1>Quiero eliminar mi perfil</h1>
 			<g:form method="post" >
 				<fieldset>

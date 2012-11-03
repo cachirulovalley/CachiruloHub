@@ -7,6 +7,7 @@
 		<title>About</title>
 	</head>
 	<body>
+		<div class="page_content">
 		<p>Esta web pretende servir como directorio y mapa para conocer las empresas IT en Aragón. Saber quiénes somos, cuántos y dónde estamos</p>
 
 		<p>La idea de este proyecto surge originalmente dentro del colectivo <a href="http://cachirulovalley.com/">Cachirulo Valley</a>, pero ha sido posible gracias a la comunidad de  diseñatas, marketinianos, picateclas y demás fauna del valle del cachirulo. <br/><br/>
@@ -71,5 +72,6 @@
 		</ul>
 		<br/>
 		Gracias a todos, majos.
+		</div>
 	</body>
 </html>

@@ -6,6 +6,7 @@
 		<title>Login</title>
 	</head>
 	<body>
+		<div class="page_content">
 		<g:form action="save">
 			Nombre: <g:textField name="name" required="" value="${companyInstance?.name}"/>
 			<br/>
@@ -17,5 +18,6 @@
 			<br/>
 			<input type="submit" value="Registrarse!">
 		</g:form>
+		</div>
 	</body>
 </html>
