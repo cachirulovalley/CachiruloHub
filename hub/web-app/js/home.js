@@ -161,10 +161,8 @@ $(document).ready(function() {
     return false;
   });
   
-  
   initMap();
-
-  //fetchCompanies();
+  fetchCompanies();
 
   switch (window.location.hash) {
   case '#login':
