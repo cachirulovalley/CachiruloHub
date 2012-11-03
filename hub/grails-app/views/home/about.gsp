@@ -42,6 +42,9 @@
 			Guillermo Latorre <a href="http://twitter.com/superwillyfoc">@superwillyfoc</a>
 		</li>
 		<li>
+			Francho Joven<a href="http://twitter.com/francho_lab">@francho_lab</a>
+		</li>
+		<li>
 			Fernando Pérez <a href="http://twitter.com/ferpega_">@ferpega_</a>
 		</li>
 		<li>

@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
         <g:javascript library="jquery"/>
         <r:layoutResources />
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <g:javascript src="markerclusterer.js" />
+        <g:javascript src="home.js"/>
         <g:layoutHead/>
         
     </head>
