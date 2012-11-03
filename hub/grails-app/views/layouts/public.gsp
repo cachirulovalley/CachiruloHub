@@ -33,12 +33,12 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink id="registerLink" controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink id="loginLink" controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink id="editLink" controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
-                              <li><g:link id="logoutLink" controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
+                              <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>
 
@@ -49,6 +49,13 @@
                         </g:if>
                     </header>
                     <section>
+                        <div class="widget widget_empresas">
+                          <h3><g:message code="hub.layout.public.companies"/></h3>
+                          <div class="widget_content">
+                            <ul id="tableBody">
+                            </ul>
+                          </div>
+                        </div>
                         <form id="searchForm">
                             <g:textField name="text" class="text" id="searchText" placeholder="${message(code:'hub.layout.public.search')}" />
                             <input type="submit" class="submit" value="" >
@@ -59,17 +66,7 @@
                                 <g:render template="/home/tags"/>
                             </div>
                         </div>
-                        <div class="widget widget_empresas">
-                          <h3><g:message code="hub.layout.public.companies"/></h3>
-                          <div class="widget_content">
-                            <ul id="tableBody">
-                            </ul>
-                          </div>
-                        </div>
                     </section>
-                    <!--div class="ocultar">
-                        <a href="">Ocultar mapa y ver listado completo</a>
-                    </div-->
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
