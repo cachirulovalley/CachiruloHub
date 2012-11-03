@@ -66,7 +66,7 @@
                         <div class="widget widget_tags">
                             <h3><g:message code="hub.template.tags.tags"/></h3>
                             <div class="widget_content">
-                                <g:render template="/home/tags"/>
+                                <g:tags/>
                             </div>
                         </div>
                     </section>
@@ -95,7 +95,7 @@
                     </select> 
                 </div>
                 <div class="footer_text">
-                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink id="aboutLink" controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                 </div>
                 <a class="cachirulo_logo" href="http://www.cachirulovalley.com">
                     <img src="${resource(dir: 'images', file: 'cachirulo_valley.png')}" alt="Logotipo de Cachirulo Valley" />

@@ -4,9 +4,6 @@ import grails.converters.*
 class HomeController {
 
     def index() {
-        def tags = Tag.list()
-        Collections.shuffle(tags)
-        [tags: tags]
     }
 
     def query() {
