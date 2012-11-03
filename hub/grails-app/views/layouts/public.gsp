@@ -56,6 +56,7 @@
                           <h3><g:message code="hub.layout.public.companies"/></h3>
                           <div class="widget_content">
                             <ul id="tableBody">
+                                <g:companies/>
                             </ul>
                           </div>
                         </div>

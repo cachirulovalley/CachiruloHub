@@ -10,5 +10,6 @@ class SidebarTagLib {
 
     def companies = { attrs, body ->	
 		def companies = Company.list()
+		out << render(template:"/home/companies", model:[companies: companies])
     }
 }

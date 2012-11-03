@@ -164,7 +164,7 @@ $(document).ready(function() {
   
   initMap();
 
-  fetchCompanies();
+  //fetchCompanies();
 
   switch (window.location.hash) {
   case '#login':
