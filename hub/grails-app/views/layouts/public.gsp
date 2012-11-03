@@ -76,7 +76,7 @@
                     <div class="map_container">
                         <g:layoutBody/>
                         <div class="panel" id="panel">
-                            <button id="closeButton" onClick="hidePanel();"><g:message code="hub.home.close"/></button>
+                            <a href="#" onClick="hidePanel();"><img src="${resource(dir: 'images', file: 'close_icon.png')}" alt="Cerrar"/></a>
                             <div class="panelContent" id="panelContent"> </div>
                         </div>
                     </div>
