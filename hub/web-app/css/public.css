@@ -51,6 +51,7 @@ body {
    ========================================================================== */
    
 a{
+  color: #a4a9d6;
 }   
 a:hover{
 	
@@ -91,7 +92,6 @@ a:hover{
 }
 .main .main-right {
   width: 70%;
-  text-align: right;  
   padding: 20px 20px 0px 0px;
 }
 

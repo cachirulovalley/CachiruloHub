@@ -7,47 +7,53 @@ var infoWindow = new google.maps.InfoWindow();
 var baseUrl
 
 function initMap() {
-  var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
-  var mapOptions = {
-    zoom: 8,
-    center: myLatlng,
-    disableDefaultUI: true,
-    zoomControl:true,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  
-  if(!map){
-    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-  }
-  var layer = new google.maps.FusionTablesLayer({
-  query: {
-    select: 'json_4326',
-    from: '1vRgso0NNIocWUXffTPM1ukqAS0H3L4a60aWq6g',
-    where: "name_1 not equal to 'Aragón'"
-  },styles: [{
-
-
-    polygonOptions: {
-      fillColor: '#eaeaea',
-      visible: false
+  map_canvas = $("#map_canvas").get(0);
+  if(map_canvas){
+    var myLatlng = new google.maps.LatLng(41.6567,-0.8780);
+    var mapOptions = {
+      zoom: 8,
+      center: myLatlng,
+      disableDefaultUI: true,
+      zoomControl:true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-  }]
-  });
-  layer.setMap(map);
-  if(!mc){
-    var mcOptions = {
-      gridSize: 25, 
-      maxZoom: 12, 
-      styles: [{
-        opt_textColor: 'white',
-        height: 78,
-        url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
-        width: 78
-        }]
-    };
-  mc = new MarkerClusterer(map, [], mcOptions);
-  }
+    
+    if(!map){
+      map = new google.maps.Map(map_canvas  , mapOptions);
+    }
+    var layer = new google.maps.FusionTablesLayer({
+    query: {
+      select: 'json_4326',
+      from: '1vRgso0NNIocWUXffTPM1ukqAS0H3L4a60aWq6g',
+      where: "name_1 not equal to 'Aragón'"
+    },styles: [{
 
+
+      polygonOptions: {
+        fillColor: '#eaeaea',
+        visible: false
+      }
+    }]
+    });
+    //layer.setMap(map);
+    if(!mc){
+      var mcOptions = {
+        gridSize: 25, 
+        maxZoom: 12, 
+        styles: [{
+          opt_textColor: 'white',
+          height: 78,
+          url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
+          width: 78
+          }]
+      };
+    mc = new MarkerClusterer(map, [], mcOptions);
+    }
+    google.maps.event.addListener(map, 'click',
+      function(){
+        infoWindow.close();
+      });
+  }
 }
 
 function fetchCompanies(text) {
@@ -73,35 +79,38 @@ function updateMap(data) {
   //$.each(markers,function(index,item){
   //  item.setMap(null);
   //});
-  mc.clearMarkers();
-  markersArray=[];
-  //make new markers
-  var markers={};
- $.each(data,function(index,company){
-      if(company.latitude==null || company.longitude==null
-      //Temporal: hasta que los datos sean correctos
-      || company.latitude==1 || company.longitude==1
-      ){
-	return true; /*continue;*/
-      }
-    
-      var marker = markers[company.positionId]
-      if(marker){
-          marker.companies.push(company)
-	  return true; /*continue;*/
-      }
+  map_canvas = $("#map_canvas").get(0);
+  if(map_canvas){
+    mc.clearMarkers();
+    markersArray=[];
+    //make new markers
+    var markers={};
+   $.each(data,function(index,company){
+        if(company.latitude==null || company.longitude==null
+        //Temporal: hasta que los datos sean correctos
+        || company.latitude==1 || company.longitude==1
+        ){
+  	return true; /*continue;*/
+        }
       
-      var location = new google.maps.LatLng(company.latitude, company.longitude);
-      marker = new google.maps.Marker({position: location});
-      marker.setTitle(company.name);
-      marker.companies = [company];
-      
-      markers[company.positionId] = marker;
-      markersArray.push(marker);
-      
-      attachClickEvent(marker);
-  });
-  mc.addMarkers(markersArray);
+        var marker = markers[company.positionId]
+        if(marker){
+            marker.companies.push(company)
+  	  return true; /*continue;*/
+        }
+        
+        var location = new google.maps.LatLng(company.latitude, company.longitude);
+        marker = new google.maps.Marker({position: location});
+        marker.setTitle(company.name);
+        marker.companies = [company];
+        
+        markers[company.positionId] = marker;
+        markersArray.push(marker);
+        
+        attachClickEvent(marker);
+    });
+    mc.addMarkers(markersArray);
+  }
 }
 
 function attachClickEvent(marker) {
@@ -115,6 +124,7 @@ function attachClickEvent(marker) {
   });
 
 }
+
 
 function showCompany(id) {
   $.ajax({
@@ -154,6 +164,7 @@ $(document).ready(function() {
     fetchCompanies($('#searchText').val());
     return false;
   });
+  
   initMap();
   fetchCompanies();
 

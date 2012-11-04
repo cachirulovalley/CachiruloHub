@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'public.css')}" type="text/css">
         <g:javascript library="jquery"/>
         <r:layoutResources />
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <g:javascript src="markerclusterer.js" />
+        <g:javascript src="home.js"/>
         <g:layoutHead/>
         
     </head>
@@ -33,12 +36,12 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink id="registerLink" controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink id="loginLink" controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
-                              <li><g:remoteLink id="editLink" controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
-                              <li><g:link id="logoutLink" controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
+                              <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
+                              <li><g:link controller="login" action="logout"><g:message code="hub.layout.public.logout"/></g:link></li>
                             </g:else>
                         </ul>
 
@@ -49,6 +52,14 @@
                         </g:if>
                     </header>
                     <section>
+                        <div class="widget widget_empresas">
+                          <h3><g:message code="hub.layout.public.companies"/></h3>
+                          <div class="widget_content">
+                            <ul id="tableBody">
+                                <g:companies/>
+                            </ul>
+                          </div>
+                        </div>
                         <form id="searchForm">
                             <g:textField name="text" class="text" id="searchText" placeholder="${message(code:'hub.layout.public.search')}" />
                             <input type="submit" class="submit" value="" >
@@ -56,27 +67,19 @@
                         <div class="widget widget_tags">
                             <h3><g:message code="hub.template.tags.tags"/></h3>
                             <div class="widget_content">
-                                <g:render template="/home/tags"/>
+                                <g:tags/>
                             </div>
                         </div>
-                        <div class="widget widget_empresas">
-                          <h3><g:message code="hub.layout.public.companies"/></h3>
-                          <div class="widget_content">
-                            <ul id="tableBody">
-                            </ul>
-                          </div>
-                        </div>
                     </section>
-                    <!--div class="ocultar">
-                        <a href="">Ocultar mapa y ver listado completo</a>
-                    </div-->
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <g:layoutBody/>
-                    <div class="panel" id="panel">
-                        <a id="closeButton" onClick="hidePanel();"><g:message code="hub.home.back"/></a>
-                        <div class="panelContent" id="panelContent"></div>
+                    <div class="map_container">
+                        <g:layoutBody/>
+                        <div class="panel" id="panel">
+                            <a href="#" onClick="hidePanel();"><img src="${resource(dir: 'images', file: 'close_icon.png')}" alt="Cerrar"/></a>
+                            <div class="panelContent" id="panelContent"> </div>
+                        </div>
                     </div>
                 </div><!-- .main-right -->
 
@@ -93,7 +96,7 @@
                     </select> 
                 </div>
                 <div class="footer_text">
-                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink id="aboutLink" controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                 </div>
                 <a class="cachirulo_logo" href="http://www.cachirulovalley.com">
                     <img src="${resource(dir: 'images', file: 'cachirulo_valley.png')}" alt="Logotipo de Cachirulo Valley" />
