@@ -7,6 +7,8 @@
     <g:javascript src="markerclusterer.js" />
   </head>
   <body>
-      <div class="map" id="map_canvas"></div>
+      <div class="map_container">
+        <div class="map" id="map_canvas"></div>
+      </div>
   </body>
 </html>

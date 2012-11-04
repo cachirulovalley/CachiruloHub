@@ -73,12 +73,10 @@
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <div class="map_container">
-                        <g:layoutBody/>
-                        <div class="panel" id="panel">
-                            <button id="closeButton" onClick="hidePanel();"><g:message code="hub.home.close"/></button>
-                            <div class="panelContent" id="panelContent"> </div>
-                        </div>
+                    <g:layoutBody/>
+                    <div class="panel" id="panel">
+                        <a id="closeButton" onClick="hidePanel();"><g:message code="hub.home.back"/></a>
+                        <div class="panelContent" id="panelContent"></div>
                     </div>
                 </div><!-- .main-right -->
 
@@ -104,6 +102,7 @@
             </div>
            
         </footer>
+        <div id="lightbox" class="lightbox"></div>
         <input type="hidden" id="baseUrl" value="<g:resource dir="/"/>"/>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

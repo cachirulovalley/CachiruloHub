@@ -35,8 +35,7 @@
 			  <br/>
 			</g:if>
 			
-		      <ul > 
-			
+		      <ul> 
 				<g:if test="${companyInstance?.twitter}">
 				<li >
 				    <a href="${companyInstance.twitter}" target="_blank"><g:message code="company.twitter.label" default="Twitter" /></a>

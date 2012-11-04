@@ -492,21 +492,79 @@ img.thumbnail {
 }
 
 
+/***** PANEL CONTENT ****/
+
 #panel{
-  position:absolute;
-  left: 0px;
-  top: 0px;
-  border: 1px solid #373944;
+  position: relative;
+  border: 1px solid #373943;
   background-color: #141519;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
+  height: auto;
 }
 #panelContent {
-  padding:20px;
+  padding: 20px;
 }
 #closeButton {
-  float:left;
-  margin:20px 0px 0px 20px;
+  display: block;
+  text-align: left;
+  float: none;
+  color: #f0f0f0;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 8px 0px 0px 20px;
+  cursor: pointer;
+}
+#closeButton:hover{
+  color: #139530;
+  text-decoration: underline;
+}
+.panelInside{
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: left;
+  padding: 30px;
+}
+  .panelInside a{
+    text-decoration: none;
+    color: #008707;
+  }
+  .panelInside a:hover{
+    color: #333;
+    text-decoration: underline
+  }
+.contentAbout{
+}
+.contentAbout ul{
+  display: block;
+  border: 1px solid #bbb;
+  background-color: #fff;
+
+  margin: 0;
+  padding: 20px;
+  list-style: disc;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
+}
+#lightbox{
+  display: none;
+  position: absolute;
+  width: 400px;
+  height: auto;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 999
 }
 

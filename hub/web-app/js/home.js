@@ -131,9 +131,11 @@ function showCompany(id) {
 function showPanel(big) {
   if (big) {
     $('#panel').css({ height: "100%", width: "100%" });
+    $('.map_container').hide();
   }
   else {
     $('#panel').css({ height: "", width: ""});
+    $('#panel').addClass('lightbox');
   }
     $('#panel').show();
 }
@@ -141,6 +143,8 @@ function showPanel(big) {
 function hidePanel() {
       $('#panel').css({ height: "", width: ""});
       $('#panel').hide();
+      $('#panel').removeClass('lightbox');
+      $('.map_container').show();
 }
 
 $(document).ready(function() {
