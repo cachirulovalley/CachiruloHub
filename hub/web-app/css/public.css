@@ -128,7 +128,7 @@ a:hover{
 h1.title{
   display: block;
   width: 180px;
-  margin: 25px 0px 20px 0px;
+  margin: 5px 0px 20px 0px;
   padding: 0;
   float: left;
 }
@@ -136,7 +136,7 @@ ul#menu{
   display: block;
   width: 180px;
   position: relative;
-  margin: 20px -26px 0px 30px;
+  margin: 25px -26px 0px 30px;
   float: right;
   background-color: #141419;
   padding: 8px 20px 8px 0px;
@@ -160,6 +160,16 @@ ul#menu li a{
 }
 ul#menu li a:hover{
   color: #fff;
+}
+
+.message{
+	background-color: #f0f0f0;
+	padding: 10px 20px;
+	margin: 0px 0px 15px 0px;
+	border: 1px solid red;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }
 
 /*** SEARCH FORM ***/
@@ -580,13 +590,31 @@ img.thumbnail {
 .content_form{
 	font-size: 1.1em;
 }
-.content_form p{
+.content_form h2{
+	font-size: 1.6em;
+	border-bottom: 1px solid #333;
+	margin: 0px 0px 20px 0px;
+	padding: 0px 0px 5px 0px;
+}
+.content_form_perfil form{
+	margin-bottom: 25px;
+}
+.content_form .message{
+	background-color: #fcffcc;
+	padding: 10px 20px;
+	margin: 0px 0px 15px 0px;
+	border: 1px solid #bc980f;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+.content_form p, .content_form .fieldcontain{
 	margin-bottom: 1em;
 }
-.content_form p label{
+.content_form p label, .content_form .fieldcontain label{
 	font-weight: bold;
 }
-.content_form p input{
+.content_form p input, .content_form .fieldcontain input, .content_form .fieldcontain textarea{
 	font-size: 1em;
 	padding: 5px 10px;
 	width: 300px;
@@ -595,9 +623,18 @@ img.thumbnail {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-.content_form p.submit{
+.content_form .fieldcontain input, .content_form .fieldcontain textarea{
+	width: 80%;
 }
-.content_form p.submit input{
+.content_form .fieldcontain textarea{
+	height: 80px;
+}
+.content_form p, .content_form .fieldcontainlogo input{
+	border: none;
+}
+.content_form p.submit, .content_form fieldset.submit{
+}
+.content_form p.submit input, .content_form fieldset.submit input{
 	width: auto;
 	color: #28272f;
 	font-weight: bold;
@@ -611,7 +648,7 @@ img.thumbnail {
 	-moz-border-radius: 7px;
 	border-radius: 7px;
 }
-.content_form p.submit input:hover{
+.content_form p.submit input:hover, .content_form fieldset.submit input:hover{
 	background-color: #65e772;
 	border: 1px solid #1d4120 !important;
 	color: #1d4120;
