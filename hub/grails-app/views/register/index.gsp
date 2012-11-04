@@ -6,18 +6,28 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<div class="page_content">
-		<g:form action="save">
-			Nombre: <g:textField name="name" required="" value="${companyInstance?.name}"/>
-			<br/>
-			Email: <g:textField name="email" required="" value="${companyInstance?.email}"/>
-			<br/>
-			Password: <g:passwordField name="password" required="" value=""/>
-			<br/>
-			Repite Password: <g:passwordField name="repassword" required="" value=""/>
-			<br/>
-			<input type="submit" value="Registrarse!">
-		</g:form>
+		<div class="page_content content_form">
+			<g:form action="save">
+				<p>
+					<label for="name">Nombre:</label><br />
+					<g:textField name="name" required="" value="${companyInstance?.name}"/>
+				</p>
+				<p>
+					<label for="email">E-mail:</label><br />
+					<g:textField name="email" required="" value="${companyInstance?.email}"/>
+				</p>
+				<p>
+					<label for="password">Password:</label><br />
+					<g:passwordField name="password" required="" value=""/>
+				</p>
+				<p>
+					<label for="repassword">Repite el password:</label><br />
+					<g:passwordField name="repassword" required="" value=""/>
+				</p>
+				<p class="submit">
+					<input type="submit" value="Registrarme">
+				</p>
+			</g:form>
 		</div>
 	</body>
 </html>

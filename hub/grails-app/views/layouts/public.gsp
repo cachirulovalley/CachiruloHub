@@ -36,8 +36,8 @@
 
                         <ul id="menu">
                             <g:if test="${!session.company}">
-                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
-                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
+                              <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
                             </g:if>
                             <g:else>
                               <li><g:remoteLink controller="company" action="edit" update="panelContent" onComplete="showPanel(true);"><g:message code="hub.layout.public.profile"/></g:remoteLink></li>
@@ -74,12 +74,13 @@
                 </aside><!-- .main-left -->
 
                 <div class="main-right table-cell">
-                    <div class="map_container">
+                    <div id="map_container" class="map_container">
                         <g:layoutBody/>
-                        <div class="panel" id="panel">
-                            <a href="#" onClick="hidePanel();"><img src="${resource(dir: 'images', file: 'close_icon.png')}" alt="Cerrar"/></a>
-                            <div class="panelContent" id="panelContent"> </div>
-                        </div>
+                        
+                    </div>
+                    <div class="panel" id="panel">
+                        <a href="#" onClick="hidePanel();" id="closeButton">Volver al mapa</a>
+                        <div class="panelContent" id="panelContent"></div>
                     </div>
                 </div><!-- .main-right -->
 

@@ -128,7 +128,7 @@ a:hover{
 h1.title{
   display: block;
   width: 180px;
-  margin: 25px 0px 0px 0px;
+  margin: 25px 0px 20px 0px;
   padding: 0;
   float: left;
 }
@@ -269,7 +269,6 @@ ul#menu li a:hover{
 }
 	
 .widget_empresas{
-	
 }
 .widget_empresas .widget_content{
   padding-bottom: 10px;
@@ -509,6 +508,10 @@ img.thumbnail {
 #closeButton {
   display: block;
   text-align: left;
+  background: url(../images/close_icon.png) left 3px no-repeat;
+  height: 22px;
+  padding: 0px 0px 0px 23px;
+  vertical-align: top;
   float: none;
   color: #f0f0f0;
   font-size: 0.9em;
@@ -567,4 +570,61 @@ img.thumbnail {
   margin-right: auto;
   z-index: 999
 }
+.page_content{
+	background-color: #f0f0f0;
+	padding: 25px !important;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+.content_form{
+	font-size: 1.1em;
+}
+.content_form p{
+	margin-bottom: 1em;
+}
+.content_form p label{
+	font-weight: bold;
+}
+.content_form p input{
+	font-size: 1em;
+	padding: 5px 10px;
+	width: 300px;
+	border: 1px solid #aaa;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.content_form p.submit{
+}
+.content_form p.submit input{
+	width: auto;
+	color: #28272f;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: center;
+	background-color: #9396cd;
+	padding: 7px 25px;
+	cursor: pointer;
+	border: 1px solid #31333c !important;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+.content_form p.submit input:hover{
+	background-color: #65e772;
+	border: 1px solid #1d4120 !important;
+	color: #1d4120;
+}
+.content_form .recover{
+	font-size: 0.9em
+}
+.content_form .recover a{
+	color: #565878;
+	text-decoration: none;
+}
+.content_form .recover a:hover{
+	text-decoration: underline;
+}
+
 
