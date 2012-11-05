@@ -29,7 +29,7 @@ class Company implements java.io.Serializable{
     }
 
     static constraints = {
-        email(blank:false, nullable:false, email:true)
+        email(blank:false, nullable:false, email:true, unique:true)
         name(blank:false, nullable:false)
         password(blank:false, nullable:false)
         address(nullable:true)

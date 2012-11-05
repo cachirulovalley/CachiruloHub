@@ -3,18 +3,18 @@
 		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
 		</g:if>
-		<title>Login</title>
+		<title>Register</title>
 	</head>
 	<body>
 		<div class="page_content content_form">
 			<g:form action="save">
 				<p>
 					<label for="name">Nombre:</label><br />
-					<g:textField name="name" required="" value="${companyInstance?.name}"/>
+					<g:textField name="name" required="" value="${company?.name}"/>
 				</p>
 				<p>
 					<label for="email">E-mail:</label><br />
-					<g:textField name="email" required="" value="${companyInstance?.email}"/>
+					<g:textField name="email" required="" value="${company?.email}"/>
 				</p>
 				<p>
 					<label for="password">Password:</label><br />

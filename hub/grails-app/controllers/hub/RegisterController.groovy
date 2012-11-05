@@ -27,7 +27,8 @@ class RegisterController {
           subject "[CachiruloHub] Confirma tu email"
           html g.render(template:"/mails/confirmation", model:[company: company])
         }
-        redirect(controller:'company', action:'edit', id: company.id)
+        flash.message = "Hemos mandado un email a ${company.email} para confirmar el registro"
+        redirect(controller:'home')
     }
     
     def confirm() {

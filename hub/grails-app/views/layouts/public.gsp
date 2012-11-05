@@ -50,6 +50,21 @@
                         <g:if test="${flash.message}">
                           <div class="message" role="status">${flash.message}</div>
                         </g:if>
+                        <g:if test="${company?.hasErrors()}">
+                            <div class="message" role="status">
+                                <g:eachError bean="${company}" var="err">
+                                <g:message error="${err}" />
+                                </g:eachError>
+                            </div>
+                        </g:if>
+                        <g:if test="${companyInstance?.hasErrors()}">
+                            <div class="message" role="status">
+                                <g:eachError bean="${companyInstance}" var="err">
+                                <g:message error="${err}" />
+                                </g:eachError>
+                            </div>
+                        </g:if>
+
                     </header>
                     <section>
                         <div class="widget widget_empresas">
