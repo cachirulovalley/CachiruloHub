@@ -664,4 +664,75 @@ img.thumbnail {
 	text-decoration: underline;
 }
 
+/** 
+* Company show
+**/
+.page_content_company{
+	
+}
+a.company_logo{
+	display: inline-block;
+	float: right;
+	width: auto;
+	max-width: 30%;
+	margin: 0px 25px 0px 30px;
+}
+a.company_logo img{
+}
+h1.company_title{
+	font-size: 2em;
+	margin: 0.8em 0px 0em 0px !important;	
+}
+	h1.company_title a{
+		color: #333;
+		text-decoration: none;
+	}
+	h1.company_title a:hover{
+		color: #a4a9d6;
+		text-decoration: underline;
+	}
+ul.company_social{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #888;
+	margin-bottom: 1em;
+}
+ul.company_social li{
+	display: inline;
+}
+ul.company_social li:after{
+	content: " | ";
+}
+ul.company_social li:last-child:after{
+	content: "";
+}
+ul.company_social li a{
+	color: #3f4080;
+	text-decoration: none;
+}
+ul.company_social li a:hover{
+	color: #4af55a;
+}
+.company_description{
+	line-height: 1.5em;
+	font-size: 1.1em;
+	margin-bottom: 1em;
+}
+.company_tags{
+	border-top: 1px dashed #ccc;
+	border-bottom: 1px dashed #ccc;
+	margin: 1em 0;
+	padding: 0.5em 0;
+}
+.company_address{
+	border: 1px solid #ccc;
+	background-color: #fff;
+	font-size: 1.1em;
+	padding: 20px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
 
