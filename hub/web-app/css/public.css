@@ -713,6 +713,7 @@ ul.company_social li a{
 }
 ul.company_social li a:hover{
 	color: #00760a;
+	text-decoration: underline;
 }
 .company_description{
 	line-height: 1.5em;
