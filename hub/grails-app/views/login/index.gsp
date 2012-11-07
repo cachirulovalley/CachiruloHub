@@ -30,7 +30,7 @@
 				</p>
 			</g:form>
 			<div class="recover">
-				<g:remoteLink id="recoverLink" controller="recoverPassword" update="panelContent" onComplete="showPanel(false);"><g:message code="hub.login.recover"/></g:remoteLink>
+				<g:remoteLink controller="recoverPassword" update="panelContent" onComplete="showPanel(false);if(supports_history_api()){history.pushState(null, null, '${createLink(controller:'recoverPassword')}');}"><g:message code="hub.login.recover"/></g:remoteLink>
 			</div>
 	</div>
 	</body>

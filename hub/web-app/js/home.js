@@ -6,6 +6,10 @@ var infoWindow = new google.maps.InfoWindow();
 
 var baseUrl
 
+function supports_history_api() {
+  return !!(window.history && history.pushState);
+}
+
 function initMap() {
   map_canvas = $("#map_canvas").get(0);
   if(map_canvas){
@@ -127,11 +131,15 @@ function attachClickEvent(marker) {
 
 
 function showCompany(id) {
+  var url = baseUrl + 'company/show/' + id;
   $.ajax({
-    url: baseUrl + 'company/show/' + id,
+    url: url,
     success:function(data,textStatus) {
       $('#panelContent').html(data);
       showPanel(true);
+      if(supports_history_api()){
+            history.pushState(null, null, url);
+      }
     },
     error:function(XMLHttpRequest,textStatus,errorThrown){}
   });
@@ -155,6 +163,9 @@ function hidePanel() {
       $('#panel').hide();
       $('#panel').removeClass('lightbox');
       $('#map_container').show();
+      if(supports_history_api()){
+            history.pushState(null, null, baseUrl);
+      }
 }
 
 $(document).ready(function() {
@@ -167,23 +178,5 @@ $(document).ready(function() {
   
   initMap();
   fetchCompanies();
-
-  switch (window.location.hash) {
-  case '#login':
-    $('#loginLink').click();
-    break;
-  case '#logout':
-    $('#logoutLink').click();
-    break;
-  case '#register':
-    $('#registerLink').click();
-    break;
-  case '#edit':
-    $('#editLink').click();
-    break;
-  case '#about':
-    $('#aboutLink').click();
-    break;
-  }
 });
 
