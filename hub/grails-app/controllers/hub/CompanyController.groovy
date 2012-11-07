@@ -42,7 +42,7 @@ class CompanyController {
                           [message(code: 'company.label', default: 'Company')] as Object[],
                           "Another user has updated this Company while you were editing")
                 //render(view: "edit", model: [companyInstance: companyInstance])
-                redirect(controller: "home", fragment: "edit")
+                redirect(controller: "home")
                 return
             }
         }
@@ -64,13 +64,13 @@ class CompanyController {
 
         if (!companyInstance.save(flush: true)) {
             //render(view: "edit", model: [companyInstance: companyInstance])
-            redirect(controller: "home", fragment: "edit")
+            redirect(controller: "home")
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
         //redirect(action: "show", id: companyInstance.id)
-        redirect(controller: "home") //TODO: show the updated company, pass id in fragment
+        redirect(controller: "home") 
     }
 
   def updatePerfil() {
@@ -100,7 +100,7 @@ class CompanyController {
             //companyInstance.errors.rejectValue('oldpassword', 'oldpassword.incorrect', 'Contraseña actual incorrecta')
 	        companyInstance.errors.reject('oldpassword.incorrect', 'Contraseña actual incorrecta')
             //render(view: "edit", model: [companyInstance: companyInstance])
-            redirect(controller: "home", fragment: "edit")
+            redirect(controller: "home")
             return
         }
 	//companyInstance.password = params['newpassword'] ?: companyInstance.password
@@ -113,7 +113,7 @@ class CompanyController {
 	if(!(params['email'] || params['password'] )){
 	    flash.message = message(code: 'default.noupdated.message', default: "Nada que actualizar")
 	    //render(view: "edit", model: [companyInstance: companyInstance])
-        redirect(controller: "home", fragment: "edit")
+        redirect(controller: "home")
 	    return
 	}
 
@@ -128,7 +128,7 @@ class CompanyController {
 	    	flash.message = message(code: 'default.updated.message', args: [message(code: 'perfil.label', default: 'Perfil'), ''])
 	}
         //redirect(action: "edit", id: companyInstance.id)
-        redirect(controller: "home", fragment: "edit")
+        redirect(controller: "home")
     }
 
     def delete(){
