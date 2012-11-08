@@ -64,7 +64,7 @@
 				<strong><a href="http://twitter.com/eoncoder">Carlos León</a></strong>
 			</li>
 			<li>
-				<strong>Andrés Gómez</strong>
+				<strong><a href="http://twitter.com/feterand">Andrés Gómez</strong>
 			</li>
 			<li>
 				<strong><a href="http://twitter.com/gimenete">Alberto Gimeno</a></strong>
