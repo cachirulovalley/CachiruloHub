@@ -15,14 +15,14 @@ class RecoverPasswordController {
 			company.save(flush:true)
 			mailService.sendMail {
 				to company.email
-				subject "[CachiruloHub] Nueva clave"
+				subject "[CachiruloHub] "+message(code: 'hub.recoverPassword.subject', default:'New Password')
 				html g.render(template:"/mails/newPassword", model:[password: passwd])
 			  }
-			flash.message = "Nueva clave generada y enviada por correo"
+			flash.message = message(code:"hub.recoverPassword.sent", default:"A new password was generated and emailed")
 			redirect(controller:'login', action:'index')
 			return
 		}
-		flash.message = "Empresa no registrada"
+		flash.message = message(code:"hub.recoverPassword.not.registered", default:"The company is not registered")
 		redirect(controller: 'recoverPassword', action:'index')
 		  
 	}

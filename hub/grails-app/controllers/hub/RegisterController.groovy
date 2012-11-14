@@ -24,10 +24,10 @@ class RegisterController {
         
         mailService.sendMail {     
           to company.email
-          subject "[CachiruloHub] Confirma tu email"
+          subject "[CachiruloHub] " + message(code: "hub.register.subject", default: "Confirm your email")
           html g.render(template:"/mails/confirmation", model:[company: company])
         }
-        flash.message = "Hemos mandado un email a ${company.email} para confirmar el registro"
+        flash.message = message(code: "hub.register.sent", default: "We have sent an email to") + " ${company.email} " + message(code: "hub.register.confirm", default: "to confirmpar the registration")
         redirect(controller:'home')
     }
     
