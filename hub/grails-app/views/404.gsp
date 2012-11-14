@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Page Not Found :(</title>
+        <title><g:message code="hub.404.title" default="Page Not Found"/> :(</title>
         <style>
             ::-moz-selection {
                 background: #b3d4fc;
@@ -143,8 +143,9 @@
     <body>
         <div class="container">
             <h1>Ooooops! <span>:(</span></h1>
-            <p>Lo sentimos, pero la página que buscas no existe.</p>
-            <p>Pulsa el botón atrás o vuelve a la <g:link controller="home">página de inicio.</g:link></p>
+            <p><g:message code="hub.404.sorry" default="We are sorry, the page you are looking for doesn't exist"/></p>
+            <p><g:message code="hub.404.back" default="Press the back button or go to"/> <g:link controller="home"><g:message code="hub.404.home" default="the home page"/></g:link></p>
+         
         </div>
     </body>
 </html>

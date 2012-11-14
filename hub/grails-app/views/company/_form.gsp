@@ -37,9 +37,9 @@
 
 <div class="fieldcontain fieldcontainlogo ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
 	<label for="logo">
-		<g:message code="hub.temoplate.form.logo" default="Logo" />:
+		<g:message code="hub.template.form.logo" default="Logo" />:
 	</label><br />
-	<input type="file" id="logo" name="logo" />
+	<input type="file" id="logo" name="logo"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'twitter', 'error')} ">
