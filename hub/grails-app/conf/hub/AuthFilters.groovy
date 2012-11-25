@@ -9,7 +9,7 @@ class AuthFilters {
     def filters = {
         all(controller:'*', action:'*') {
             before = {
-                if(!Environment.isDevelopmentMode()){
+                /*if(!Environment.isDevelopmentMode()){
                     def authHeader = request.getHeader('Authorization')
                     if (authHeader) {
                         def usernamePassword = new String(authHeader.split(' ')[1].decodeBase64())
@@ -20,7 +20,7 @@ class AuthFilters {
                     response.setHeader('WWW-Authenticate', 'basic realm="myRealm"')
                     response.sendError(response.SC_UNAUTHORIZED)
                     return false
-                }
+                }*/
             }
             after = { Map model ->
 

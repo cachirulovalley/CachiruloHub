@@ -36,6 +36,9 @@
 			</g:if>
 			
 		      <ul class="company_social"> 
+		      	<g:if test="${companyInstance?.web}">
+					<li><a href="${companyInstance.web}" target="_blank">Web</a></li>
+				</g:if>
 				<g:if test="${companyInstance?.twitter}">
 				<li>
 				    <a href="${companyInstance.twitter}" target="_blank"><g:message code="company.twitter.label" default="Twitter" /></a>
