@@ -10,7 +10,7 @@ class CompanyController {
     def show(Long id) {
         def companyInstance = Company.get(id)
         if (!companyInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'hub.company.objectName', default: 'Company'), id])
             redirect(controller: "home")
             return
         }
@@ -20,7 +20,7 @@ class CompanyController {
     def edit(Long id) {
         def companyInstance = session.company //Company.get(id)
         if (!companyInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'hub.company.objectName', default: 'Company'), id])
             redirect(controller: "home")
             return
         }
@@ -31,7 +31,7 @@ class CompanyController {
     def update(Long id, Long version) {
         def companyInstance = session.company // Company.get(id)
         if (!companyInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'hub.company.objectName', default: 'Company'), id])
             redirect(controller: "home")
             return
         }
@@ -39,9 +39,10 @@ class CompanyController {
         if (version != null) {
             if (companyInstance.version > version) {
                 companyInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'company.label', default: 'Company')] as Object[],
-                          "Another user has updated this Company while you were editing")
-                render(view: "edit", model: [companyInstance: companyInstance])
+                          [message(code: 'hub.company.objectName', default: 'Company')] as Object[],
+                          message(code: 'default.optimistic.locking.failure', args: [message(code: 'hub.company.objectName', default: 'Company')]))
+                //render(view: "edit", model: [companyInstance: companyInstance])
+                redirect(controller: "home")
                 return
             }
         }
@@ -66,8 +67,7 @@ class CompanyController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
-        //redirect(action: "show", id: companyInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'hub.company.objectName', default: 'Company'), companyInstance.id])
         redirect(action: "show", id: companyInstance.id)
     }
 
@@ -75,7 +75,7 @@ class CompanyController {
 	def companyInstance = session.company // Company.get(id)
         
 	if (!companyInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'hub.company.objectName', default: 'Company'), id])
             //redirect(action: "list")
             redirect(controller: "home")
             return
@@ -84,8 +84,8 @@ class CompanyController {
         if (version != null) {
             if (companyInstance.version > version) {
                 companyInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'company.label', default: 'Company')] as Object[],
-                          "Another user has updated this Company while you were editing")
+                          [message(code: 'hub.company.objectName', default: 'Company')] as Object[],
+                          message(code: 'default.optimistic.locking.failure', args: [message(code: 'hub.company.objectName', default: 'Company')])
                 render(view: "edit", model: [companyInstance: companyInstance])
                 return
             }
@@ -96,7 +96,7 @@ class CompanyController {
         if(!oldPasswordCorrect) {
 	    //TODO: falla rejectValue investigar
             //companyInstance.errors.rejectValue('oldpassword', 'oldpassword.incorrect', 'Contraseña actual incorrecta')
-	        companyInstance.errors.reject('oldpassword.incorrect', 'Contraseña actual incorrecta')
+	        companyInstance.errors.reject('hub.company.oldPassword.incorrect', 'Incorrect current password')
             //render(view: "edit", model: [companyInstance: companyInstance])
             redirect(controller: "home")
             return
@@ -109,7 +109,7 @@ class CompanyController {
 	//if(companyInstance.isDirty('email') || companyInstance.isDirty('password')){
 	//if( companyInstance.isDirty() ){
 	if(!(params['email'] || params['password'] )){
-	    flash.message = message(code: 'default.noupdated.message', default: "Nada que actualizar")
+	    flash.message = message(code: 'hub.company.upToDate', default: "Already up to date")
 	    //render(view: "edit", model: [companyInstance: companyInstance])
         redirect(controller: "home")
 	    return
@@ -123,7 +123,7 @@ class CompanyController {
 	      //render(view: "edit", model: [companyInstance: companyInstance])
 	      //return
 	}else{
-	    	flash.message = message(code: 'default.updated.message', args: [message(code: 'perfil.label', default: 'Perfil'), ''])
+	    	flash.message = message(code: 'default.updated.message', args: [message(code: 'hub.company.profile', default: 'Company\'s profile:'), companyInstance.name])
 	}
         //redirect(action: "edit", id: companyInstance.id)
         redirect(controller: "home")
@@ -131,18 +131,18 @@ class CompanyController {
 
     def delete(){
         if (!session.company){
-            flash.message ="La empresa necesita logearse"
+            flash.message = message(code: 'hub.company.not.logged', default: 'La empresa debe autenticarse')
             redirect(controller: "home")
         }
         else{
             try {
                 def company = session.company
                 company.delete(flush: true)
-                flash.message = "Empresa dada de baja con éxito"
+                flash.message = message(code: 'hub.company.not.logged', default: 'La empresa fue dada de baja')
                 redirect(controller: "home")
             }
             catch (DataIntegrityViolationException e) {
-                flash.message = "Error al dar de baja la empresa"
+                flash.message = message(code: 'hub.company.not.logged', default: 'No pudo darse de baja a la empresa')
                 redirect(action: "show", id: id)
             }
         }

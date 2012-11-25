@@ -94,7 +94,7 @@
                         
                     </div>
                     <div class="panel" id="panel">
-                        <a href="javascript:void(null)" onClick="hidePanel();" id="closeButton">Volver al mapa</a>
+                        <a href="javascript:void(null)" onClick="hidePanel();" id="closeButton"><g:message code="hub.layout.public.map" default="Back to map"/></a>
                         <div class="panelContent" id="panelContent"></div>
                     </div>
                 </div><!-- .main-right -->
@@ -112,7 +112,7 @@
                     </select> 
                 </div>
                 <div class="footer_text">
-                     CachiruloHub 2012 es una idea transformada en realidad gracias al <g:remoteLink controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);if(supports_history_api()){history.pushState(null, null, '${createLink(controller:'home', action:'about')}');}">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
+                     <g:message code="hub.layout.public.footer" default="CachiruloHub 2012 is an idea transformed into reality thanks to "/><g:remoteLink controller="home" action="about" class="power" update="panelContent" onComplete="showPanel(true);if(supports_history_api()){history.pushState(null, null, '${createLink(controller:'home', action:'about')}');}">Cachirulistas power</g:remoteLink> | <a href="http://twitter.com/search?q=%23jodopetaca" target="_blank">#jodopetaca</a>
                 </div>
                 <a class="cachirulo_logo" href="http://www.cachirulovalley.com">
                     <img src="${resource(dir: 'images', file: 'cachirulo_valley.png')}" alt="Logotipo de Cachirulo Valley" />

@@ -8,10 +8,9 @@
 	</head>
 	<body>
 		<div class="panelInside contentAbout">
-			<p>Esta web pretende servir como directorio y mapa para conocer las empresas IT en Aragón. Saber quiénes somos, cuántos y dónde estamos</p>
-
-			<p>La idea de este proyecto surge originalmente dentro del colectivo <a href="http://cachirulovalley.com/">Cachirulo Valley</a>, pero ha sido posible gracias a la comunidad de  diseñatas, marketinianos, picateclas y demás fauna del valle del cachirulo. <br/><br/>
-			Estos son los culpables, de un modo u otro, de que este proyecto haya llegado a buen puerto:
+			<p><g:message code="hub.about.purpose" default="This web intends to serve as a directory and map for the IT companies based in Aragon. Find out who, where and how many we are"/>.</p>
+			<p><g:message code="hub.about.idea" default="The idea of this project started within the collective of"/> <a href="http://cachirulovalley.com/">Cachirulo Valley</a>, <g:message code="hub.about.effort" default="but it has been made possible by the community of design and marketing freaks, code monkeys and some other inhabitants of the Cachirulo valley"/>. <br/><br/>
+			<g:message code="how.about.culprits" default="The following are, in some way or the other, culprits of having helped this project succeed"/>:
 			</p>
 			<ul>
 			<li>
@@ -71,7 +70,7 @@
 			</li>
 			</ul>
 			<br/>
-			Gracias a todos, majos.
+			<g:message code="hub.about.thanks" default="Thanks a lot"/>, <em>majos</em>.
 		</div>
 	</body>
 </html>
