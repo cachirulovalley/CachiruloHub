@@ -4,8 +4,7 @@
 		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
 		</g:if>
-		<g:set var="entityName" value="${message(code: 'company.label', default: 'Empresa')}" />
-		<g:set var="perfilName" value="${message(code: 'perfil.label', default: 'Perfil')}" />
+		<g:set var="entityName" value="${message(code: 'hub.company.objectName', default: 'Company')}" />		
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -28,24 +27,24 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="submit">
-					<g:actionSubmit action="update" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
+					<g:actionSubmit action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>
 			
-			<h2><g:message code="default.edit.label" args="[perfilName]" /></h2>
+			<h2><g:message code="hub.company.profile" default="Company's Profile:" /></h2>
 			<g:form method="post" >
 				<fieldset>
 					<g:render template="perfil"/>
 				</fieldset>
 				<fieldset class="submit">
-					<g:actionSubmit action="updatePerfil" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
+					<g:actionSubmit action="updatePerfil" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>
 			
-			<h2>Quiero eliminar mi perfil</h2>
+			<h2><g:message code="hub.company.delete" default="I want to remove my profile" /></h2>
 			<g:form method="post" >
 				<fieldset class="submit">
-					<g:actionSubmit action="delete" value="${message(code: 'default.button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+					<g:actionSubmit action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'hub.company.confirm', default: 'Are you sure?')}');"/>
 				</fieldset>
 			</g:form>
 		</div>

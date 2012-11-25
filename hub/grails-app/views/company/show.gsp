@@ -4,7 +4,7 @@
 		<g:if test="${!request.xhr}">
 		<meta name="layout" content="public">
 		</g:if>
-		<g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
+		<g:set var="entityName" value="${message(code: 'hub.company.objectName', default: 'Company')}" />
 		<title>${companyInstance.name}</title>
 	</head>
 	<body>		
@@ -38,24 +38,24 @@
 		      <ul class="company_social"> 
 				<g:if test="${companyInstance?.twitter}">
 				<li>
-				    <a href="${companyInstance.twitter}" target="_blank"><g:message code="company.twitter.label" default="Twitter" /></a>
+				    <a href="${companyInstance.twitter}" target="_blank"><g:message code="hub.company.twitter" default="Twitter" /></a>
 				</li>
 				</g:if>
 
 				<g:if test="${companyInstance?.facebook}">
 				<li>
-				    <a href="${companyInstance.facebook}" target="_blank"><g:message code="company.facebook.label" default="Facebook" /></a>
+				    <a href="${companyInstance.facebook}" target="_blank"><g:message code="hub.company.facebook" default="Facebook" /></a>
 				</li>
 				</g:if>
 
 				<g:if test="${companyInstance?.linkedin}">
 				<li>
-				    <a href="${companyInstance.linkedin}" target="_blank"><g:message code="company.linkedin.label" default="Linkedin" /></a>
+				    <a href="${companyInstance.linkedin}" target="_blank"><g:message code="hub.company.linkedin" default="Linkedin" /></a>
 				</li>
 				</g:if>
 				<g:if test="${companyInstance?.email}">
 				<li>
-				    <a href="mailto:${companyInstance.email}" target="_blank"><g:message code="company.email.contactar" default="Contactar" /></a>
+				    <a href="mailto:${companyInstance.email}" target="_blank"><g:message code="hub.company.email.contact" default="Contact" /></a>
 				</li>
 				</g:if>
 				</ul>
@@ -66,7 +66,7 @@
 				
 				<g:if test="${companyInstance?.tags}">
 					<div class="company_tags">
-						<strong><g:message code="company.tags.label" default="Etiquetas" /></strong>: ${companyInstance.tagsToString}
+						<strong><g:message code="hub.company.tags" default="Tags" /></strong>: ${companyInstance.tagsToString}
 					</div>
 				</g:if>
 				 
