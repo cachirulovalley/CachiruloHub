@@ -41,8 +41,7 @@ class CompanyController {
                 companyInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'company.label', default: 'Company')] as Object[],
                           "Another user has updated this Company while you were editing")
-                //render(view: "edit", model: [companyInstance: companyInstance])
-                redirect(controller: "home")
+                render(view: "edit", model: [companyInstance: companyInstance])
                 return
             }
         }
@@ -63,14 +62,13 @@ class CompanyController {
         companyInstance.persistTags(params.tags)
 
         if (!companyInstance.save(flush: true)) {
-            //render(view: "edit", model: [companyInstance: companyInstance])
-            redirect(controller: "home")
+            render(view: "edit", model: [companyInstance: companyInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
         //redirect(action: "show", id: companyInstance.id)
-        redirect(controller: "home") 
+        redirect(action: "show", id: companyInstance.id)
     }
 
   def updatePerfil() {

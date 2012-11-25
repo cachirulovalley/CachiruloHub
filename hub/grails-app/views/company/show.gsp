@@ -17,11 +17,11 @@
 			<g:if test="${companyInstance?.logo}">
 			  <g:if test="${companyInstance?.web}">
 				<a href="${companyInstance.web}" target="_blank" class="company_logo">
-				  <img src="${createLink(action:'logo', id:companyInstance.id)}">
+				  <img src="${createLink(action:'logo', id:companyInstance.id)}" class="logo">
 				</a>
 			  </g:if>
 			  <g:if test="${!companyInstance?.web}">
-				 <img src="${createLink(action:'logo', id:companyInstance.id)}">
+				 <img src="${createLink(action:'logo', id:companyInstance.id)}" class="logo">
 			  </g:if>
 			</g:if>
 
