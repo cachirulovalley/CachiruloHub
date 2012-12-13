@@ -76,7 +76,7 @@
 				<g:if test="${companyInstance?.address}">
 					<div class="company_address">${companyInstance.address}
 
-						<g:if test="${companyInstance?.latitude && companyInstance?.longitude}">
+						<g:if test="${companyInstance?.latitude && companyInstance?.longitude}"><br/>
 				      <img src="http://maps.google.com/maps/api/staticmap?size=400x400&markers=%7C${companyInstance?.latitude},${companyInstance?.longitude}&sensor=false"/>
 				</g:if>
 					</div>

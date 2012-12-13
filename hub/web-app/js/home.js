@@ -110,7 +110,6 @@ function updateMap(data) {
         
         markers[company.positionId] = marker;
         markersArray.push(marker);
-        
         attachClickEvent(marker);
     });
     mc.addMarkers(markersArray);
@@ -119,11 +118,12 @@ function updateMap(data) {
 
 function attachClickEvent(marker) {
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.content = ""
+    var content = ""
     $.each(marker.companies,function(index,company){
         var company = marker.companies[index]
-        infoWindow.content += "<b><a onclick='return showCompany(" + company.id + ")' href='"+ baseUrl +"company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
+        content += "<b><a onclick='return showCompany(" + company.id + ")' href='"+ baseUrl +"company/show/" + company.id + "'>" + company.name + "</a></b> <br>"
     });
+    infoWindow.setContent(content)
     infoWindow.open(map, marker);
   });
 
