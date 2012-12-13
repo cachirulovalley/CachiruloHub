@@ -27,8 +27,9 @@ class RegisterController {
           subject "[CachiruloHub] " + message(code: "hub.register.subject", default: "Confirm your email")
           html g.render(template:"/mails/confirmation", model:[company: company])
         }
-        flash.message = message(code: "hub.register.sent", default: "We have sent an email to") + " ${company.email} " + message(code: "hub.register.confirm", default: "to confirmpar the registration")
-        redirect(controller:'home')
+        flash.message = message(code: "hub.register.sent", default: "We have sent an email to") + " ${company.email} " + message(code: "hub.register.confirm", default: "to confirm the registration")
+        session.company = company
+        redirect(controller:'company', action:'edit', id:company.id)
     }
     
     def confirm() {

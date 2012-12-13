@@ -9,7 +9,7 @@ class SidebarTagLib {
     }
 
     def companies = { attrs, body ->	
-		def companies = Company.list()
+		def companies = Company.findAllByEnabled(true)
 		out << render(template:"/home/companies", model:[companies: companies])
     }
 }

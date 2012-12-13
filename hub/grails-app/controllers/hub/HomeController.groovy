@@ -13,9 +13,10 @@ class HomeController {
     def queryJSON() {
         def companies
         if(!params.text){
-            companies = Company.list()
+            companies = Company.findAllByEnabled(true)
         }else{
             companies = Company.withCriteria {
+                //eq("enabled", true)
                 or{
                     ilike("name", "%${params.text}%")
                     ilike("description", "%${params.text}%")
@@ -27,7 +28,7 @@ class HomeController {
         render(contentType: "text/json") {
                 array {
                     companies.each{
-                        company(id: it.id, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude, positionId: it.positionId, web: it.web?:"", logoSrc:it.logo?g.createLink(controller:'company', action:'logo', id: it.id):resource(dir:'images', file:'avatar_default.jpg'))
+                        company(id: it.id, enabled: it.enabled, name: it.name, description: it.description, address: it.address, latitude: it.latitude, longitude: it.longitude, positionId: it.positionId, web: it.web?:"", logoSrc:it.logo?g.createLink(controller:'company', action:'logo', id: it.id):resource(dir:'images', file:'avatar_default.jpg'))
                     }
                 }
         }

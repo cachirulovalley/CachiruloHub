@@ -35,6 +35,7 @@
                         </h1>
 
                         <ul id="menu">
+                            <li><g:link controller="home"><g:message code="hub.layout.public.map"/></g:link></li>
                             <g:if test="${!session.company}">
                               <li><g:remoteLink controller="register" update="panelContent" onComplete="showPanel(true);if(supports_history_api()){history.pushState(null, null, '${createLink(controller:'register')}');}"><g:message code="hub.layout.public.register"/></g:remoteLink></li>
                               <li><g:remoteLink controller="login" update="panelContent" onComplete="showPanel(true);if(supports_history_api()){history.pushState(null, null, '${createLink(controller:'login')}');}"><g:message code="hub.layout.public.login"/></g:remoteLink></li>
@@ -94,7 +95,7 @@
                         
                     </div>
                     <div class="panel" id="panel">
-                        <a href="javascript:void(null)" onClick="hidePanel();" id="closeButton"><g:message code="hub.layout.public.map" default="Back to map"/></a>
+                        <a href="javascript:void(null)" onClick="hidePanel();" id="closeButton"><g:message code="hub.layout.public.back" default="Back"/></a>
                         <div class="panelContent" id="panelContent"></div>
                     </div>
                 </div><!-- .main-right -->
