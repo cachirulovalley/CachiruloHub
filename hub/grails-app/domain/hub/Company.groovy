@@ -49,6 +49,10 @@ class Company implements java.io.Serializable{
     def beforeInsert() {
         encrypt()
     }
+
+    static mapping = {
+        version false
+    }
     
     def beforeUpdate() {
         /*if(isDirty('password')){

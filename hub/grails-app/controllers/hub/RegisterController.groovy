@@ -36,7 +36,8 @@ class RegisterController {
         def company = Company.findByKey(params.id)
         if(company){
             company.enabled = true
-            company.save()
+            company.save(flush:true)
+            flash.message = message(code: "hub.register.confirmed", default: "Your account has been enabled")
             redirect(controller:'company', action:'edit', id: company.id)
         }
     }
