@@ -51,6 +51,9 @@
                         <g:if test="${flash.message}">
                           <div class="message" role="status">${flash.message}</div>
                         </g:if>
+                        <g:if test="${session.company && !session.company.enabled}">
+                          <div class="message" role="status">Debes activar tu cuenta, te hemos mandado un email a ${session.company.email} con las instrucciones</div>
+                        </g:if>
                         <g:if test="${company?.hasErrors()}">
                             <div class="message" role="status">
                                 <g:eachError bean="${company}" var="err">

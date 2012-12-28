@@ -738,4 +738,5 @@ ul.company_social li a:hover{
 
 .logo{
   height: 150px;
+  max-width: 220px;
 }
