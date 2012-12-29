@@ -135,7 +135,7 @@ class CompanyControllerTests {
         assert Company.count()==1
         controller.delete()
         assert Company.count()==1
-        assert flash.message =="La empresa necesita logearse"
+        assert flash.message =="La empresa debe autenticarse"
         assert response.redirectedUrl == '/home' 
     }
 
@@ -146,7 +146,7 @@ class CompanyControllerTests {
         company.save() 
         controller.delete()
         assert Company.count()==0
-        assert flash.message =="Empresa dada de baja con éxito"
+        assert flash.message =="La empresa fue dada de baja"
         assert response.redirectedUrl == '/home' 
     }
 }

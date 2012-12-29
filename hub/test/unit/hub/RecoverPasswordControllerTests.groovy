@@ -49,6 +49,6 @@ class RecoverPasswordControllerTests {
 		controller.params.email = "fu@bar.com"
 		controller.recoverPassword()
 		assert Company.get(1).password==Company.encrypt('foo')
-		assert flash.message == 'Empresa no registrada'
+		assert flash.message == 'The company is not registered'
 	}
 }
