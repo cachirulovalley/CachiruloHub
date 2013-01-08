@@ -41,6 +41,9 @@
 				<strong><a href="http://twitter.com/superwillyfoc">Guillermo Latorre</a></strong>
 			</li>
 			<li>
+				<strong><a href="http://twitter.com/francho_lab">Francho Joven</a></strong>
+			</li>
+			<li>
 				<strong><a href="http://twitter.com/ferpega_">Fernando Pérez</a></strong>
 			</li>
 			<li>
