@@ -13,7 +13,7 @@ class HomeController {
     def queryJSON() {
         def companies
         if(!params.text){
-            companies = Company.findAllByEnabled(true)
+            companies = Company.findAllByEnabled(true, [sort: "id", order: "desc"])
         }else{
             companies = Company.withCriteria {
                 //eq("enabled", true)
