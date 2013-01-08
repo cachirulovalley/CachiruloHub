@@ -38,7 +38,7 @@ class RegisterController {
             company.enabled = true
             company.save(flush:true)
             flash.message = message(code: "hub.register.confirmed", default: "Your account has been enabled")
-            redirect(controller:'company', action:'edit', id: company.id)
+            redirect(controller:'company', action:'show', id: company.id)
         }
     }
 }
