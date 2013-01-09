@@ -72,6 +72,6 @@ class RegisterControllerTests {
         controller.params.id = company.key
         controller.confirm()
         assert Company.get(company.id).enabled
-        assert response.redirectedUrl == '/company/edit/1'
+        assert response.redirectedUrl == '/company/show/1'
     }
 }
