@@ -107,8 +107,8 @@
             </div> <!-- #main -->
         </div> <!-- #main-container -->
         <footer id="footer">
+            ${companiesCounter()} empresas, y subiendo<br/><br/>
             <div class="footer_content">
-                <div class="footer_lang">
                     <label for="title"><g:message code="hub.layout.public.language"/></label>
                     <select id="lang" name="lang">                      
                         <option value="en" <g:langCode code='en'>selected</g:langCode>><g:message code="hub.layout.public.English"/></option>

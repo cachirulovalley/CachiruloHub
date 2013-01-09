@@ -15,4 +15,8 @@ class SidebarTagLib {
 		def companies = Company.findAllByEnabled(true, [sort: "id", order: "desc"])
 		out << render(template:"/home/companies", model:[companies: companies])
     }
+
+    def companiesCounter = { attrs, body ->
+    	out << Company.countByEnabled(true).toString()
+    }
 }
