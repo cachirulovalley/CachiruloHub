@@ -187,16 +187,18 @@ $(document).ready(function() {
   });
   
   // Capturamos el evento popstate para mostrar la compañia que hay en la url guardada en el history cuando nos movemos por este.
-  $(window).bind("popstate", function(e) {
-      var stateObj = event.state;
-      if(stateObj) {
-          showCompany(stateObj.companyId, true);
-          document.title = stateObj.title;
-      } else {
-          hidePanel(true);
-          document.title = "Cachirulo Hub";
-      }
-  });
+  if(supports_history_api()) {
+    $(window).bind("popstate", function(e) {
+        var stateObj = event.state;
+        if(stateObj) {
+            showCompany(stateObj.companyId, true);
+            document.title = stateObj.title;
+        } else {
+            hidePanel(true);
+            document.title = "Cachirulo Hub";
+        }
+    });
+  }
 
   initMap();
   fetchCompanies();
