@@ -137,8 +137,18 @@ function showCompany(id, ignoreState) {
     success:function(data,textStatus) {
       $('#panelContent').html(data);
       showPanel(true);
+
+      var dataTitle = null;
+
+      var titleRegex = /<title>(.+?)<\/title>/;
+      var regexMatch = titleRegex.exec(data);
+      if(regexMatch != null) {
+          dataTitle = regexMatch[1];
+          document.title = dataTitle;
+      }
+
       if(supports_history_api() && !ignoreState){
-            history.pushState(id, null, url);
+            history.pushState({companyId: id, title: dataTitle}, null, url);
       }
     },
     error:function(XMLHttpRequest,textStatus,errorThrown){}
@@ -178,11 +188,13 @@ $(document).ready(function() {
   
   // Capturamos el evento popstate para mostrar la compañia que hay en la url guardada en el history cuando nos movemos por este.
   $(window).bind("popstate", function(e) {
-      var companyId = event.state;
-      if(companyId) {
-          showCompany(companyId, true);
+      var stateObj = event.state;
+      if(stateObj) {
+          showCompany(stateObj.companyId, true);
+          document.title = stateObj.title;
       } else {
           hidePanel(true);
+          document.title = "Cachirulo Hub";
       }
   });
 
