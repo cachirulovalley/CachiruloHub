@@ -130,15 +130,15 @@ function attachClickEvent(marker) {
 }
 
 
-function showCompany(id) {
+function showCompany(id, ignoreState) {
   var url = baseUrl + 'company/show/' + id;
   $.ajax({
     url: url,
     success:function(data,textStatus) {
       $('#panelContent').html(data);
       showPanel(true);
-      if(supports_history_api()){
-            history.pushState(null, null, url);
+      if(supports_history_api() && !ignoreState){
+            history.pushState(id, null, url);
       }
     },
     error:function(XMLHttpRequest,textStatus,errorThrown){}
@@ -158,12 +158,12 @@ function showPanel(big) {
     $('#panel').show();
 }
 
-function hidePanel() {
+function hidePanel(ignoreState) {
       $('#panel').css({ height: "", width: ""});
       $('#panel').hide();
       $('#panel').removeClass('lightbox');
       $('#map_container').show();
-      if(supports_history_api()){
+      if(supports_history_api() && !ignoreState){
             history.pushState(null, null, baseUrl);
       }
 }
@@ -176,6 +176,16 @@ $(document).ready(function() {
     return false;
   });
   
+  // Capturamos el evento popstate para mostrar la compañia que hay en la url guardada en el history cuando nos movemos por este.
+  $(window).bind("popstate", function(e) {
+      var companyId = event.state;
+      if(companyId) {
+          showCompany(companyId, true);
+      } else {
+          hidePanel(true);
+      }
+  });
+
   initMap();
   fetchCompanies();
 });
