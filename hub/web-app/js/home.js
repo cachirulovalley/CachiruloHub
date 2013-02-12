@@ -130,15 +130,25 @@ function attachClickEvent(marker) {
 }
 
 
-function showCompany(id) {
+function showCompany(id, ignoreState) {
   var url = baseUrl + 'company/show/' + id;
   $.ajax({
     url: url,
     success:function(data,textStatus) {
       $('#panelContent').html(data);
       showPanel(true);
-      if(supports_history_api()){
-            history.pushState(null, null, url);
+
+      var dataTitle = null;
+
+      var titleRegex = /<title>(.+?)<\/title>/;
+      var regexMatch = titleRegex.exec(data);
+      if(regexMatch != null) {
+          dataTitle = regexMatch[1];
+          document.title = dataTitle;
+      }
+
+      if(supports_history_api() && !ignoreState){
+            history.pushState({companyId: id, title: dataTitle}, null, url);
       }
     },
     error:function(XMLHttpRequest,textStatus,errorThrown){}
@@ -158,12 +168,12 @@ function showPanel(big) {
     $('#panel').show();
 }
 
-function hidePanel() {
+function hidePanel(ignoreState) {
       $('#panel').css({ height: "", width: ""});
       $('#panel').hide();
       $('#panel').removeClass('lightbox');
       $('#map_container').show();
-      if(supports_history_api()){
+      if(supports_history_api() && !ignoreState){
             history.pushState(null, null, baseUrl);
       }
 }
@@ -176,6 +186,20 @@ $(document).ready(function() {
     return false;
   });
   
+  // Capturamos el evento popstate para mostrar la compañia que hay en la url guardada en el history cuando nos movemos por este.
+  if(supports_history_api()) {
+    $(window).bind("popstate", function(e) {
+        var stateObj = event.state;
+        if(stateObj) {
+            showCompany(stateObj.companyId, true);
+            document.title = stateObj.title;
+        } else {
+            hidePanel(true);
+            document.title = "Cachirulo Hub";
+        }
+    });
+  }
+
   initMap();
   fetchCompanies();
 });
