@@ -45,10 +45,9 @@ grails.project.dependency.resolution = {
         compile (":localizable:0.3"){
             excludes "groovy"
         }
-	compile ':mongodb:1.0.0.GA'
-	compile ":cloud-bees:0.5.4"
-        
-    
+	   compile ":mongodb:1.2.0"
+	   compile ":heroku:1.0.1"
+       compile ':cloud-support:1.0.8'
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
